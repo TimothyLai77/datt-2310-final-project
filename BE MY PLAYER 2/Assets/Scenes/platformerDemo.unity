@@ -155,6 +155,8 @@ MonoBehaviour:
   timerText: {fileID: 2119645385}
   currentTime: 0
   countDown: 0
+  levelFinished: 0
+  finish: {fileID: 485610207}
 --- !u!4 &50956226
 Transform:
   m_ObjectHideFlags: 0
@@ -567,6 +569,7 @@ GameObject:
   - component: {fileID: 485610210}
   - component: {fileID: 485610209}
   - component: {fileID: 485610208}
+  - component: {fileID: 485610211}
   m_Layer: 0
   m_Name: Finish
   m_TagString: Untagged
@@ -587,6 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 281391971}
+  levelFinished: 0
 --- !u!212 &485610209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -654,6 +658,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &485610211
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485610207}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &709085538
 GameObject:
   m_ObjectHideFlags: 0

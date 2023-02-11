@@ -11,7 +11,11 @@ public class Timer : MonoBehaviour
     [Header("Timer Settings")]
     public float currentTime;
 
+
     public bool countDown;
+    public bool levelFinished;
+
+    public GameObject finish;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,12 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
-        timerText.text = currentTime.ToString("0.000");
+        FinishCheck finishCheck = finish.GetComponent<FinishCheck>();
+        Debug.Log(finishCheck.levelFinished);
+        if (!finishCheck.levelFinished)
+        {
+            currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
+            timerText.text = currentTime.ToString("0.000");
+        }
     }
 }

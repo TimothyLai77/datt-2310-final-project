@@ -6,10 +6,11 @@ public class FinishCheck : MonoBehaviour
 {
 
     public GameObject player;
+    public bool levelFinished;
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelFinished = false;
     }
 
     // Update is called once per frame
@@ -22,7 +23,8 @@ public class FinishCheck : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // level pass here
+            // tell timer to stop
+            levelFinished = true;
         }
     }
 }
