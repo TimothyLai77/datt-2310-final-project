@@ -4,6 +4,11 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+
+# TextMesh Pro files, although I think these should be commited?
+# https://github.com/github/gitignore/pull/3134
+# */[Aa]ssets/TextMesh*Pro/
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
