@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
+// to be honest this file should be the event manager...
 public class FinishCheck : MonoBehaviour
 {
 
@@ -16,7 +17,10 @@ public class FinishCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainHub");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,6 +29,9 @@ public class FinishCheck : MonoBehaviour
         {
             // tell timer to stop
             levelFinished = true;
+
+            // this is super jank, todO: refactor into a event manager i think?
+            //SceneManager.LoadScene("MainHub");
         }
     }
 }

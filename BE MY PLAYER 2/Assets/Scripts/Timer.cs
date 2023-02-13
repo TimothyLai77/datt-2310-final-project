@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
     void Update()
     {
         FinishCheck finishCheck = finish.GetComponent<FinishCheck>();
-        Debug.Log(finishCheck.levelFinished);
+        //Debug.Log(finishCheck.levelFinished);
         if (!finishCheck.levelFinished)
         {
             currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
