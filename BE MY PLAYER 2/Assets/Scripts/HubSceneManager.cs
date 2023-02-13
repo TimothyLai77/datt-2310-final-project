@@ -19,6 +19,11 @@ public class HubSceneManager : MonoBehaviour
             SceneManager.LoadScene("platformerDemo");
         }
 
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SceneManager.LoadScene("RhythmGame");
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
