@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainHub.unity
     guid: a9adb865376ae1c438e9d80fd8b23044
+  - enabled: 1
+    path: Assets/Scenes/platformerDemo.unity
+    guid: 952a38931bb213344af2d61a9f1118d3
   m_configObjects: {}

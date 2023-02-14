@@ -46,3 +46,6 @@ TagManager:
   - name: RhythmGameNotes
     uniqueID: 4254202709
     locked: 0
+  - name: InputPrompts
+    uniqueID: 2993982401
+    locked: 0
