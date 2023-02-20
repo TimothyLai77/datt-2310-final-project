@@ -8,8 +8,12 @@ public class HubMenuController : MonoBehaviour
 
 
 
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
+    [Header("Ink JSON 1")]
+    [SerializeField] private TextAsset inkJSON1;
+
+    [Header("Ink JSON 2")]
+    [SerializeField] private TextAsset inkJSON2;
+
     void Start()
     {
         
@@ -23,6 +27,11 @@ public class HubMenuController : MonoBehaviour
 
     public void personOne() 
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1);
+    }
+
+    public void personTwo()
+    {
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON2);
     }
 }
