@@ -15,9 +15,13 @@ public class ArrowSpawn : MonoBehaviour
     int kindOfNotes = 1;
     List<int> musicSheet = new List<int> { 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0 }; //import music sheet as list
 
+    public float beatTempo;
+    private float beatCount = 0f;
+    private int previousBeat = 0;
+
     private void Start()
     {
-        
+        beatTempo = beatTempo / 60f;
     }
 
     void Update()
@@ -31,68 +35,72 @@ public class ArrowSpawn : MonoBehaviour
 
         musicSheet[1] = 12;
         print(musicSheet[1]);*/
-        
 
-        
-        if(musicSheet.Count%4 == 0) //check if last row is complete.
+        beatCount += beatTempo * Time.deltaTime;
+
+        if ((int)beatCount > previousBeat)
         {
-            if (noteCurs >= musicSheet.Count) // check if sheet ends
+            //Debug.Log((int)beatCount); // if you want to display the beat counter
+            previousBeat = (int)beatCount;
+
+            if (musicSheet.Count % 4 == 0) //check if last row is complete.
             {
-                //check this row first block(from left)
-                for (int i = 0; i <= kindOfNotes; i++)
+                if (noteCurs < musicSheet.Count) // check if sheet ends
                 {
-                    if (musicSheet[noteCurs] == 1)
+                    //check this row first block(from left)
+                    for (int i = 0; i <= kindOfNotes; i++)
                     {
-                        GameObject newArrow = Instantiate(arrowPreFeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                        if (musicSheet[noteCurs] == 1)
+                        {
+                            GameObject newArrow = Instantiate(arrowPreFeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                        }
                     }
-                }
-                noteCurs++;
+                    noteCurs++;
 
-                //check this row second block
-                for (int i = 0; i <= kindOfNotes; i++)
-                {
-                    if (musicSheet[noteCurs] == 1)
+                    //check this row second block
+                    for (int i = 0; i <= kindOfNotes; i++)
                     {
-                        GameObject newArrow = Instantiate(arrowPreFeb, upArrowSpawnPos, Quaternion.Euler(0, 90, 0), transform);
+                        if (musicSheet[noteCurs] == 1)
+                        {
+                            GameObject newArrow = Instantiate(arrowPreFeb, upArrowSpawnPos, Quaternion.Euler(0, 90, 0), transform);
+                        }
                     }
-                }
-                noteCurs++;
+                    noteCurs++;
 
-                //check this row third block
-                for (int i = 0; i <= kindOfNotes; i++)
-                {
-                    if (musicSheet[noteCurs] == 1)
+                    //check this row third block
+                    for (int i = 0; i <= kindOfNotes; i++)
                     {
-                        GameObject newArrow = Instantiate(arrowPreFeb, downArrowSpawnPos, Quaternion.Euler(0, 270, 0), transform);
+                        if (musicSheet[noteCurs] == 1)
+                        {
+                            GameObject newArrow = Instantiate(arrowPreFeb, downArrowSpawnPos, Quaternion.Euler(0, 270, 0), transform);
+                        }
                     }
-                }
-                noteCurs++;
+                    noteCurs++;
 
-                //check this row forth block
-                for (int i = 0; i <= kindOfNotes; i++)
-                {
-                    if (musicSheet[noteCurs] == 1)
+                    //check this row forth block
+                    for (int i = 0; i <= kindOfNotes; i++)
                     {
-                        GameObject newArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                        if (musicSheet[noteCurs] == 1)
+                        {
+                            GameObject newArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                        }
+                    }
+                    noteCurs++;
+                } else
+                {
+                    if (musicSheetEndDebug == true)
+                    {
+                        Debug.Log("Music sheet end.");
+                        musicSheetEndDebug = false;
                     }
                 }
-                noteCurs++;
-            } else
+            } 
+            else
             {
-                if (musicSheetEndDebug == true)
-                {
-                    Debug.Log("Music sheet end.");
-                    musicSheetEndDebug = false;
-                }
+
+                Debug.Log("Sheet's last row not complete.");
+
             }
-        } else
-        {
-            
-            Debug.Log("Sheet's last row not complete.");
-                
         }
-       
-        
-
     }
 }
