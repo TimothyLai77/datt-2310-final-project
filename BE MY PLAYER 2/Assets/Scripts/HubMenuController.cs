@@ -11,9 +11,11 @@ public class HubMenuController : MonoBehaviour
 
     [Header("Person 1")]
     [SerializeField] private TextAsset inkJSON1;
+    [SerializeField] private Sprite portrait1;
 
     [Header("Person 2")]
     [SerializeField] private TextAsset inkJSON2;
+    [SerializeField] private Sprite portrait2;
 
 
     void Start()

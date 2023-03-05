@@ -16,7 +16,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject buttonPanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private GameObject portraitArea;
+
+    [SerializeField] private Image portraitImage;
+
+
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -25,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     
     private Story currentStory;
     private bool dialogueIsPlaying;
-    private Sprite portraitSprite; // idk if this should be game object
+
     private static DialogueManager instance;
 
     private void Awake()
@@ -42,7 +45,7 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
-        portraitArea.SetActive(false);
+        //portraitArea.SetActive(false);
         // init choices 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -51,6 +54,10 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
+
+        this.portraitImage.enabled = false;
+
+
     }
 
     private void Update()
@@ -69,22 +76,19 @@ public class DialogueManager : MonoBehaviour
   
 
     // method to enter the dialgoue mode, needs the ink JSON file + that person's portrait
-    public void EnterDialogueMode(TextAsset inkJSON, Texture2D portrait)
+    public void EnterDialogueMode(TextAsset inkJSON, Sprite portrait)
     {
-        currentStory = new Story(inkJSON.text);
-        //portraitImage.GetComponent<Image>().sprite = portrait; // load sprite passed in
-        //maybe: https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
-        portraitSprite = Sprite.Create(portrait, new Rect(0, 0, portrait.width, portrait.height), new Vector2(0, 0), 100.0f);
-        dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
-        buttonPanel.SetActive(false);
-        //portraitSprite. = true; // reveal the user portrait
-        portraitArea.SetActive(true);
+        currentStory = new Story(inkJSON.text); // star the current story
+        dialogueIsPlaying = true; // set flag so that story is playing
+        dialoguePanel.SetActive(true); // show the text area
+        buttonPanel.SetActive(false); // show the buttons for the user
 
 
-        ContinueStory();
+        this.portraitImage.sprite = portrait; // load the portrait
+        //Debug.Log(this.portraitImage.enabled);
+        this.portraitImage.enabled = true; // enable the image 
 
-       
+        ContinueStory(); // start the story
     }
 
 
@@ -96,7 +100,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         buttonPanel.SetActive(false); // for now as false, might wanna flip later
         //portraitSprite.enabled = false; // hide the portrait
-        portraitArea.SetActive(false);
+        this.portraitImage.enabled = false;
     }
 
 
