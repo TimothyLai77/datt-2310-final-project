@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private Image portraitImage;
+    [SerializeField] private Image backgroundImage;
 
 
 
@@ -56,6 +57,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         this.portraitImage.enabled = false;
+        this.backgroundImage.enabled = false;
 
 
     }
@@ -76,17 +78,23 @@ public class DialogueManager : MonoBehaviour
   
 
     // method to enter the dialgoue mode, needs the ink JSON file + that person's portrait
-    public void EnterDialogueMode(TextAsset inkJSON, Sprite portrait)
+    public void EnterDialogueMode(TextAsset inkJSON, Sprite portrait, Sprite backgroundImage)
     {
         currentStory = new Story(inkJSON.text); // star the current story
         dialogueIsPlaying = true; // set flag so that story is playing
         dialoguePanel.SetActive(true); // show the text area
         buttonPanel.SetActive(false); // show the buttons for the user
 
-
+        // character portrait
         this.portraitImage.sprite = portrait; // load the portrait
         //Debug.Log(this.portraitImage.enabled);
         this.portraitImage.enabled = true; // enable the image 
+
+
+        // background
+        this.backgroundImage.sprite = backgroundImage;
+        this.backgroundImage.enabled = true;
+
 
         ContinueStory(); // start the story
     }
@@ -101,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         buttonPanel.SetActive(false); // for now as false, might wanna flip later
         //portraitSprite.enabled = false; // hide the portrait
         this.portraitImage.enabled = false;
+        this.backgroundImage.enabled = false;
     }
 
 

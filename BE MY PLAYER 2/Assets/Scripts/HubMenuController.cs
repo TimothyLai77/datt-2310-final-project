@@ -12,11 +12,12 @@ public class HubMenuController : MonoBehaviour
     [Header("Person 1")]
     [SerializeField] private TextAsset inkJSON1;
     [SerializeField] private Sprite portrait1;
+    [SerializeField] private Sprite backgroundImage1;
 
     [Header("Person 2")]
     [SerializeField] private TextAsset inkJSON2;
     [SerializeField] private Sprite portrait2;
-
+    [SerializeField] private Sprite backgroundImage2;
 
     void Start()
     {
@@ -31,11 +32,11 @@ public class HubMenuController : MonoBehaviour
 
     public void PersonOne() 
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1, portrait1);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1, portrait1, backgroundImage1);
     }
 
     public void PersonTwo()
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON2, portrait2);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON2, portrait2, backgroundImage2);
     }
 }
