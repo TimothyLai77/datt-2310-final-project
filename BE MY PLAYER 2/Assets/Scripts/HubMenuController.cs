@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HubMenuController : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class HubMenuController : MonoBehaviour
 
 
 
-    [Header("Ink JSON 1")]
+    [Header("Person 1")]
     [SerializeField] private TextAsset inkJSON1;
 
-    [Header("Ink JSON 2")]
+    [Header("Person 2")]
     [SerializeField] private TextAsset inkJSON2;
+
 
     void Start()
     {
@@ -22,16 +24,16 @@ public class HubMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void personOne() 
+    public void PersonOne() 
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1, portrait1);
     }
 
-    public void personTwo()
+    public void PersonTwo()
     {
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON2);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON2, portrait2);
     }
 }
