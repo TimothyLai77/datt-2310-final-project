@@ -5,15 +5,297 @@ using UnityEngine;
 
 public class ArrowSpawn : MonoBehaviour
 {
-    public GameObject arrowPreFeb;
+    public GameObject arrowPreFeb; //right arrow prefeb
+    public GameObject leftArrowPrefeb;
+    public GameObject upArrowPrefeb;
+    public GameObject downArrowPrefeb;
     public Vector3 leftArrowSpawnPos;
     public Vector3 upArrowSpawnPos;
     public Vector3 downArrowSpawnPos;
     public Vector3 rightArrowSpawnPos;
     bool musicSheetEndDebug = true;
+    public bool hasStartedSpawn = false;
+    public bool invokeMusicSheet = true;
+    private bool spawnArrow = false;
+    private int timeCounter;
+    public float delayBeforeStart;
     int noteCurs = 0;
     int kindOfNotes = 1;
-    List<int> musicSheet = new List<int> { 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0 }; //import music sheet as list
+    List<int> musicSheet = new List<int> {
+        //1, 1, 1, 1, //test line
+        0, 0, 0, 1  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+
+          0, 0, 0, 1  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+
+          0, 0, 0, 1  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+
+          0, 0, 0, 1  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 1, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 1  ,
+
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          1, 0, 0, 0  ,
+          0, 0, 1, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0  ,
+          0, 0, 0, 0
+
+    }; //import music sheet as list
 
     public float beatTempo;
     private float beatCount = 0f;
@@ -21,7 +303,23 @@ public class ArrowSpawn : MonoBehaviour
 
     private void Start()
     {
+        timeCounter = 0;
         beatTempo = beatTempo / 60f;
+        //InvokeRepeating("SpawnMethod", 2, 1);
+    }
+
+    void SpawnMethod()
+    {
+        Debug.Log(timeCounter);
+        timeCounter++;
+        spawnArrow = true;
+        
+    }
+
+    private void invoke()
+    {
+        Debug.Log("invoke");
+        Invoke("SpawnMethod", delayBeforeStart);
     }
 
     void Update()
@@ -36,70 +334,94 @@ public class ArrowSpawn : MonoBehaviour
         musicSheet[1] = 12;
         print(musicSheet[1]);*/
 
-        beatCount += beatTempo * Time.deltaTime;
+        
 
-        if ((int)beatCount > previousBeat)
+        if (!hasStartedSpawn)
         {
-            //Debug.Log((int)beatCount); // if you want to display the beat counter
-            previousBeat = (int)beatCount;
-
-            if (musicSheet.Count % 4 == 0) //check if last row is complete.
+            if (Input.anyKeyDown)
             {
-                if (noteCurs < musicSheet.Count) // check if sheet ends
+                hasStartedSpawn = true;
+                Debug.Log("hasStartedSpawn");
+            }
+        }
+        else
+        {
+            if (invokeMusicSheet)
+            { 
+                invoke();
+                Debug.Log("firstinvoke");
+                invokeMusicSheet = false;
+            }
+            
+        }
+        if (spawnArrow)
+        {
+            beatCount += beatTempo * Time.deltaTime;
+
+            if ((int)beatCount > previousBeat)
+            {
+                //Debug.Log((int)beatCount); // if you want to display the beat counter
+                previousBeat = (int)beatCount;
+
+                if (musicSheet.Count % 4 == 0) //check if last row is complete.
                 {
-                    //check this row first block(from left)
-                    for (int i = 0; i <= kindOfNotes; i++)
+                    if (noteCurs < musicSheet.Count) // check if sheet ends
                     {
-                        if (musicSheet[noteCurs] == 1)
+                        //check this row first block(from left)
+                        for (int i = 1; i <= kindOfNotes; i++)
                         {
-                            GameObject newArrow = Instantiate(arrowPreFeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                            if (musicSheet[noteCurs] == i)
+                            {
+                                GameObject LeftArrow = Instantiate(leftArrowPrefeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                            }
                         }
-                    }
-                    noteCurs++;
+                        noteCurs++;
 
-                    //check this row second block
-                    for (int i = 0; i <= kindOfNotes; i++)
-                    {
-                        if (musicSheet[noteCurs] == 1)
+                        //check this row second block
+                        for (int i = 1; i <= kindOfNotes; i++)
                         {
-                            GameObject newArrow = Instantiate(arrowPreFeb, upArrowSpawnPos, Quaternion.Euler(0, 90, 0), transform);
+                            if (musicSheet[noteCurs] == i)
+                            {
+                                GameObject UpArrow = Instantiate(upArrowPrefeb, upArrowSpawnPos, Quaternion.Euler(0, 0, 90), transform);
+                            }
                         }
-                    }
-                    noteCurs++;
+                        noteCurs++;
 
-                    //check this row third block
-                    for (int i = 0; i <= kindOfNotes; i++)
-                    {
-                        if (musicSheet[noteCurs] == 1)
+                        //check this row third block
+                        for (int i = 1; i <= kindOfNotes; i++)
                         {
-                            GameObject newArrow = Instantiate(arrowPreFeb, downArrowSpawnPos, Quaternion.Euler(0, 270, 0), transform);
+                            if (musicSheet[noteCurs] == i)
+                            {
+                                GameObject DownArrow = Instantiate(downArrowPrefeb, downArrowSpawnPos, Quaternion.Euler(0, 0, 270), transform);
+                            }
                         }
-                    }
-                    noteCurs++;
+                        noteCurs++;
 
-                    //check this row forth block
-                    for (int i = 0; i <= kindOfNotes; i++)
-                    {
-                        if (musicSheet[noteCurs] == 1)
+                        //check this row forth block
+                        for (int i = 1; i <= kindOfNotes; i++)
                         {
-                            GameObject newArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                            if (musicSheet[noteCurs] == i)
+                            {
+                                GameObject RightArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                            }
                         }
+                        noteCurs++;
                     }
-                    noteCurs++;
-                } else
-                {
-                    if (musicSheetEndDebug == true)
+                    else
                     {
-                        Debug.Log("Music sheet end.");
-                        musicSheetEndDebug = false;
+                        if (musicSheetEndDebug == true)
+                        {
+                            Debug.Log("Music sheet end.");
+                            musicSheetEndDebug = false;
+                        }
                     }
                 }
-            } 
-            else
-            {
+                else
+                {
 
-                Debug.Log("Sheet's last row not complete.");
+                    Debug.Log("Sheet's last row not complete.");
 
+                }
             }
         }
     }
