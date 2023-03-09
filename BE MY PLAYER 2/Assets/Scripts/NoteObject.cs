@@ -44,4 +44,9 @@ public class NoteObject : MonoBehaviour
             GameManager.instance.NoteMissed();
         }
     }
+    private void OnTriggerEnter2D(Collider deathzone)
+    {
+        gameObject.SetActive(false);
+        Debug.Log("noteclear");
+    }
 }

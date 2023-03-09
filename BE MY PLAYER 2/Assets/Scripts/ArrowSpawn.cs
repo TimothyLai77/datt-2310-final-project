@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
+//beatTempo in this script based on 150
+
 public class ArrowSpawn : MonoBehaviour
 {
     public GameObject arrowPreFeb; //right arrow prefeb
@@ -18,7 +20,7 @@ public class ArrowSpawn : MonoBehaviour
     public bool invokeMusicSheet = true;
     private bool spawnArrow = false;
     private int timeCounter;
-    public float delayBeforeStart;
+    public float delaySheetBeforeStart = 0;
     int noteCurs = 0;
     int kindOfNotes = 1;
     List<int> musicSheet = new List<int> {
@@ -316,10 +318,11 @@ public class ArrowSpawn : MonoBehaviour
         
     }
 
+
     private void invoke()
     {
         Debug.Log("invoke");
-        Invoke("SpawnMethod", delayBeforeStart);
+        Invoke("SpawnMethod", delaySheetBeforeStart);
     }
 
     void Update()
