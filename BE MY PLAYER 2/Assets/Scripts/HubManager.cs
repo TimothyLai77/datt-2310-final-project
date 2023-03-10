@@ -15,14 +15,17 @@ public class HubManager : MonoBehaviour
     // https://stackoverflow.com/questions/32306704/how-to-pass-data-and-references-between-scenes-in-unity
                 
     [Header("Person 1")]
-    [SerializeField] private static TextAsset inkJSON1_1; // this is just pain...
-    [SerializeField] private static Sprite portrait1;
-    [SerializeField] private static Sprite backgroundImage1;
+    [SerializeField] public TextAsset inkJSON1_1; // this is just pain...
+    [SerializeField] public Sprite portrait1;
+    [SerializeField] public Sprite backgroundImage1;
+
+
+
 
     [Header("Person 2")]
-    [SerializeField] private static TextAsset inkJSON1_2; // this is just pain...
-    [SerializeField] private static Sprite portrait2;
-    [SerializeField] private static Sprite backgroundImage2;
+    [SerializeField] public TextAsset inkJSON1_2; // this is just pain...
+    [SerializeField] public Sprite portrait2;
+    [SerializeField] public Sprite backgroundImage2;
 
 
     void Start()
@@ -40,12 +43,15 @@ public class HubManager : MonoBehaviour
     {
         // switch scenes
         // start the dialogue manager with passed in paramters
-        //SceneManager.LoadScene("Dialogue");
-        Debug.Log("button 1 was pressed");
+        Debug.Log(DialogueManager.GetInstance());
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1_1, portrait1, backgroundImage1);
+
+        SceneManager.LoadScene("DialogueScene");
+
     }
 
     public void RoomTwoButton() {
-        Debug.Log("button 2 was pressed");
+    
     }
 
 }
