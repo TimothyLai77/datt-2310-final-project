@@ -59,7 +59,9 @@ public class DialogueManager : MonoBehaviour
         this.portraitImage.enabled = false;
         this.backgroundImage.enabled = false;
 
-
+        HubManager hbInstance = HubManager.instance;
+        EnterDialogueMode(hbInstance.GetInk(), hbInstance.GetPortrait(), hbInstance.GetBackground());
+        Debug.Log("pain");
     }
 
     private void Update()
@@ -83,7 +85,7 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text); // star the current story
         dialogueIsPlaying = true; // set flag so that story is playing
         dialoguePanel.SetActive(true); // show the text area
-        buttonPanel.SetActive(false); // show the buttons for the user
+        //buttonPanel.SetActive(false); // show the buttons for the user
 
         // character portrait
         this.portraitImage.sprite = portrait; // load the portrait
@@ -106,7 +108,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        buttonPanel.SetActive(false); // for now as false, might wanna flip later
+        //buttonPanel.SetActive(false); // for now as false, might wanna flip later
         //portraitSprite.enabled = false; // hide the portrait
         this.portraitImage.enabled = false;
         this.backgroundImage.enabled = false;

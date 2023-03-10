@@ -19,18 +19,30 @@ public class HubManager : MonoBehaviour
     [SerializeField] public Sprite portrait1;
     [SerializeField] public Sprite backgroundImage1;
 
-
-
-
     [Header("Person 2")]
     [SerializeField] public TextAsset inkJSON1_2; // this is just pain...
     [SerializeField] public Sprite portrait2;
     [SerializeField] public Sprite backgroundImage2;
 
+    public static HubManager instance;
+
+
+    // not super clean but set these when the button is pressed
+    private TextAsset inkToLoad; // this is just pain...
+    private Sprite portraitToLoad;
+    private Sprite backgroundImageToLoad;
+
+
+    private void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
 
     void Start()
     {
-        
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     // Update is called once per frame
@@ -41,17 +53,35 @@ public class HubManager : MonoBehaviour
 
     public void RoomOneButton()
     {
-        // switch scenes
-        // start the dialogue manager with passed in paramters
-        Debug.Log(DialogueManager.GetInstance());
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON1_1, portrait1, backgroundImage1);
-
+        // set what to laod then load the scene
+        inkToLoad = inkJSON1_1;
+        portraitToLoad = portrait1;
+        backgroundImageToLoad = backgroundImage1;
         SceneManager.LoadScene("DialogueScene");
-
     }
 
     public void RoomTwoButton() {
     
     }
 
+    public TextAsset GetInk()
+    {
+        return this.inkToLoad;
+    }
+
+    public Sprite GetPortrait()
+    {
+        return this.portraitToLoad;
+    }
+
+    public Sprite GetBackground()
+    {
+        return this.backgroundImageToLoad;
+    }
+
+
+
 }
+
+
+
