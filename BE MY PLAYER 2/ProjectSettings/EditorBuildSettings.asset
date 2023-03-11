@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainHub.unity
     guid: 992ffb7f5625f484a98e032c256ab1b3
+  - enabled: 1
+    path: Assets/Scenes/DialogueScene.unity
+    guid: e281893d5cd4c40198fc5c52bd81e42b
   m_configObjects: {}
