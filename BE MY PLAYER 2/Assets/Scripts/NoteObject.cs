@@ -7,7 +7,6 @@ public class NoteObject : MonoBehaviour
     public bool canBePressed;
 
     public KeyCode activationKey;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +25,11 @@ public class NoteObject : MonoBehaviour
                 GameManager.instance.NoteHit();
             }
         }
+
+        if(transform.position.y <= -3)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,10 +47,5 @@ public class NoteObject : MonoBehaviour
             canBePressed = false;
             GameManager.instance.NoteMissed();
         }
-    }
-    private void OnTriggerEnter2D(Collider deathzone)
-    {
-        gameObject.SetActive(false);
-        Debug.Log("noteclear");
     }
 }
