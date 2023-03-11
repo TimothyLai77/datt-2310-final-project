@@ -862,8 +862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2550280adabc04fa9ae278e47baa566e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON1_1: {fileID: 4900000, guid: 8996ca5c347659f4bb6390fe898eb0ee, type: 3}
-  portrait1: {fileID: 21300000, guid: 6e8270abd392442d28ee90163d7d0449, type: 3}
+  inkJSON1_1: {fileID: 4900000, guid: 212f35ee566324e4f8e7082cb052a0df, type: 3}
+  portrait1: {fileID: 21300000, guid: 802bd50c9df49304ba934fb7d13e8f22, type: 3}
   backgroundImage1: {fileID: 21300000, guid: 09e79e5e1ad2953479351be569020b77, type: 3}
   inkJSON1_2: {fileID: 0}
   portrait2: {fileID: 0}

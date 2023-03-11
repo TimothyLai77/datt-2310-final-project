@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 
 // Tutorial followed: https://www.youtube.com/watch?v=vY0Sk93YUhA
@@ -59,9 +60,12 @@ public class DialogueManager : MonoBehaviour
         this.portraitImage.enabled = false;
         this.backgroundImage.enabled = false;
 
+
         HubManager hbInstance = HubManager.instance;
         EnterDialogueMode(hbInstance.GetInk(), hbInstance.GetPortrait(), hbInstance.GetBackground());
-        Debug.Log("pain");
+
+
+
     }
 
     private void Update()
@@ -97,6 +101,16 @@ public class DialogueManager : MonoBehaviour
         this.backgroundImage.sprite = backgroundImage;
         this.backgroundImage.enabled = true;
 
+        // bind functions for changing scnees 
+        currentStory.BindExternalFunction("returnToHub", () =>
+        {
+            SceneManager.LoadScene("MainHub");
+        });
+
+        currentStory.BindExternalFunction("startRhythmGame", () =>
+        {
+            SceneManager.LoadScene("RhythmGame");
+        });
 
         ContinueStory(); // start the story
     }
@@ -112,6 +126,8 @@ public class DialogueManager : MonoBehaviour
         //portraitSprite.enabled = false; // hide the portrait
         this.portraitImage.enabled = false;
         this.backgroundImage.enabled = false;
+        currentStory.UnbindExternalFunction("returnToHub");
+        currentStory.UnbindExternalFunction("startRhythmGame");
     }
 
 
