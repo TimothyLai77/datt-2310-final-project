@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class HubManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-
 
     // for now just hard load the assets but ideally it should be kinad dynamic based
     // on the state of the game like relationships -> differnet texts
@@ -32,13 +30,11 @@ public class HubManager : MonoBehaviour
     private Sprite portraitToLoad;
     private Sprite backgroundImageToLoad;
 
-
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-
 
     void Start()
     {
@@ -79,8 +75,15 @@ public class HubManager : MonoBehaviour
         return this.backgroundImageToLoad;
     }
 
+    public void ToTitleScreenScene()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
 
-
+    public void ToMainHubScene()
+    {
+        SceneManager.LoadScene("MainHub");
+    }
 }
 
 

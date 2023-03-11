@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleScreenManager : MonoBehaviour
 {
@@ -57,5 +58,10 @@ public class TitleScreenManager : MonoBehaviour
     public void moveToLeft()
     {
         LeanTween.moveLocal(elementsToMove, leftAnchorPosition, .7f).setDelay(.1f).setEase(LeanTweenType.easeInOutQuad);
+    }
+
+    public void toMainHubScene()
+    {
+        SceneManager.LoadScene("MainHub");
     }
 }

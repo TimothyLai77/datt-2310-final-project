@@ -9,18 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 848e552ab1194454aa74d9645537e64e
+  - enabled: 0
     path: Assets/Scenes/TestHub.unity
     guid: a9adb865376ae1c438e9d80fd8b23044
-  - enabled: 1
-    path: Assets/Scenes/RhythmGame.unity
-    guid: 7f86a245c459818489dde87fd6482447
-  - enabled: 1
-    path: Assets/Scenes/platformerDemo.unity
-    guid: 952a38931bb213344af2d61a9f1118d3
   - enabled: 1
     path: Assets/Scenes/MainHub.unity
     guid: 992ffb7f5625f484a98e032c256ab1b3
   - enabled: 1
     path: Assets/Scenes/DialogueScene.unity
     guid: e281893d5cd4c40198fc5c52bd81e42b
+  - enabled: 1
+    path: Assets/Scenes/RhythmGame.unity
+    guid: 7f86a245c459818489dde87fd6482447
+  - enabled: 0
+    path: Assets/Scenes/platformerDemo.unity
+    guid: 952a38931bb213344af2d61a9f1118d3
   m_configObjects: {}
