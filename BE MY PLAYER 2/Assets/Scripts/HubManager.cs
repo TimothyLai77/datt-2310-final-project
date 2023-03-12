@@ -32,13 +32,20 @@ public class HubManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        /*
+         * only add the instance to Unity's DontDestroyOnLoad Scene
+         * if it doesn't exist, otherwise don't do anything. 
+         */
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void Start()
     {
-        DontDestroyOnLoad(transform.gameObject);
+
     }
 
     // Update is called once per frame
@@ -50,6 +57,7 @@ public class HubManager : MonoBehaviour
     public void RoomOneButton()
     {
         // set what to laod then load the scene
+
         inkToLoad = inkJSON1_1;
         portraitToLoad = portrait1;
         backgroundImageToLoad = backgroundImage1;
