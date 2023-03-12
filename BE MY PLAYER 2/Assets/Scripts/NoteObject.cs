@@ -7,7 +7,6 @@ public class NoteObject : MonoBehaviour
     public bool canBePressed;
 
     public KeyCode activationKey;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +17,18 @@ public class NoteObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetKeyDown(activationKey)) {
             if(canBePressed)
             {
                 gameObject.SetActive(false);
                 GameManager.instance.NoteHit();
             }
+        }
+
+        if(transform.position.y <= -3)
+        {
+            gameObject.SetActive(false);
         }
     }
 

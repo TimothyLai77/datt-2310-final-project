@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//beat tempo this sheet based on 140
 public class BeatScroller : MonoBehaviour
 {
     public float beatTempo;
