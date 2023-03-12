@@ -60,8 +60,7 @@ public class DialogueManager : MonoBehaviour
         this.portraitImage.enabled = false;
         this.backgroundImage.enabled = false;
 
-
-        HubManager hbInstance = HubManager.instance;
+        HubManager hbInstance = HubManager.GetInstance();
         EnterDialogueMode(hbInstance.GetInk(), hbInstance.GetPortrait(), hbInstance.GetBackground());
     }
 
