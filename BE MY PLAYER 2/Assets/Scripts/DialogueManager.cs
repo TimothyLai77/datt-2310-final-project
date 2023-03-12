@@ -63,9 +63,6 @@ public class DialogueManager : MonoBehaviour
 
         HubManager hbInstance = HubManager.instance;
         EnterDialogueMode(hbInstance.GetInk(), hbInstance.GetPortrait(), hbInstance.GetBackground());
-
-
-
     }
 
     private void Update()
