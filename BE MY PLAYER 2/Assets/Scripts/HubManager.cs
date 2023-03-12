@@ -25,6 +25,7 @@ public class HubManager : MonoBehaviour
     public static HubManager instance;
 
 
+
     // not super clean but set these when the button is pressed
     private TextAsset inkToLoad; // this is just pain...
     private Sprite portraitToLoad;
@@ -57,10 +58,10 @@ public class HubManager : MonoBehaviour
     public void RoomOneButton()
     {
         // set what to laod then load the scene
+        this.inkToLoad = this.inkJSON1_1;
+        this.portraitToLoad = this.portrait1;
+        this.backgroundImageToLoad = this.backgroundImage1;
 
-        inkToLoad = inkJSON1_1;
-        portraitToLoad = portrait1;
-        backgroundImageToLoad = backgroundImage1;
         SceneManager.LoadScene("DialogueScene");
     }
 
