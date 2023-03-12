@@ -22,9 +22,14 @@ public class HubManager : MonoBehaviour
     [SerializeField] public Sprite portrait2;
     [SerializeField] public Sprite backgroundImage2;
 
-    public static HubManager instance;
+    private static HubManager instance;
+   
 
-
+    // Getter method to access the instance of this manager
+    public static HubManager GetInstance()
+    {
+        return instance;
+    }
 
     // not super clean but set these when the button is pressed
     private TextAsset inkToLoad; // this is just pain...
@@ -37,12 +42,18 @@ public class HubManager : MonoBehaviour
          * only add the instance to Unity's DontDestroyOnLoad Scene
          * if it doesn't exist, otherwise don't do anything. 
          */
-        if(instance == null)
+        if (instance != null && instance != this)
         {
+            // if instance is null and there is another instance
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            // if instance is null set the instance to this object
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
+
 
     void Start()
     {
