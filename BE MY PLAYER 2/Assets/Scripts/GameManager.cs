@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public int multiplierTracker;
     public int[] multiplierThresholds;
 
+    public bool invokeMusic = true;
+    private bool afterMusic = false;
+    public float delayMusicBeforeStart;
+
     public Text scoreText;
     public Text multiplierText;
 
@@ -37,22 +41,38 @@ public class GameManager : MonoBehaviour
         currentMultiplier = 1;
     }
 
+    void playingMusic()
+    {
+        Debug.Log("musicStart");
+        theMusic.Play();
+        afterMusic = true;
+    }
+
+
+
     // Update is called once per frame
     void Update()
     {
+        
+
         if(!startPlaying)
         {
             if(Input.anyKeyDown)
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
-
-                theMusic.Play();
+                if (invokeMusic)
+                {
+                    Debug.Log("musicInvoked");
+                    Invoke("playingMusic", delayMusicBeforeStart);
+                    invokeMusic = false;
+                }
+                //theMusic.Play();
             }
         }
         else 
         {
-            if(!theMusic.isPlaying && !resultsScreen.activeInHierarchy || Input.GetKeyDown("escape"))
+            if(afterMusic && !theMusic.isPlaying && !resultsScreen.activeInHierarchy || Input.GetKeyDown("escape"))
             {
                 resultsScreen.SetActive(true);
 

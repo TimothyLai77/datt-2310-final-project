@@ -7,16 +7,7 @@ public class DeathScript : MonoBehaviour
     public GameObject startPoint;
     public GameObject player;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
