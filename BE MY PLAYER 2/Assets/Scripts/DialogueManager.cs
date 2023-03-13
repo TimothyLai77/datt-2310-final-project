@@ -70,8 +70,8 @@ public class DialogueManager : MonoBehaviour
         {
             return;
         }
-        // hard coded with space for now, might wanna change to unity input manager
-        if (Input.GetKeyDown("space") && currentStory.currentChoices.Count == 0)
+        // hard coded with space + lmb for now, might wanna change to unity input 
+        if ((Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) && currentStory.currentChoices.Count == 0)
         {
             ContinueStory();
         }
