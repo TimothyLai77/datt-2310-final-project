@@ -128,6 +128,10 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        SceneManager.LoadScene("MainHub");
+        // set the score the player achieved. 
+        RhythmGirlData.GetInstance().SetLastPlayerScore(this.currentMultiplier);
+        ArrayList assets = RhythmGirlData.GetInstance().GetAssets();
+        DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
+        SceneManager.LoadScene("DialogueScene");
     }
 }

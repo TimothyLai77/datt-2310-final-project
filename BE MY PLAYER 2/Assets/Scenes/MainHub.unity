@@ -621,12 +621,12 @@ MonoBehaviour:
   inkJSON_1: {fileID: 4900000, guid: 212f35ee566324e4f8e7082cb052a0df, type: 3}
   portrait_1: {fileID: 21300000, guid: 802bd50c9df49304ba934fb7d13e8f22, type: 3}
   backgroundImage_1: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
-  inkJSON_2_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
-  portrait_2_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
-  backgroundImage_2_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
-  inkJSON_2_bad: {fileID: 4900000, guid: e68b36a750c213041b30ed69f0afaee2, type: 3}
-  portrait_2_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
-  backgroundImage_2_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  inkJSON_1_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
+  portrait_1_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
+  backgroundImage_1_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  inkJSON_1_bad: {fileID: 4900000, guid: e68b36a750c213041b30ed69f0afaee2, type: 3}
+  portrait_1_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
+  backgroundImage_1_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
 --- !u!1 &302527211
 GameObject:
   m_ObjectHideFlags: 0

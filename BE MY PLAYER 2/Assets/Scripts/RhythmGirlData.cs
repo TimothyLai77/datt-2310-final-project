@@ -20,14 +20,17 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite backgroundImage_1;
 
     [Header("FirstTime Result: Good")]
-    [SerializeField] public TextAsset inkJSON_2_good;
-    [SerializeField] public Sprite portrait_2_good;
-    [SerializeField] public Sprite backgroundImage_2_good;
+    [SerializeField] public TextAsset inkJSON_1_good;
+    [SerializeField] public Sprite portrait_1_good;
+    [SerializeField] public Sprite backgroundImage_1_good;
 
     [Header("FirstTime Result: Bad")]
-    [SerializeField] public TextAsset inkJSON_2_bad;
-    [SerializeField] public Sprite portrait_2_bad;
-    [SerializeField] public Sprite backgroundImage_2_bad;
+    [SerializeField] public TextAsset inkJSON_1_bad;
+    [SerializeField] public Sprite portrait_1_bad;
+    [SerializeField] public Sprite backgroundImage_1_bad;
+
+    private int lastPlayerScore;
+    private const int MIN_SCORE = 2000;
 
 
     public static RhythmGirlData GetInstance()
@@ -49,6 +52,26 @@ public class RhythmGirlData : MonoBehaviour
         }
     }
 
+    public void SetLastPlayerScore(int score)
+    {
+        this.lastPlayerScore = score;
+    }
+
+    // pain...fix later....
+    public ArrayList GetAssets()
+    {
+        if(lastPlayerScore >= MIN_SCORE)
+        {
+            return new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good };
+        }else if(lastPlayerScore < MIN_SCORE)
+        {
+            return new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad };
+        }
+        else
+        {
+            return new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 };
+        }
+    }
 
 
     void Start()
