@@ -33,12 +33,15 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText;
 
+    [SerializeField] public GameObject difficultySelectorPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+
     }
 
     void playingMusic()
@@ -69,7 +72,9 @@ public class GameManager : MonoBehaviour
                     invokeMusic = false;
                 }
                 //theMusic.Play();
+                this.difficultySelectorPanel.SetActive(false); // hide difficult select prompt
             }
+            
         }
         else 
         {
