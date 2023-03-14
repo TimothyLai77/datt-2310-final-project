@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText;
+    public static Text finalGradeText;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +85,22 @@ public class GameManager : MonoBehaviour
                 
                 percentHitText.text = percentHit.ToString("F1") + "%";
                 finalScoreText.text = currentScore.ToString();
+                
+                if(currentScore >= 2500) {
+                    finalGradeText.text = "S";
+                }
+                else if(currentScore >= 2200) {
+                    finalGradeText.text = "A";
+                }
+                else if(currentScore >= 1900) {
+                    finalGradeText.text = "B";
+                }
+                else if(currentScore >= 1600) {
+                    finalGradeText.text = "C";
+                }
+                else {
+                    finalGradeText.text = "F";
+                }
             }
         }
     }
@@ -123,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("RhythmGame"); //this will have the name of your main game scene
+        SceneManager.LoadScene("RhythmGame"); 
     }
 
     public void Quit()
@@ -144,6 +161,6 @@ public class GameManager : MonoBehaviour
         //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
         HubManager.GetInstance().RoomOneButton();
 
-        //SceneManager.LoadScene("DialogueScene");
+        SceneManager.LoadScene("DialogueScene");
     }
 }

@@ -30,7 +30,7 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite backgroundImage_1_bad;
 
     private int lastPlayerScore; // apparently c# has no null ints
-    public const int MIN_SCORE = 2000;
+    public const int MIN_SCORE = 1600;
     private int numTimesPlayed = 0;
 
     // states 
