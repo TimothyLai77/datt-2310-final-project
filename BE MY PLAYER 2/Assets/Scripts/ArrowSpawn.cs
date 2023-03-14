@@ -24,7 +24,7 @@ public class ArrowSpawn : MonoBehaviour
     int noteCurs = 0;
     int kindOfNotes = 1;
 
-    List<int> musicSheet = MusicCharts.epicSongNormal;
+    List<int> musicSheet = MusicCharts.epicSongHard;
 
     public float beatTempo;
     private float beatCount = 0f;
