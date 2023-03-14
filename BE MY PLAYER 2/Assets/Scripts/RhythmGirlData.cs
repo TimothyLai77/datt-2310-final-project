@@ -86,9 +86,6 @@ public class RhythmGirlData : MonoBehaviour
         this.numTimesPlayed++;
         this.lastPlayerScore = score;
 
-        //DEBUG:
-        this.lastPlayerScore = 3000;
-
         DetermineState();
     }
 
