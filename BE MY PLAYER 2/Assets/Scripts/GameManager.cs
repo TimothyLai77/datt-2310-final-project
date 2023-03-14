@@ -33,12 +33,21 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText;
 
+    [SerializeField] public GameObject difficultySelectorPanel;
+
+    [SerializeField] private GameObject AccuracySpawner;
+    [SerializeField] private GameObject PerfectHit;
+    [SerializeField] private GameObject GreatHit;
+    [SerializeField] private GameObject GoodHit;
+    [SerializeField] private GameObject MissHit;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+
     }
 
     void playingMusic()
@@ -57,7 +66,8 @@ public class GameManager : MonoBehaviour
 
         if(!startPlaying)
         {
-            if(Input.anyKeyDown)
+            // super jank fix later
+            if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) 
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
@@ -68,7 +78,9 @@ public class GameManager : MonoBehaviour
                     invokeMusic = false;
                 }
                 //theMusic.Play();
+                this.difficultySelectorPanel.SetActive(false); // hide difficult select prompt
             }
+            
         }
         else 
         {
@@ -88,9 +100,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NoteHit()
+    public void NoteHit(string accuracy)
     {
-        Debug.Log("Hit On Time");
+        if(accuracy == "Perfect")
+        {
+            GameObject perfectHitInstance = Instantiate(PerfectHit, new Vector3(0, 0, 0), Quaternion.identity);
+            perfectHitInstance.transform.position = AccuracySpawner.transform.position;
+        }
+        else if (accuracy == "Great")
+        {
+            GameObject greatHitInstance = Instantiate(GreatHit, new Vector3(0, 0, 0), Quaternion.identity);
+            greatHitInstance.transform.position = AccuracySpawner.transform.position;
+        }
+        else if (accuracy == "Good")
+        {
+            GameObject goodHitInstance = Instantiate(GoodHit, new Vector3(0, 0, 0), Quaternion.identity);
+            goodHitInstance.transform.position = AccuracySpawner.transform.position;
+        }
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {
@@ -114,6 +140,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Note Missed");
 
+        GameObject missHitInstance = Instantiate(MissHit, new Vector3(0, 0, 0), Quaternion.identity);
+        missHitInstance.transform.position = AccuracySpawner.transform.position;
+
         currentMultiplier = 1;
         multiplierTracker = 0;
         multiplierText.text = "Multiplier: x" + currentMultiplier;
@@ -130,20 +159,12 @@ public class GameManager : MonoBehaviour
     {
         // set the score the player achieved.
         RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
-        rhythmGirlInstance.SetLastPlayerScore(this.currentScore);
-        
-        if (currentScore > RhythmGirlData.MIN_SCORE)
-        {
-            rhythmGirlInstance.SetState(RhythmGirlData.FIRST_RESULT_GOOD);
-        }
-        else
-        {
-            rhythmGirlInstance.SetState(RhythmGirlData.FIRST_RESULT_BAD);
-        }
+        rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
         //iArrayList assets = RhythmGirlData.GetInstance().GetAssets();
         //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
         HubManager.GetInstance().RoomOneButton();
-
+        //Debug.Log(RhythmGirlData.GetInstance().GetState());
+        //Debug.Log(RhythmGirlData.GetInstance().GetLastDifficulty());
         //SceneManager.LoadScene("DialogueScene");
     }
 }
