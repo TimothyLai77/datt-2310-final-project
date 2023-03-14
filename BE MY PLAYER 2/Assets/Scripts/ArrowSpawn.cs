@@ -24,7 +24,8 @@ public class ArrowSpawn : MonoBehaviour
     int noteCurs = 0;
     int kindOfNotes = 1;
 
-    List<int> musicSheet = MusicCharts.epicSongHard;
+    //private static List<int> musicSheet = MusicCharts.epicSongNormal;
+    List<int> musicSheet;
 
 
     public float beatTempo;
@@ -38,8 +39,14 @@ public class ArrowSpawn : MonoBehaviour
         timeCounter = 0;
         beatTempo = beatTempo / 60f;
         //InvokeRepeating("SpawnMethod", 2, 1);
-        RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+       
     }
+
+    //public static void SetMusicSheet(List<int> sheet)
+    //{
+    //    musicSheet = sheet;
+    //    RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+    //}
 
     void SpawnMethod()
     {
@@ -57,6 +64,8 @@ public class ArrowSpawn : MonoBehaviour
         Invoke("SpawnMethod", delaySheetBeforeStart);
     }
 
+
+
     void Update()
     {
         /*if (Input.GetKeyDown(KeyCode.K))
@@ -69,25 +78,39 @@ public class ArrowSpawn : MonoBehaviour
         musicSheet[1] = 12;
         print(musicSheet[1]);*/
 
-        
+
 
         if (!hasStartedSpawn)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown("1"))
             {
+                musicSheet = MusicCharts.epicSongEasy;
                 hasStartedSpawn = true;
-                Debug.Log("hasStartedSpawn");
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - easy ");
+            }else if (Input.GetKeyDown("2"))
+            {
+                musicSheet = MusicCharts.epicSongNormal;
+                hasStartedSpawn = true;
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - nomral");
+            }else if (Input.GetKeyDown("3"))
+            {
+                musicSheet = MusicCharts.epicSongHard;
+                hasStartedSpawn = true;
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - nomral");
             }
         }
         else
         {
             if (invokeMusicSheet)
-            { 
+            {
                 invoke();
                 Debug.Log("firstinvoke");
                 invokeMusicSheet = false;
             }
-            
+
         }
         if (spawnArrow)
         {

@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
 
         if(!startPlaying)
         {
-            if(Input.anyKeyDown)
+            // super jank fix later
+            if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) 
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
@@ -134,7 +135,8 @@ public class GameManager : MonoBehaviour
         //iArrayList assets = RhythmGirlData.GetInstance().GetAssets();
         //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
         HubManager.GetInstance().RoomOneButton();
-
+        //Debug.Log(RhythmGirlData.GetInstance().GetState());
+        //Debug.Log(RhythmGirlData.GetInstance().GetLastDifficulty());
         //SceneManager.LoadScene("DialogueScene");
     }
 }
