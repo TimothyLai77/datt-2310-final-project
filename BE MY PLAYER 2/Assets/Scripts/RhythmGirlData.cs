@@ -12,7 +12,7 @@ public class RhythmGirlData : MonoBehaviour
 
 
     private static RhythmGirlData instance;
-
+    
     // these variable names kinda break convention but its easier to read...
     [Header("First Time")]
     [SerializeField] public TextAsset inkJSON_1;
@@ -29,9 +29,18 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite portrait_1_bad;
     [SerializeField] public Sprite backgroundImage_1_bad;
 
-    private int lastPlayerScore;
-    private const int MIN_SCORE = 2000;
+    private int lastPlayerScore; // apparently c# has no null ints
+    public const int MIN_SCORE = 2000;
+    private int numTimesPlayed = 0;
 
+    // states 
+    public const string FIRST_TIME = "first";
+    public const string FIRST_RESULT_BAD = "firstResultBad";
+    public const string FIRST_RESULT_GOOD = "firstResultGood";
+
+    private string currentState;
+
+    private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
 
     public static RhythmGirlData GetInstance()
     {
@@ -39,7 +48,7 @@ public class RhythmGirlData : MonoBehaviour
     }
 
     private void Awake()
-    {
+    { 
         if (instance != null && instance != this)
         {
             // if instance is null and there is another instance
@@ -50,27 +59,34 @@ public class RhythmGirlData : MonoBehaviour
             // if instance is null set the instance to this object
             instance = this;
         }
+
+        currentState = FIRST_TIME;
+
+        assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
+        assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
+        assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
+    }
+
+    // use the constant strings above. 
+    public void SetState(string state) {
+        this.currentState = state;
     }
 
     public void SetLastPlayerScore(int score)
     {
+        this.numTimesPlayed++;
         this.lastPlayerScore = score;
     }
 
-    // pain...fix later....
+    public string GetState()
+    {
+        return this.currentState;
+    }
+
+
     public ArrayList GetAssets()
     {
-        if(lastPlayerScore >= MIN_SCORE)
-        {
-            return new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good };
-        }else if(lastPlayerScore < MIN_SCORE)
-        {
-            return new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad };
-        }
-        else
-        {
-            return new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 };
-        }
+        return assetMap[currentState];
     }
 
 

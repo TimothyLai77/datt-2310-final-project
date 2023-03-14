@@ -75,10 +75,15 @@ public class HubManager : MonoBehaviour
         //this.backgroundImageToLoad = this.backgroundImage1;
 
 
-        rhythmGDataInstance = RhythmGirlData.GetInstance();
-        SetToLoads(rhythmGDataInstance.inkJSON_1, rhythmGDataInstance.portrait_1, rhythmGDataInstance.backgroundImage_1);
+        
+        //SetToLoads(rhythmGDataInstance.inkJSON_1, rhythmGDataInstance.portrait_1, rhythmGDataInstance.backgroundImage_1);
+
+        ArrayList assetsToLoad = RhythmGirlData.GetInstance().GetAssets();
+        SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
         SceneManager.LoadScene("DialogueScene");
     }
+
+
 
     public void RoomTwoButton() {
     
