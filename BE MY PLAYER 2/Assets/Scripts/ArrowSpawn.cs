@@ -26,15 +26,19 @@ public class ArrowSpawn : MonoBehaviour
 
     List<int> musicSheet = MusicCharts.epicSongHard;
 
+
     public float beatTempo;
     private float beatCount = 0f;
     private int previousBeat = 0;
+
+
 
     private void Start()
     {
         timeCounter = 0;
         beatTempo = beatTempo / 60f;
         //InvokeRepeating("SpawnMethod", 2, 1);
+        RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
     }
 
     void SpawnMethod()
@@ -45,6 +49,7 @@ public class ArrowSpawn : MonoBehaviour
         
     }
 
+   
 
     private void invoke()
     {

@@ -130,16 +130,7 @@ public class GameManager : MonoBehaviour
     {
         // set the score the player achieved.
         RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
-        rhythmGirlInstance.SetLastPlayerScore(this.currentScore);
-        
-        if (currentScore > RhythmGirlData.MIN_SCORE)
-        {
-            rhythmGirlInstance.SetState(RhythmGirlData.FIRST_RESULT_GOOD);
-        }
-        else
-        {
-            rhythmGirlInstance.SetState(RhythmGirlData.FIRST_RESULT_BAD);
-        }
+        rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
         //iArrayList assets = RhythmGirlData.GetInstance().GetAssets();
         //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
         HubManager.GetInstance().RoomOneButton();
