@@ -11,7 +11,7 @@ public class NoteObject : MonoBehaviour
     private GameObject activator;
 
     [SerializeField] private float perfectThreshold = 0.2f;
-    [SerializeField] private float greatThreshold = 0.5f;
+    [SerializeField] private float greatThreshold = 0.4f;
 
     // Start is called before the first frame update
     void Start()

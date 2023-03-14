@@ -35,6 +35,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject difficultySelectorPanel;
 
+    [SerializeField] private GameObject AccuracySpawner;
+    [SerializeField] private GameObject PerfectHit;
+    [SerializeField] private GameObject GreatHit;
+    [SerializeField] private GameObject GoodHit;
+    [SerializeField] private GameObject MissHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,15 +104,18 @@ public class GameManager : MonoBehaviour
     {
         if(accuracy == "Perfect")
         {
-
+            GameObject perfectHitInstance = Instantiate(PerfectHit, new Vector3(0, 0, 0), Quaternion.identity);
+            perfectHitInstance.transform.position = AccuracySpawner.transform.position;
         }
         else if (accuracy == "Great")
         {
-
+            GameObject greatHitInstance = Instantiate(GreatHit, new Vector3(0, 0, 0), Quaternion.identity);
+            greatHitInstance.transform.position = AccuracySpawner.transform.position;
         }
         else if (accuracy == "Good")
         {
-
+            GameObject goodHitInstance = Instantiate(GoodHit, new Vector3(0, 0, 0), Quaternion.identity);
+            goodHitInstance.transform.position = AccuracySpawner.transform.position;
         }
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
@@ -130,6 +139,9 @@ public class GameManager : MonoBehaviour
     public void NoteMissed()
     {
         Debug.Log("Note Missed");
+
+        GameObject missHitInstance = Instantiate(MissHit, new Vector3(0, 0, 0), Quaternion.identity);
+        missHitInstance.transform.position = AccuracySpawner.transform.position;
 
         currentMultiplier = 1;
         multiplierTracker = 0;
