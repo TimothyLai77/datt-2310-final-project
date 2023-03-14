@@ -30,8 +30,12 @@ public class GameManager : MonoBehaviour
     public float totalNotes;
     public float percentHit;
 
+    private float perfectHits;
+    private float greatHits;
+    private float goodHits;
+
     public GameObject resultsScreen;
-    public Text percentHitText, notesHitText, notesMissedText, finalScoreText;
+    public Text percentHitText, notesHitText, notesMissedText, finalScoreText, perfectHitsText, greatHitsText, goodHitsText;
 
     [SerializeField] public GameObject difficultySelectorPanel;
 
@@ -47,6 +51,10 @@ public class GameManager : MonoBehaviour
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+
+        perfectHits = 0;
+        greatHits = 0;
+        goodHits = 0;
 
     }
 
@@ -96,6 +104,10 @@ public class GameManager : MonoBehaviour
                 
                 percentHitText.text = percentHit.ToString("F1") + "%";
                 finalScoreText.text = currentScore.ToString();
+
+                perfectHitsText.text = perfectHits.ToString();
+                greatHitsText.text = greatHits.ToString();
+                goodHitsText.text = goodHits.ToString();
             }
         }
     }
@@ -106,16 +118,19 @@ public class GameManager : MonoBehaviour
         {
             GameObject perfectHitInstance = Instantiate(PerfectHit, new Vector3(0, 0, 0), Quaternion.identity);
             perfectHitInstance.transform.position = AccuracySpawner.transform.position;
+            perfectHits++;
         }
         else if (accuracy == "Great")
         {
             GameObject greatHitInstance = Instantiate(GreatHit, new Vector3(0, 0, 0), Quaternion.identity);
             greatHitInstance.transform.position = AccuracySpawner.transform.position;
+            greatHits++;
         }
         else if (accuracy == "Good")
         {
             GameObject goodHitInstance = Instantiate(GoodHit, new Vector3(0, 0, 0), Quaternion.identity);
             goodHitInstance.transform.position = AccuracySpawner.transform.position;
+            goodHits++;
         }
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
