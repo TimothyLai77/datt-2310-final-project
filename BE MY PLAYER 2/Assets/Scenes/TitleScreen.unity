@@ -1984,7 +1984,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Artwork:\nLogo and Character Portraits by Maureen Navera\nPixel Art by
-    Billy Bao\nDating Sim UI Pack by LoudEyes (https://loudeyes.itch.io/dating-sim-ui-pack)\n\nMusic:\n\u201CMagical
+    Billy Bao\nDating Sim UI Pack by LoudEyes (https://loudeyes.itch.io/dating-sim-ui-pack)\n\n\nMusic:\n\u201CMagical
     Gateway\u201D  by Eric Matyas (www.soundimage.org)\n\u201CBetter Days Ahead\u201D
     by Eric Matyas (www.soundimage.org)\n\u201CInnocent Years\u201D by Eric Matyas
     (www.soundimage.org)\n\u201CEpic Song\u201D by BoxCat Games\nUsed under Creative
@@ -1998,8 +1998,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2016,8 +2016,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
