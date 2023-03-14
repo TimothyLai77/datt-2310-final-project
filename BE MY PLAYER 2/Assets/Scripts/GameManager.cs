@@ -88,9 +88,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NoteHit()
+    public void NoteHit(string accuracy)
     {
-        Debug.Log("Hit On Time");
+        if(accuracy == "Perfect")
+        {
+
+        }
+        else if (accuracy == "Great")
+        {
+
+        }
+        else if (accuracy == "Good")
+        {
+
+        }
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {

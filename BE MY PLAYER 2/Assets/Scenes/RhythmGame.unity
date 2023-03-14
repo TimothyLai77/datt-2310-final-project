@@ -333,7 +333,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!50 &42740293
 Rigidbody2D:
@@ -860,7 +860,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!50 &335185284
 Rigidbody2D:
@@ -1009,7 +1009,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!50 &450328919
 Rigidbody2D:
@@ -2336,6 +2336,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1433331387760868730, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433331387760868731, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1433331387760868733, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
@@ -8469,7 +8473,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!50 &1954822630
 Rigidbody2D:
@@ -9058,6 +9062,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f3e80f84bc952aa45a306755e82d5e3b, type: 3}
+    - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
     - target: {fileID: 6920593812282426900, guid: 19433302e151649edbfa13c883553076, type: 3}
       propertyPath: m_Name
       value: LeftArrow
@@ -9119,6 +9135,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f3e80f84bc952aa45a306755e82d5e3b, type: 3}
+    - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
     - target: {fileID: 7864074053969894250, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -9176,6 +9204,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.28
+      objectReference: {fileID: 0}
     - target: {fileID: 2579489609779980794, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
       propertyPath: m_RootOrder
       value: 14
