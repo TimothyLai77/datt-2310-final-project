@@ -30,7 +30,7 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite backgroundImage_1_bad;
 
     private int lastPlayerScore; // apparently c# has no null ints
-    public const int MIN_SCORE_EASY = 850;
+    public const int MIN_SCORE_EASY = 1200;
     public const int MIN_SCORE_NORMAL = 2000;
     public const int MIN_SCORE_HARD = 3000;
     private int numTimesPlayed = 0;
@@ -76,6 +76,8 @@ public class RhythmGirlData : MonoBehaviour
         this.currentState = state;
     }
 
+
+
     public string GetState()
     {
         return this.currentState;
@@ -93,6 +95,32 @@ public class RhythmGirlData : MonoBehaviour
     {
         this.chosenMusicSheet = musicSheet;
     }
+
+    public string GetLastDifficulty()
+    {
+        List<int> easy = MusicCharts.epicSongEasy;
+        List<int> normal = MusicCharts.epicSongNormal;
+        List<int> hard = MusicCharts.epicSongHard;
+
+        if (chosenMusicSheet.Equals(hard))
+        {
+            return "hard was picked";
+
+        }
+        else if (chosenMusicSheet.Equals(normal))
+        {
+            return "normal was picked";
+        }
+        else if (chosenMusicSheet.Equals(easy))
+        {
+            return "easy was picked";
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 
     private void DetermineState()
     {
