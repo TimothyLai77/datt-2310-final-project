@@ -23,6 +23,7 @@ public class HubManager : MonoBehaviour
     [SerializeField] public Sprite backgroundImage2;
 
     private static HubManager instance;
+    private RhythmGirlData rhythmGDataInstance;
    
 
     // Getter method to access the instance of this manager
@@ -69,15 +70,30 @@ public class HubManager : MonoBehaviour
     public void RoomOneButton()
     {
         // set what to laod then load the scene
-        this.inkToLoad = this.inkJSON1_1;
-        this.portraitToLoad = this.portrait1;
-        this.backgroundImageToLoad = this.backgroundImage1;
+        //this.inkToLoad = this.inkJSON1_1;
+        //this.portraitToLoad = this.portrait1;
+        //this.backgroundImageToLoad = this.backgroundImage1;
 
+
+        
+        //SetToLoads(rhythmGDataInstance.inkJSON_1, rhythmGDataInstance.portrait_1, rhythmGDataInstance.backgroundImage_1);
+
+        ArrayList assetsToLoad = RhythmGirlData.GetInstance().GetAssets();
+        SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
         SceneManager.LoadScene("DialogueScene");
     }
 
+
+
     public void RoomTwoButton() {
     
+    }
+
+    private void SetToLoads(TextAsset ink, Sprite portrait, Sprite background)
+    {
+        this.inkToLoad = ink;
+        this.portraitToLoad = portrait;
+        this.backgroundImageToLoad = background;
     }
 
     public TextAsset GetInk()
