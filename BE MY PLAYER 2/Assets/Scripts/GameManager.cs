@@ -172,14 +172,19 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        // set the score the player achieved.
-        RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
-        rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
-        //iArrayList assets = RhythmGirlData.GetInstance().GetAssets();
-        //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
-        HubManager.GetInstance().RoomOneButton();
-        //Debug.Log(RhythmGirlData.GetInstance().GetState());
-        //Debug.Log(RhythmGirlData.GetInstance().GetLastDifficulty());
-        //SceneManager.LoadScene("DialogueScene");
+        HubManager hb = HubManager.GetInstance();
+        if (hb.MinigameStarted())
+        {
+            // player only wants to play game, no dialogue after, just load back to hub
+            SceneManager.LoadScene("MainHub");
+        }
+        else
+        {
+            // player chose to spend time with someone, load dialouge after
+            // set the score the player achieved.
+            RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
+            rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
+            hb.RoomOneButton(); // super jank way
+        }
     }
 }

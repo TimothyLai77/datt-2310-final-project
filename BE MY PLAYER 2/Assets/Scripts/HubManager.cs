@@ -9,22 +9,21 @@ public class HubManager : MonoBehaviour
     // for now just hard load the assets but ideally it should be kinad dynamic based
     // on the state of the game like relationships -> differnet texts
 
-    // static types should help with loading across scenes
-    // https://stackoverflow.com/questions/32306704/how-to-pass-data-and-references-between-scenes-in-unity
                 
-    [Header("Person 1")]
-    [SerializeField] public TextAsset inkJSON1_1; // this is just pain...
-    [SerializeField] public Sprite portrait1;
-    [SerializeField] public Sprite backgroundImage1;
+    //[Header("Person 1")]
+    //[SerializeField] public TextAsset inkJSON1_1; // this is just pain...
+    //[SerializeField] public Sprite portrait1;
+    //[SerializeField] public Sprite backgroundImage1;
 
-    [Header("Person 2")]
-    [SerializeField] public TextAsset inkJSON1_2; // this is just pain...
-    [SerializeField] public Sprite portrait2;
-    [SerializeField] public Sprite backgroundImage2;
+    //[Header("Person 2")]
+    //[SerializeField] public TextAsset inkJSON1_2; // this is just pain...
+    //[SerializeField] public Sprite portrait2;
+    //[SerializeField] public Sprite backgroundImage2;
 
     private static HubManager instance;
     private RhythmGirlData rhythmGDataInstance;
-   
+
+    private bool minigameStarted;
 
     // Getter method to access the instance of this manager
     public static HubManager GetInstance()
@@ -58,7 +57,7 @@ public class HubManager : MonoBehaviour
 
     void Start()
     {
-
+        this.minigameStarted = true;
     }
 
     // Update is called once per frame
@@ -69,21 +68,27 @@ public class HubManager : MonoBehaviour
 
     public void RoomOneButton()
     {
-        // set what to laod then load the scene
-        //this.inkToLoad = this.inkJSON1_1;
-        //this.portraitToLoad = this.portrait1;
-        //this.backgroundImageToLoad = this.backgroundImage1;
-
-
-        
-        //SetToLoads(rhythmGDataInstance.inkJSON_1, rhythmGDataInstance.portrait_1, rhythmGDataInstance.backgroundImage_1);
-
         ArrayList assetsToLoad = RhythmGirlData.GetInstance().GetAssets();
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
+        this.minigameStarted = false; // want to load the dialogue scene after the game
         SceneManager.LoadScene("DialogueScene");
     }
 
 
+    /**
+     * Call this method when you only want to load the minigame, with no dialogue
+     */
+    public void StartRhythmMinigame()
+    {
+        // only load the minigame no dialogue needed.
+        this.minigameStarted = true;
+        SceneManager.LoadScene("RhythmGame"); // change scene
+    }
+
+    public bool MinigameStarted() 
+    {
+        return this.minigameStarted;
+    }
 
     public void RoomTwoButton() {
     
