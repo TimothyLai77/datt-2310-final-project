@@ -7,7 +7,7 @@ using UnityEngine;
  * Load all the references to the ink json files, all the images, all the backgrounds go here.
  * GameHubManager will get this instance and then determine which ones to load into the dialogue scene
  */
-public class RhythmGirlData : MonoBehaviour
+public class RhythmGirlData : MonoBehaviour, Character
 {
 
 
@@ -29,6 +29,24 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite portrait_1_bad;
     [SerializeField] public Sprite backgroundImage_1_bad;
 
+
+    [Header("Second Time")]
+    [SerializeField] public TextAsset inkJSON_2;
+    [SerializeField] public Sprite portrait_2;
+    [SerializeField] public Sprite backgroundImage_2;
+
+    [Header("SecondTime Result: Good")]
+    [SerializeField] public TextAsset inkJSON_2_good;
+    [SerializeField] public Sprite portrait21_good;
+    [SerializeField] public Sprite backgroundImage_2_good;
+
+    [Header("SecondTime Result: Bad")]
+    [SerializeField] public TextAsset inkJSON_2_bad;
+    [SerializeField] public Sprite portrait_2_bad;
+    [SerializeField] public Sprite backgroundImage_2_bad;
+
+
+
     private int lastPlayerScore; // apparently c# has no null ints
     public const int MIN_SCORE_EASY = 1200;
     public const int MIN_SCORE_NORMAL = 2000;
@@ -40,11 +58,15 @@ public class RhythmGirlData : MonoBehaviour
     public const string FIRST_RESULT_BAD = "firstResultBad";
     public const string FIRST_RESULT_GOOD = "firstResultGood";
 
+    private const int NETURAL_RELATIONSHIP = 5;
+    private const int POSITIVE_RELATIONSHIP = 7;
+    private const int NEGATIVE_RELATIONSHIP = 3;
+
     private string currentState;
     private List<int> chosenMusicSheet;
 
     private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
-
+    //private Dictionary<int, ArrayList> assetMap = new Dictionary<int, ArrayList>();
     public static RhythmGirlData GetInstance()
     {
         return instance;
@@ -68,6 +90,8 @@ public class RhythmGirlData : MonoBehaviour
         assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
         assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
         assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
+
+        //assetMap.Add(NETURAL_RELATIONSHIP, new ArrayList() { inkJSON_1})
     }
 
 
@@ -171,6 +195,11 @@ public class RhythmGirlData : MonoBehaviour
         return assetMap[currentState];
     }
 
+
+    public override string ToString()
+    {
+        return "rhythmGirl";
+    }
 
     void Start()
     {

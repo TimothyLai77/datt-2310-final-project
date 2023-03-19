@@ -172,19 +172,29 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        HubManager hb = HubManager.GetInstance();
-        if (hb.MinigameStarted())
+        
+        HubManager hm = HubManager.GetInstance();
+        Character c = hm.GetLastCharacter();
+        if (!(c is null))
         {
-            // player only wants to play game, no dialogue after, just load back to hub
-            SceneManager.LoadScene("MainHub");
+            Debug.Log("no bug ");
+            c.SetLastPlayerScore(this.currentScore);
         }
-        else
-        {
-            // player chose to spend time with someone, load dialouge after
-            // set the score the player achieved.
-            RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
-            rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
-            hb.RoomOneButton(); // super jank way
-        }
+ 
+        hm.LoadDialogueFromLastCharacter();
+
+        //if (hb.MinigameStarted())
+        //{
+        //    // player only wants to play game, no dialogue after, just load back to hub
+        //    SceneManager.LoadScene("MainHub");
+        //}
+        //else
+        //{
+        //    // player chose to spend time with someone, load dialouge after
+        //    // set the score the player achieved.
+        //    RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
+        //    rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
+        //    hb.RoomOneButton(); // super jank way
+        //}
     }
 }
