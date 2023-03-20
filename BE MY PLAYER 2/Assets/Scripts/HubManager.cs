@@ -70,8 +70,6 @@ public class HubManager : MonoBehaviour
 
     public void LoadDialogueFromLastCharacter()
     {
-        //Debug.Log(lastCharacter.ToString());
-        //Debug.Log((System.Object)this.lastCharacter is null);
         if (!(this.lastCharacter is null))
         {
 
