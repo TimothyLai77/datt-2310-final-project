@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
         if (!(c is null))
         {
             Debug.Log("no bug ");
-            c.SetLastPlayerScore(this.currentScore);
+            c.SetLastPlayerScore(this.currentScore); // setting the score also determines which dialouge to load 
         }
  
         hm.LoadDialogueFromLastCharacter();
