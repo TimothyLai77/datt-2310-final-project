@@ -6,13 +6,13 @@ public class Song
 {
 	public string title;
 	public string composer;
-	public GameObject audioTrack;
+	public AudioClip audioClip;
 	public float bpm;
 	public float subdivisions;
 	public float startDelay;
 
 	public List<int> easyChart = new List<int>();
-	public List<int> mediumChart = new List<int>();
+	public List<int> normalChart = new List<int>();
 	public List<int> hardChart = new List<int>();
 
 	public Song()
@@ -20,15 +20,16 @@ public class Song
 
     }
 
-	public Song(string title, string composer, GameObject audioTrack, float bpm, float subdivisions, float startDelay, List<int> easyChart, List<int> mediumChart, List<int> hardChart)
+	public Song(string title, string composer, AudioClip audioClip, float bpm, float subdivisions, float startDelay, List<int> easyChart, List<int> normalChart, List<int> hardChart)
     {
 		this.title = title;
 		this.composer = composer;
-		this.audioTrack = audioTrack;
+		this.audioClip = audioClip;
 		this.bpm = bpm;
 		this.subdivisions = subdivisions;
+		this.startDelay = startDelay;
 		this.easyChart = easyChart;
-		this.mediumChart = mediumChart;
+		this.normalChart = normalChart;
 		this.hardChart = hardChart;
     }
 }
