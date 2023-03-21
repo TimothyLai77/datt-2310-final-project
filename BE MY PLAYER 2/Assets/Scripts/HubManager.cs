@@ -8,7 +8,6 @@ public class HubManager : MonoBehaviour
 
 
     private static HubManager instance;
-    private RhythmGirlData rhythmGDataInstance;
 
     private bool minigameStarted;
 
@@ -46,7 +45,6 @@ public class HubManager : MonoBehaviour
 
     void Start()
     {
-        //this.minigameStarted = true;
        
     }
 
@@ -58,28 +56,31 @@ public class HubManager : MonoBehaviour
 
     public void RoomOneButton()
     {
+        // room one = rhythmGirl.
+        // set that as the last cahracter talked to 
         this.lastCharacter = RhythmGirlData.GetInstance();
-        Debug.Log(this.lastCharacter.ToString());
-        ArrayList assetsToLoad = (this.lastCharacter).GetAssets();
-        //Debug.Log(this.LastCharacter.ToString());
+        ArrayList assetsToLoad = (this.lastCharacter).GetAssets(); // get the assets
+        // load the references so the dialogueManger can grab the asset references
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        //this.minigameStarted = false; // want to load the dialogue scene after the game
-        //LoadDialogueFromLastCharacter();
-        SceneManager.LoadScene("DialogueScene");
+        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
     }
 
+    /*
+     * This method should be called when the game is finished
+     * If the the minigame was started standalone, then it should bring it back to the hub.
+     */
     public void LoadDialogueFromLastCharacter()
     {
         if (!(this.lastCharacter is null))
         {
-
+            // if need to load dialgoue after the minigame
             ArrayList assetsToLoad = this.lastCharacter.GetAssets();
             SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
             SceneManager.LoadScene("DialogueScene");
         }
         else
         {
-            //Debug.Log("b u g");
+            // don't load result dialogue, just go back to hub. 
             Debug.Log(lastCharacter.ToString());
             SceneManager.LoadScene("MainHub");
         }

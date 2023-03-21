@@ -8,15 +8,11 @@ public class PlayerData : MonoBehaviour
     private static PlayerData instance;
     private int rhythmSkill;
 
-    private const int STARTING_RELATIONSHIP = 5;
+    // this one stores the songs and the 2nd map 
+    private Dictionary<string, Dictionary<string, ArrayList>> playerScores;
 
-    // honestly there should be an abstract character class and have RhythmGirl, etc. as children
-    // then I can avoid using strings + excess variables but i'm too lazy to redo that...
-    public const string RHYTHM_GIRL = "RhythmGirl";
-    private Dictionary<string, int> relationships = new Dictionary<string, int>();
-
-
-
+    // names are hard, this one stores the 3 difficulties of one song
+    private Dictionary<string, ArrayList> songDifficultyScores;
 
     void Awake()
     {
@@ -31,7 +27,6 @@ public class PlayerData : MonoBehaviour
             instance = this;
         }
         // on wake, init the relationships and skill
-        this.relationships.Add(RHYTHM_GIRL, STARTING_RELATIONSHIP);
         this.rhythmSkill = 0; 
     }
 
@@ -40,15 +35,24 @@ public class PlayerData : MonoBehaviour
         return instance;
     }
 
-
-    public void SetRelationship(string character, int value)
+    
+    
+    /**
+     * Method that increase the player's skill by valueToAdd amount
+     */
+    public void IncreaseRhythmSkill(int valueToAdd) 
     {
-        relationships[character] = value;
+        this.rhythmSkill += valueToAdd;
     }
 
-    public void IncreaseRhythmSkill(int value) 
+    public void SetLastPlayerScore(int score)
     {
-        this.rhythmSkill += value;
+        
+    }
+
+    public void DecreaseRhythmSkill(int valueToSubtract)
+    {
+        this.rhythmSkill -= valueToSubtract;
     }
 
     public int GetRhythmSkill() 
@@ -57,11 +61,4 @@ public class PlayerData : MonoBehaviour
     }
 
 
-    /**
-     * Returns the relationship to the character, please use the constants 
-     */
-    public int GetRelationship(string character)
-    {
-        return relationships[character];
-    }
 }
