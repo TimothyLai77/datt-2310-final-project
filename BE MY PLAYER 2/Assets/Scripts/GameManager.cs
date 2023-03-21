@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
         
         HubManager hm = HubManager.GetInstance();
         Character c = hm.GetLastCharacter();
+        
+        // if the last character is set to null, -> only load the minigame, do not save score
         if (!(c is null))
         {
             Debug.Log("no bug ");

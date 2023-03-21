@@ -58,9 +58,14 @@ public class RhythmGirlData : MonoBehaviour, Character
     public const string FIRST_RESULT_BAD = "firstResultBad";
     public const string FIRST_RESULT_GOOD = "firstResultGood";
 
+
+
+
     private const int NETURAL_RELATIONSHIP = 5;
     private const int POSITIVE_RELATIONSHIP = 7;
     private const int NEGATIVE_RELATIONSHIP = 3;
+
+    private int relationToPlayer; 
 
     private string currentState;
     private List<int> chosenMusicSheet;
@@ -90,7 +95,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
         assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
         assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
-
+        this.relationToPlayer = 5; // starting relationship to the player
         //assetMap.Add(NETURAL_RELATIONSHIP, new ArrayList() { inkJSON_1})
     }
 
@@ -101,10 +106,19 @@ public class RhythmGirlData : MonoBehaviour, Character
     }
 
 
-
     public string GetState()
     {
         return this.currentState;
+    }
+
+    public void SetRelationToPlayer(int newValue) 
+    {
+        this.relationToPlayer = newValue;
+    }
+
+    public int GetRelationToPlayer()
+    {
+        return this.relationToPlayer;
     }
 
     public void SetLastPlayerScore(int score)
