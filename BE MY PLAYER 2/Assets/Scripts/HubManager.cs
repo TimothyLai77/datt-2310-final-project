@@ -59,7 +59,7 @@ public class HubManager : MonoBehaviour
         // room one = rhythmGirl.
         // set that as the last cahracter talked to 
         this.lastCharacter = RhythmGirlData.GetInstance();
-        ArrayList assetsToLoad = (this.lastCharacter).GetAssets(); // get the assets
+        ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets(); // get the assets
         // load the references so the dialogueManger can grab the asset references
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
         SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
@@ -74,7 +74,7 @@ public class HubManager : MonoBehaviour
         if (!(this.lastCharacter is null))
         {
             // if need to load dialgoue after the minigame
-            ArrayList assetsToLoad = this.lastCharacter.GetAssets();
+            ArrayList assetsToLoad = this.lastCharacter.GetResultAssets();
             SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
             SceneManager.LoadScene("DialogueScene");
         }

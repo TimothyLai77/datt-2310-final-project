@@ -53,13 +53,17 @@ public class RhythmGirlData : MonoBehaviour, Character
     public const int MIN_SCORE_HARD = 3000;
     private int numTimesPlayed = 0;
 
-    // states 
-    public const string FIRST_TIME = "first";
+    // states
+    //public const string FIRST_TIME = "first";
     public const string FIRST_RESULT_BAD = "firstResultBad";
     public const string FIRST_RESULT_GOOD = "firstResultGood";
 
+    // new result states
+    public const string RESULT_GOOD = "RESULT_GOOD";
+    public const string RESULT_BAD = "RESULT_BAD";
 
-
+    // new states
+    public const string STARTING_FIRST_TIME = "FIRST";
 
     private const int NETURAL_RELATIONSHIP = 5;
     private const int POSITIVE_RELATIONSHIP = 7;
@@ -67,10 +71,20 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     private int relationToPlayer; 
 
-    private string currentState;
+    private string currentState; // determines which starting dialogue to load
+    private string playerResultState; // determines which result dialogue to play
+
+
     private List<int> chosenMusicSheet;
 
     private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
+
+    private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
+    private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
+
+
+
+
     //private Dictionary<int, ArrayList> assetMap = new Dictionary<int, ArrayList>();
     public static RhythmGirlData GetInstance()
     {
@@ -78,7 +92,7 @@ public class RhythmGirlData : MonoBehaviour, Character
     }
 
     private void Awake()
-    { 
+    {
         if (instance != null && instance != this)
         {
             // if instance is null and there is another instance
@@ -90,25 +104,36 @@ public class RhythmGirlData : MonoBehaviour, Character
             instance = this;
         }
 
-        currentState = FIRST_TIME;
+        currentState = STARTING_FIRST_TIME;
 
-        assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
-        assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
-        assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
+        // init the starting map values
+        resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good});
+        resultAssetMap.Add(RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad });
+
+        startingSceneAssetMap.Add(STARTING_FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1});
+
+        //assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
+        //assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
+        //assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
         this.relationToPlayer = 5; // starting relationship to the player
         //assetMap.Add(NETURAL_RELATIONSHIP, new ArrayList() { inkJSON_1})
     }
 
 
     // use the constant strings above. 
-    public void SetState(string state) {
-        this.currentState = state;
-    }
+    //public void SetState(string state) {
+    //    this.currentState = state;
+    //}
 
 
-    public string GetState()
+    public string GetStartingState()
     {
         return this.currentState;
+    }
+
+    public string GetResultState()
+    {
+        return this.playerResultState;
     }
 
     public void SetRelationToPlayer(int newValue) 
@@ -126,7 +151,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.numTimesPlayed++;
         this.lastPlayerScore = score;
 
-        DetermineState();
+        DetermineResultState();
     }
 
     public void SetDifficulty(List<int> musicSheet)
@@ -134,33 +159,36 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.chosenMusicSheet = musicSheet;
     }
 
-    public string GetLastDifficulty()
-    {
-        List<int> easy = MusicCharts.epicSongEasy;
-        List<int> normal = MusicCharts.epicSongNormal;
-        List<int> hard = MusicCharts.epicSongHard;
+    ///**
+    // * Method used for debugging. Don't really need it. 
+    // */
+    //public string GetLastDifficulty()
+    //{
+    //    List<int> easy = MusicCharts.epicSongEasy;
+    //    List<int> normal = MusicCharts.epicSongNormal;
+    //    List<int> hard = MusicCharts.epicSongHard;
 
-        if (chosenMusicSheet.Equals(hard))
-        {
-            return "hard was picked";
+    //    if (chosenMusicSheet.Equals(hard))
+    //    {
+    //        return "hard was picked";
 
-        }
-        else if (chosenMusicSheet.Equals(normal))
-        {
-            return "normal was picked";
-        }
-        else if (chosenMusicSheet.Equals(easy))
-        {
-            return "easy was picked";
-        }
-        else
-        {
-            return null;
-        }
-    }
+    //    }
+    //    else if (chosenMusicSheet.Equals(normal))
+    //    {
+    //        return "normal was picked";
+    //    }
+    //    else if (chosenMusicSheet.Equals(easy))
+    //    {
+    //        return "easy was picked";
+    //    }
+    //    else
+    //    {
+    //        return null;
+    //    }
+    //}
 
 
-    private void DetermineState()
+    private void DetermineResultState()
     {
         // C# does reference checking on List.Equals (I think)
         // should be pretty fast to compare the sheets. 
@@ -175,7 +203,7 @@ public class RhythmGirlData : MonoBehaviour, Character
           
             if (lastPlayerScore >= MIN_SCORE_HARD)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
 
@@ -185,7 +213,7 @@ public class RhythmGirlData : MonoBehaviour, Character
             // 86 notes total, 2000 is a nice threshold.
             if(lastPlayerScore >= MIN_SCORE_NORMAL)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
         }
@@ -194,21 +222,30 @@ public class RhythmGirlData : MonoBehaviour, Character
             // 53 notes for easy, 800
             if(lastPlayerScore >= MIN_SCORE_EASY)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
         }
-        SetState(RhythmGirlData.FIRST_RESULT_BAD);
+        playerResultState = RhythmGirlData.RESULT_BAD;
     }
 
 
 
 
-    public ArrayList GetAssets()
+    //public ArrayList GetAssets()
+    //{
+    //    return assetMap[currentState];
+    //}
+
+    public ArrayList GetStartingAssets()
+    { 
+        return this.startingSceneAssetMap[currentState];
+    }
+
+    public ArrayList GetResultAssets()
     {
-        return assetMap[currentState];
+        return this.resultAssetMap[playerResultState];
     }
-
 
     public override string ToString()
     {
