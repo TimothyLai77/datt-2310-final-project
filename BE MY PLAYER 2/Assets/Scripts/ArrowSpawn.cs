@@ -23,292 +23,30 @@ public class ArrowSpawn : MonoBehaviour
     public float delaySheetBeforeStart = 0;
     int noteCurs = 0;
     int kindOfNotes = 1;
-    List<int> musicSheet = new List<int> {
-        //1, 1, 1, 1, //test line
-        0, 0, 0, 1  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
 
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
+    //private static List<int> musicSheet = MusicCharts.epicSongNormal;
+    List<int> musicSheet;
 
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-
-          0, 0, 0, 1  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-
-          0, 0, 0, 1  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-
-          0, 0, 0, 1  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 1, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 1  ,
-
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          1, 0, 0, 0  ,
-          0, 0, 1, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0  ,
-          0, 0, 0, 0
-
-    }; //import music sheet as list
 
     public float beatTempo;
     private float beatCount = 0f;
     private int previousBeat = 0;
+
+
 
     private void Start()
     {
         timeCounter = 0;
         beatTempo = beatTempo / 60f;
         //InvokeRepeating("SpawnMethod", 2, 1);
+       
     }
+
+    //public static void SetMusicSheet(List<int> sheet)
+    //{
+    //    musicSheet = sheet;
+    //    RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+    //}
 
     void SpawnMethod()
     {
@@ -318,12 +56,15 @@ public class ArrowSpawn : MonoBehaviour
         
     }
 
+   
 
     private void invoke()
     {
         Debug.Log("invoke");
         Invoke("SpawnMethod", delaySheetBeforeStart);
     }
+
+
 
     void Update()
     {
@@ -337,25 +78,39 @@ public class ArrowSpawn : MonoBehaviour
         musicSheet[1] = 12;
         print(musicSheet[1]);*/
 
-        
+
 
         if (!hasStartedSpawn)
         {
-            if (Input.anyKeyDown)
+            if (Input.GetKeyDown("1"))
             {
+                musicSheet = MusicCharts.epicSongEasy;
                 hasStartedSpawn = true;
-                Debug.Log("hasStartedSpawn");
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - easy ");
+            }else if (Input.GetKeyDown("2"))
+            {
+                musicSheet = MusicCharts.epicSongNormal;
+                hasStartedSpawn = true;
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - nomral");
+            }else if (Input.GetKeyDown("3"))
+            {
+                musicSheet = MusicCharts.epicSongHard;
+                hasStartedSpawn = true;
+                RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
+                Debug.Log("hasStartedSpawn - nomral");
             }
         }
         else
         {
             if (invokeMusicSheet)
-            { 
+            {
                 invoke();
                 Debug.Log("firstinvoke");
                 invokeMusicSheet = false;
             }
-            
+
         }
         if (spawnArrow)
         {
