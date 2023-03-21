@@ -159,33 +159,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.chosenMusicSheet = musicSheet;
     }
 
-    ///**
-    // * Method used for debugging. Don't really need it. 
-    // */
-    //public string GetLastDifficulty()
-    //{
-    //    List<int> easy = MusicCharts.epicSongEasy;
-    //    List<int> normal = MusicCharts.epicSongNormal;
-    //    List<int> hard = MusicCharts.epicSongHard;
-
-    //    if (chosenMusicSheet.Equals(hard))
-    //    {
-    //        return "hard was picked";
-
-    //    }
-    //    else if (chosenMusicSheet.Equals(normal))
-    //    {
-    //        return "normal was picked";
-    //    }
-    //    else if (chosenMusicSheet.Equals(easy))
-    //    {
-    //        return "easy was picked";
-    //    }
-    //    else
-    //    {
-    //        return null;
-    //    }
-    //}
+ 
 
 
     private void DetermineResultState()
