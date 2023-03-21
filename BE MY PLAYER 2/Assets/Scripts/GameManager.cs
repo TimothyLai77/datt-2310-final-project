@@ -29,6 +29,22 @@ public class GameManager : MonoBehaviour
     public float notesMissed;
     public float totalNotes;
     public float percentHit;
+    private float perfectHits;
+    private float greatHits;
+    private float goodHits;
+
+
+    private float movingSpeed = -205f;
+    private Vector3 movingVec = new Vector3(-0.004f, 0f, 0f);
+    private Vector3 background1Ini = new Vector3(-0.4f, 4f, 0f);
+    private Vector3 background2Ini = new Vector3(20f, 4f, 0f);
+    public GameObject background1;
+    public GameObject background2;
+    private float backgroundTimer;
+    private float backgroundRef;
+    public float BackgroundMovingSpeed = 1f; //higher means slower
+
+    //private int calledTime = 0;//test
 
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText;
@@ -39,6 +55,18 @@ public class GameManager : MonoBehaviour
         instance = this;
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
+
+        perfectHits = 0;
+        greatHits = 0;
+        goodHits = 0;
+
+        backgroundTimer = 0;
+        backgroundRef = 5f;
+        //calledTime = 0; //test
+        movingSpeed = movingSpeed/50f/BackgroundMovingSpeed;
+        movingVec = new Vector3(movingSpeed, 0f, 0f);
+        //Debug.Log("movingSpeed:"+movingSpeed);
+
     }
 
     void playingMusic()
@@ -85,6 +113,28 @@ public class GameManager : MonoBehaviour
                 percentHitText.text = percentHit.ToString("F1") + "%";
                 finalScoreText.text = currentScore.ToString();
             }
+        }
+        backgroundMoving();
+
+        
+    }
+
+    public void backgroundMoving()
+    {
+        background1.transform.position = background1Ini;
+        background2.transform.position = background2Ini;
+        background1Ini = background1Ini + movingVec*Time.deltaTime;
+        background2Ini = background2Ini + movingVec*Time.deltaTime;
+        //Debug.Log(background1Ini);
+        backgroundTimer += Time.deltaTime;
+        //calledTime++; //test
+        if (backgroundTimer >= backgroundRef * BackgroundMovingSpeed)
+        {
+            //Debug.Log(background1Ini + "attime" + backgroundTimer +"called" + calledTime); //test
+            //calledTime = 0; //test
+            backgroundTimer = 0f;
+            background1Ini = new Vector3(-0.4f, 4f, 0f);
+            background2Ini = new Vector3(20f, 4f, 0f); 
         }
     }
 
