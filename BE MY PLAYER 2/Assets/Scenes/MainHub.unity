@@ -1853,7 +1853,7 @@ MonoBehaviour:
   inkJSON_1_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
   portrait_1_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
   backgroundImage_1_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
-  inkJSON_1_bad: {fileID: 4900000, guid: e68b36a750c213041b30ed69f0afaee2, type: 3}
+  inkJSON_1_bad: {fileID: 4900000, guid: 8dcf46ad3aaec43b397de7c759159737, type: 3}
   portrait_1_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
   backgroundImage_1_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
   inkJSON_2: {fileID: 0}
