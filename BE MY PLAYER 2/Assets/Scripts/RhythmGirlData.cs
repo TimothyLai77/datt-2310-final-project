@@ -24,6 +24,11 @@ public class RhythmGirlData : MonoBehaviour, Character
     [SerializeField] public Sprite portrait_1_good;
     [SerializeField] public Sprite backgroundImage_1_good;
 
+    [Header("FirstTime Result: Okay")]
+    [SerializeField] public TextAsset inkJSON_1_okay;
+    [SerializeField] public Sprite portrait_1_okay;
+    [SerializeField] public Sprite backgroundImage_1_okay;
+
     [Header("FirstTime Result: Bad")]
     [SerializeField] public TextAsset inkJSON_1_bad;
     [SerializeField] public Sprite portrait_1_bad;
@@ -61,6 +66,7 @@ public class RhythmGirlData : MonoBehaviour, Character
     // new result states
     public const string RESULT_GOOD = "RESULT_GOOD";
     public const string RESULT_BAD = "RESULT_BAD";
+    public const string RESULT_OKAY = "RESULT_OKAY";
 
     // new states
     public const string STARTING_FIRST_TIME = "FIRST";
@@ -77,7 +83,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     private List<int> chosenMusicSheet;
 
-    private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
+    //private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
@@ -109,6 +115,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         // init the starting map values
         resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good});
         resultAssetMap.Add(RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad });
+        resultAssetMap.Add(RESULT_OKAY, new ArrayList() { inkJSON_1_okay, portrait_1_okay, backgroundImage_1_okay });
 
         startingSceneAssetMap.Add(STARTING_FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1});
 
@@ -170,7 +177,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         List<int> normal = MusicCharts.epicSongNormal;
         List<int> hard = MusicCharts.epicSongHard;
 
-
+        // these will be swapped out for pass/fail values later
         if (chosenMusicSheet.Equals(hard))
         {
             // 164 notes for hard, 3000 should be good
