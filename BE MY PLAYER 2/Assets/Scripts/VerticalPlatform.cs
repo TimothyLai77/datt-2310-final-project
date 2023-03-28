@@ -18,16 +18,16 @@ public class VerticalPlatform : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            waitTime = 0.5f;
+            this.waitTime = 0.5f;
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             effect.rotationalOffset = 180f;
-            waitTime = 0.5f;
+            this.waitTime = 0.5f;
         }
         else
         {
-            waitTime -= Time.deltaTime;
+            this.waitTime -= Time.deltaTime;
         }
         if (Input.GetButton("Jump"))
         {

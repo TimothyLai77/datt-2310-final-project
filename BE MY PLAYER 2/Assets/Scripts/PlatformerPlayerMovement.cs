@@ -32,6 +32,10 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
+        /*if (collision.gameObject.CompareTag("Untagged"))
+        {
+            Move = 0;
+        }*/
     }
 
     private void OnCollisionExit2D(Collision2D collision)
