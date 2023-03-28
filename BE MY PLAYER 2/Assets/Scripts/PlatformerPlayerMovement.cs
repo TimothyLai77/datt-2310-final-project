@@ -20,6 +20,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
     public bool isJumping;
     public bool isFalling; //debug
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +76,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
             //Debug.Log("low");
         } 
     }
+
 
     
 }

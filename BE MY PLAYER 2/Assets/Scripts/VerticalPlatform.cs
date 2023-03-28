@@ -18,7 +18,10 @@ public class VerticalPlatform : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            this.waitTime = 0.5f;
+            /*this.waitTime = 0.5f;
+            effect.rotationalOffset = 0f;*/
+
+            StartCoroutine(resetVP());
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
@@ -34,5 +37,10 @@ public class VerticalPlatform : MonoBehaviour
             effect.rotationalOffset = 0f;
         }
 
+    }
+    private IEnumerator resetVP()
+    {
+        yield return new WaitForSeconds(0.1f);
+        effect.rotationalOffset = 0f;
     }
 }
