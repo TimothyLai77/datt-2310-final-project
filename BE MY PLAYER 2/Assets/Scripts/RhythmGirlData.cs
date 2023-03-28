@@ -7,7 +7,7 @@ using UnityEngine;
  * Load all the references to the ink json files, all the images, all the backgrounds go here.
  * GameHubManager will get this instance and then determine which ones to load into the dialogue scene
  */
-public class RhythmGirlData : MonoBehaviour
+public class RhythmGirlData : MonoBehaviour, Character
 {
 
 
@@ -34,14 +34,32 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite portrait_1_bad;
     [SerializeField] public Sprite backgroundImage_1_bad;
 
+
+    [Header("Second Time")]
+    [SerializeField] public TextAsset inkJSON_2;
+    [SerializeField] public Sprite portrait_2;
+    [SerializeField] public Sprite backgroundImage_2;
+
+    [Header("SecondTime Result: Good")]
+    [SerializeField] public TextAsset inkJSON_2_good;
+    [SerializeField] public Sprite portrait21_good;
+    [SerializeField] public Sprite backgroundImage_2_good;
+
+    [Header("SecondTime Result: Bad")]
+    [SerializeField] public TextAsset inkJSON_2_bad;
+    [SerializeField] public Sprite portrait_2_bad;
+    [SerializeField] public Sprite backgroundImage_2_bad;
+
+
+
     private int lastPlayerScore; // apparently c# has no null ints
     public const int MIN_SCORE_EASY = 1200;
     public const int MIN_SCORE_NORMAL = 2000;
     public const int MIN_SCORE_HARD = 3000;
     private int numTimesPlayed = 0;
 
-    // states 
-    public const string FIRST_TIME = "first";
+    // states
+    //public const string FIRST_TIME = "first";
     public const string FIRST_RESULT_BAD = "firstResultBad";
     public const string FIRST_RESULT_GOOD = "firstResultGood";
 
@@ -62,17 +80,25 @@ public class RhythmGirlData : MonoBehaviour
     private string currentState; // determines which starting dialogue to load
     private string playerResultState; // determines which result dialogue to play
 
+
     private List<int> chosenMusicSheet;
 
     //private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
 
+    private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
+    private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
+
+
+
+
+    //private Dictionary<int, ArrayList> assetMap = new Dictionary<int, ArrayList>();
     public static RhythmGirlData GetInstance()
     {
         return instance;
     }
 
     private void Awake()
-    { 
+    {
         if (instance != null && instance != this)
         {
             // if instance is null and there is another instance
@@ -84,7 +110,7 @@ public class RhythmGirlData : MonoBehaviour
             instance = this;
         }
 
-        currentState = FIRST_TIME;
+        currentState = STARTING_FIRST_TIME;
 
         // init the starting map values
         resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good});
@@ -102,15 +128,29 @@ public class RhythmGirlData : MonoBehaviour
 
 
     // use the constant strings above. 
-    public void SetState(string state) {
-        this.currentState = state;
-    }
+    //public void SetState(string state) {
+    //    this.currentState = state;
+    //}
 
 
-
-    public string GetState()
+    public string GetStartingState()
     {
         return this.currentState;
+    }
+
+    public string GetResultState()
+    {
+        return this.playerResultState;
+    }
+
+    public void SetRelationToPlayer(int newValue) 
+    {
+        this.relationToPlayer = newValue;
+    }
+
+    public int GetRelationToPlayer()
+    {
+        return this.relationToPlayer;
     }
 
     public void SetLastPlayerScore(int score)
@@ -118,7 +158,7 @@ public class RhythmGirlData : MonoBehaviour
         this.numTimesPlayed++;
         this.lastPlayerScore = score;
 
-        DetermineState();
+        DetermineResultState();
     }
 
     public void SetDifficulty(List<int> musicSheet)
@@ -126,33 +166,10 @@ public class RhythmGirlData : MonoBehaviour
         this.chosenMusicSheet = musicSheet;
     }
 
-    public string GetLastDifficulty()
-    {
-        List<int> easy = MusicCharts.epicSongEasy;
-        List<int> normal = MusicCharts.epicSongNormal;
-        List<int> hard = MusicCharts.epicSongHard;
-
-        if (chosenMusicSheet.Equals(hard))
-        {
-            return "hard was picked";
-
-        }
-        else if (chosenMusicSheet.Equals(normal))
-        {
-            return "normal was picked";
-        }
-        else if (chosenMusicSheet.Equals(easy))
-        {
-            return "easy was picked";
-        }
-        else
-        {
-            return null;
-        }
-    }
+ 
 
 
-    private void DetermineState()
+    private void DetermineResultState()
     {
         // C# does reference checking on List.Equals (I think)
         // should be pretty fast to compare the sheets. 
@@ -167,7 +184,7 @@ public class RhythmGirlData : MonoBehaviour
           
             if (lastPlayerScore >= MIN_SCORE_HARD)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
 
@@ -177,7 +194,7 @@ public class RhythmGirlData : MonoBehaviour
             // 86 notes total, 2000 is a nice threshold.
             if(lastPlayerScore >= MIN_SCORE_NORMAL)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
         }
@@ -186,21 +203,35 @@ public class RhythmGirlData : MonoBehaviour
             // 53 notes for easy, 800
             if(lastPlayerScore >= MIN_SCORE_EASY)
             {
-                SetState(RhythmGirlData.FIRST_RESULT_GOOD);
+                playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
         }
-        SetState(RhythmGirlData.FIRST_RESULT_BAD);
+        playerResultState = RhythmGirlData.RESULT_BAD;
     }
 
 
 
 
-    public ArrayList GetAssets()
+    //public ArrayList GetAssets()
+    //{
+    //    return assetMap[currentState];
+    //}
+
+    public ArrayList GetStartingAssets()
+    { 
+        return this.startingSceneAssetMap[currentState];
+    }
+
+    public ArrayList GetResultAssets()
     {
-        return assetMap[currentState];
+        return this.resultAssetMap[playerResultState];
     }
 
+    public override string ToString()
+    {
+        return "rhythmGirl";
+    }
 
     void Start()
     {
