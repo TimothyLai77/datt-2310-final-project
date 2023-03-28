@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText, perfectHitsText, greatHitsText, goodHitsText;
 
-
     [SerializeField] public GameObject difficultySelectorPanel;
 
     [SerializeField] private GameObject AccuracySpawner;
@@ -45,16 +44,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GreatHit;
     [SerializeField] private GameObject GoodHit;
     [SerializeField] private GameObject MissHit;
-
-    private float movingSpeed = -205f;
-    private Vector3 movingVec = new Vector3(-0.004f, 0f, 0f);
-    private Vector3 background1Ini = new Vector3(-0.4f, 4f, 0f);
-    private Vector3 background2Ini = new Vector3(20f, 4f, 0f);
-    public GameObject background1;
-    public GameObject background2;
-    private float backgroundTimer;
-    private float backgroundRef;
-    public float BackgroundMovingSpeed = 1f; //higher means slower
 
     // Start is called before the first frame update
     void Start()
@@ -67,12 +56,6 @@ public class GameManager : MonoBehaviour
         greatHits = 0;
         goodHits = 0;
 
-        backgroundTimer = 0;
-        backgroundRef = 5f;
-        //calledTime = 0; //test
-        movingSpeed = movingSpeed / 50f / BackgroundMovingSpeed;
-        movingVec = new Vector3(movingSpeed, 0f, 0f);
-        //Debug.Log("movingSpeed:"+movingSpeed);
     }
 
     void playingMusic()
@@ -126,26 +109,6 @@ public class GameManager : MonoBehaviour
                 greatHitsText.text = greatHits.ToString();
                 goodHitsText.text = goodHits.ToString();
             }
-        }
-        backgroundMoving();
-    }
-
-    public void backgroundMoving()
-    {
-        background1.transform.position = background1Ini;
-        background2.transform.position = background2Ini;
-        background1Ini = background1Ini + movingVec * Time.deltaTime;
-        background2Ini = background2Ini + movingVec * Time.deltaTime;
-        //Debug.Log(background1Ini);
-        backgroundTimer += Time.deltaTime;
-        //calledTime++; //test
-        if (backgroundTimer >= backgroundRef * BackgroundMovingSpeed)
-        {
-            //Debug.Log(background1Ini + "attime" + backgroundTimer +"called" + calledTime); //test
-            //calledTime = 0; //test
-            backgroundTimer = 0f;
-            background1Ini = new Vector3(-0.4f, 4f, 0f);
-            background2Ini = new Vector3(20f, 4f, 0f);
         }
     }
 
@@ -202,8 +165,6 @@ public class GameManager : MonoBehaviour
         notesMissed++;
     }
 
-    
-
     public void Restart()
     {
         SceneManager.LoadScene("RhythmGame"); //this will have the name of your main game scene
@@ -211,6 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
+        
         HubManager hm = HubManager.GetInstance();
         Character c = hm.GetLastCharacter();
         
