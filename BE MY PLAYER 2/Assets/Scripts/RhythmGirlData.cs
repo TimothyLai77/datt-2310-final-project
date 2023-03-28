@@ -24,6 +24,11 @@ public class RhythmGirlData : MonoBehaviour
     [SerializeField] public Sprite portrait_1_good;
     [SerializeField] public Sprite backgroundImage_1_good;
 
+    [Header("FirstTime Result: Okay")]
+    [SerializeField] public TextAsset inkJSON_1_okay;
+    [SerializeField] public Sprite portrait_1_okay;
+    [SerializeField] public Sprite backgroundImage_1_okay;
+
     [Header("FirstTime Result: Bad")]
     [SerializeField] public TextAsset inkJSON_1_bad;
     [SerializeField] public Sprite portrait_1_bad;
@@ -40,10 +45,26 @@ public class RhythmGirlData : MonoBehaviour
     public const string FIRST_RESULT_BAD = "firstResultBad";
     public const string FIRST_RESULT_GOOD = "firstResultGood";
 
-    private string currentState;
+    // new result states
+    public const string RESULT_GOOD = "RESULT_GOOD";
+    public const string RESULT_BAD = "RESULT_BAD";
+    public const string RESULT_OKAY = "RESULT_OKAY";
+
+    // new states
+    public const string STARTING_FIRST_TIME = "FIRST";
+
+    private const int NETURAL_RELATIONSHIP = 5;
+    private const int POSITIVE_RELATIONSHIP = 7;
+    private const int NEGATIVE_RELATIONSHIP = 3;
+
+    private int relationToPlayer; 
+
+    private string currentState; // determines which starting dialogue to load
+    private string playerResultState; // determines which result dialogue to play
+
     private List<int> chosenMusicSheet;
 
-    private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
+    //private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
 
     public static RhythmGirlData GetInstance()
     {
@@ -65,9 +86,18 @@ public class RhythmGirlData : MonoBehaviour
 
         currentState = FIRST_TIME;
 
-        assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
-        assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
-        assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
+        // init the starting map values
+        resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good});
+        resultAssetMap.Add(RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad });
+        resultAssetMap.Add(RESULT_OKAY, new ArrayList() { inkJSON_1_okay, portrait_1_okay, backgroundImage_1_okay });
+
+        startingSceneAssetMap.Add(STARTING_FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1});
+
+        //assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
+        //assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
+        //assetMap.Add(FIRST_RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1 });
+        this.relationToPlayer = 5; // starting relationship to the player
+        //assetMap.Add(NETURAL_RELATIONSHIP, new ArrayList() { inkJSON_1})
     }
 
 
@@ -130,7 +160,7 @@ public class RhythmGirlData : MonoBehaviour
         List<int> normal = MusicCharts.epicSongNormal;
         List<int> hard = MusicCharts.epicSongHard;
 
-
+        // these will be swapped out for pass/fail values later
         if (chosenMusicSheet.Equals(hard))
         {
             // 164 notes for hard, 3000 should be good
