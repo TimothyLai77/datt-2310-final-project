@@ -59,9 +59,6 @@ public class RhythmGirlData : MonoBehaviour, Character
     private int numTimesPlayed = 0;
 
     // states
-    //public const string FIRST_TIME = "first";
-    public const string FIRST_RESULT_BAD = "firstResultBad";
-    public const string FIRST_RESULT_GOOD = "firstResultGood";
 
     // new result states
     public const string RESULT_GOOD = "RESULT_GOOD";
