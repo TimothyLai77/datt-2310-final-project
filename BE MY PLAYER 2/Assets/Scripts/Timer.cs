@@ -16,10 +16,15 @@ public class Timer : MonoBehaviour
     public bool levelFinished;
 
     public GameObject finish;
+    public static Timer instance;
+
+    //Collecting System
+    public int appleNum;
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
+        appleNum = 0;
     }
 
     // Update is called once per frame
@@ -32,5 +37,11 @@ public class Timer : MonoBehaviour
             currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
             timerText.text = currentTime.ToString("0.000");
         }
+    }
+
+    public void AppleCollect()
+    {
+        appleNum++;
+        Debug.Log("Apple you got:" + appleNum); //test
     }
 }

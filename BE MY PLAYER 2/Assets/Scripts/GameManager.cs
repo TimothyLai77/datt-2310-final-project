@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public Text percentHitText, notesHitText, notesMissedText, finalScoreText, perfectHitsText, greatHitsText, goodHitsText;
 
+
     [SerializeField] public GameObject difficultySelectorPanel;
 
     [SerializeField] private GameObject AccuracySpawner;
@@ -200,6 +201,8 @@ public class GameManager : MonoBehaviour
 
         notesMissed++;
     }
+
+    
 
     public void Restart()
     {
