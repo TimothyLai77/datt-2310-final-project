@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         // if the last character is set to null, -> only load the minigame, do not save score
         if (!(c is null))
         {
-            Debug.Log("no bug ");
+            //Debug.Log("no bug ");
             c.SetLastPlayerScore(this.currentScore); // setting the score also determines which dialouge to load 
         }
  
