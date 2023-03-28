@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Song
 {
 	public string title;
 	public string composer;
-	public AudioClip audioClip;
+	public string audioClip;
 	public float bpm;
 	public float subdivisions;
 	public float startDelay;
@@ -15,21 +16,8 @@ public class Song
 	public List<int> normalChart = new List<int>();
 	public List<int> hardChart = new List<int>();
 
-	public Song()
+	public static Song CreateFromJSON(string jsonString)
     {
-
-    }
-
-	public Song(string title, string composer, AudioClip audioClip, float bpm, float subdivisions, float startDelay, List<int> easyChart, List<int> normalChart, List<int> hardChart)
-    {
-		this.title = title;
-		this.composer = composer;
-		this.audioClip = audioClip;
-		this.bpm = bpm;
-		this.subdivisions = subdivisions;
-		this.startDelay = startDelay;
-		this.easyChart = easyChart;
-		this.normalChart = normalChart;
-		this.hardChart = hardChart;
+		return JsonUtility.FromJson<Song>(jsonString);
     }
 }

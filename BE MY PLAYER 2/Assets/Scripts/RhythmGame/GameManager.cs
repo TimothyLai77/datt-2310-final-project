@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class GameManager : MonoBehaviour
     public BeatScroller theBS;
     public static GameManager instance;
 
+    public List<Song> songs = new List<Song>();
+
     public int currentScore;
     public int scorePerNote = 10;
 
     public int currentMultiplier;
-    public int multiplierTracker;
+    public int currentCombo;
     public int[] multiplierThresholds;
 
     public bool invokeMusic = true;
@@ -49,13 +52,19 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
+
+        loadSongs();
+        if (songs.Count > 0)
+        {
+            initializeSong(songs[0]);
+        }
+
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
 
         perfectHits = 0;
         greatHits = 0;
         goodHits = 0;
-
     }
 
     void playingMusic()
@@ -65,13 +74,9 @@ public class GameManager : MonoBehaviour
         afterMusic = true;
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
-        
-
         if(!startPlaying)
         {
             // super jank fix later
@@ -135,10 +140,10 @@ public class GameManager : MonoBehaviour
 
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {
-            multiplierTracker++;
-            if(multiplierThresholds[currentMultiplier-1] <= multiplierTracker)
+            currentCombo++;
+            if(multiplierThresholds[currentMultiplier-1] <= currentCombo)
             {
-                multiplierTracker = 0;
+                currentCombo = 0;
                 currentMultiplier++;
             }
         }
@@ -159,7 +164,7 @@ public class GameManager : MonoBehaviour
         missHitInstance.transform.position = AccuracySpawner.transform.position;
 
         currentMultiplier = 1;
-        multiplierTracker = 0;
+        currentCombo = 0;
         multiplierText.text = "Multiplier: x" + currentMultiplier;
 
         notesMissed++;
@@ -181,5 +186,31 @@ public class GameManager : MonoBehaviour
         //Debug.Log(RhythmGirlData.GetInstance().GetState());
         //Debug.Log(RhythmGirlData.GetInstance().GetLastDifficulty());
         //SceneManager.LoadScene("DialogueScene");
+    }
+
+    private void loadSongs()
+    {
+        string songsDirectory = Application.dataPath + "/Music/RhythmGame";
+        //Debug.Log(songsDirectory);
+
+        DirectoryInfo dir = new DirectoryInfo(songsDirectory);
+        FileInfo[] files = dir.GetFiles("*.json");
+
+        foreach (FileInfo file in files) {
+
+            //Debug.Log(songsDirectory + file.Name);
+
+            string songJSON = File.ReadAllText(songsDirectory + "/" + file.Name);
+
+            //Debug.Log(songJSON);
+
+            Song song = Song.CreateFromJSON(songJSON);
+            songs.Add(song);
+        }
+    }
+
+    private void initializeSong(Song song)
+    {
+
     }
 }
