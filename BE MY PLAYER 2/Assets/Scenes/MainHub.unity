@@ -624,9 +624,21 @@ MonoBehaviour:
   inkJSON_1_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
   portrait_1_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
   backgroundImage_1_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  inkJSON_1_okay: {fileID: 0}
+  portrait_1_okay: {fileID: 0}
+  backgroundImage_1_okay: {fileID: 0}
   inkJSON_1_bad: {fileID: 4900000, guid: e68b36a750c213041b30ed69f0afaee2, type: 3}
   portrait_1_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
   backgroundImage_1_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  inkJSON_2: {fileID: 0}
+  portrait_2: {fileID: 0}
+  backgroundImage_2: {fileID: 0}
+  inkJSON_2_good: {fileID: 0}
+  portrait21_good: {fileID: 0}
+  backgroundImage_2_good: {fileID: 0}
+  inkJSON_2_bad: {fileID: 0}
+  portrait_2_bad: {fileID: 0}
+  backgroundImage_2_bad: {fileID: 0}
 --- !u!1 &302527211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,12 +1479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2550280adabc04fa9ae278e47baa566e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON1_1: {fileID: 4900000, guid: 212f35ee566324e4f8e7082cb052a0df, type: 3}
-  portrait1: {fileID: 21300000, guid: 802bd50c9df49304ba934fb7d13e8f22, type: 3}
-  backgroundImage1: {fileID: 21300000, guid: 09e79e5e1ad2953479351be569020b77, type: 3}
-  inkJSON1_2: {fileID: 0}
-  portrait2: {fileID: 0}
-  backgroundImage2: {fileID: 0}
 --- !u!4 &1316742915
 Transform:
   m_ObjectHideFlags: 0
@@ -1871,6 +1877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842422423}
+  - component: {fileID: 1842422425}
   m_Layer: 0
   m_Name: Characters
   m_TagString: Untagged
@@ -1889,9 +1896,10 @@ Transform:
   m_LocalPosition: {x: 185.29309, y: 388.54678, z: -8.1049385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 276675138}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1842422425
 MonoBehaviour:
@@ -1911,7 +1919,10 @@ MonoBehaviour:
   inkJSON_1_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
   portrait_1_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
   backgroundImage_1_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
-  inkJSON_1_bad: {fileID: 4900000, guid: 8dcf46ad3aaec43b397de7c759159737, type: 3}
+  inkJSON_1_okay: {fileID: 0}
+  portrait_1_okay: {fileID: 0}
+  backgroundImage_1_okay: {fileID: 0}
+  inkJSON_1_bad: {fileID: 4900000, guid: a613e774a66f24026842de30129fff72, type: 3}
   portrait_1_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
   backgroundImage_1_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
   inkJSON_2: {fileID: 0}
@@ -1965,7 +1976,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2040000714
 GameObject:
