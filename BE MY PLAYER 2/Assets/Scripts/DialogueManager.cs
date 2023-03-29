@@ -108,6 +108,11 @@ public class DialogueManager : MonoBehaviour
             SceneManager.LoadScene("RhythmGame");
         });
 
+        currentStory.BindExternalFunction("startPlatformerGame", () =>
+        {
+            SceneManager.LoadScene("platformerDemo");
+        });
+
         ContinueStory(); // start the story
     }
 
