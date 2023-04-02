@@ -12,7 +12,22 @@ public class GameManager : MonoBehaviour
     public BeatScroller theBS;
     public static GameManager instance;
 
+    public enum GAME_STATE
+    {
+        SongSelection,
+        SongPlaying,
+        SongFinished
+    }
+
+    public GAME_STATE currentGameState;
+
     public List<Song> songs = new List<Song>();
+    public int currentSongIndex = 0;
+    public Song currentSelectedSong;
+
+    public string[] songDifficulties = { "Easy", "Normal", "Hard" };
+    public int currentDifficultyIndex = 0;
+    public string currentSongDifficulty;
 
     public int currentScore;
     public int scorePerNote = 10;
@@ -56,8 +71,11 @@ public class GameManager : MonoBehaviour
         loadSongs();
         if (songs.Count > 0)
         {
-            initializeSong(songs[0]);
+            initializeSong(songs[currentSongIndex]);
         }
+
+        currentGameState = GAME_STATE.SongSelection;
+        currentSongDifficulty = songDifficulties[currentDifficultyIndex];
 
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
@@ -77,7 +95,44 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!startPlaying)
+        if (currentGameState == GAME_STATE.SongSelection)
+        {
+            if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W))
+            {            
+                currentSongIndex = (currentSongIndex == 0) ? songs.Count - 1 : currentSongIndex - 1;
+                currentSelectedSong = songs[currentSongIndex];
+                Debug.Log("currentSongIndex: " + currentSongIndex);
+                Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
+            }
+            else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+            {
+                currentSongIndex = (currentSongIndex == songs.Count - 1) ? 0 : currentSongIndex + 1;
+                currentSelectedSong = songs[currentSongIndex];
+                Debug.Log("currentSongIndex: " + currentSongIndex);
+                Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
+            }
+            
+            if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.D))
+            {
+                currentDifficultyIndex = (currentDifficultyIndex == 0) ? songDifficulties.Length - 1 : currentDifficultyIndex - 1;
+                currentSongDifficulty = songDifficulties[currentDifficultyIndex];
+                Debug.Log("Currently Selected Difficulty: " + currentSongDifficulty);
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.A))
+            {
+                currentDifficultyIndex = (currentDifficultyIndex == songDifficulties.Length - 1) ? 0 : currentDifficultyIndex + 1;
+                currentSongDifficulty = songDifficulties[currentDifficultyIndex];
+                Debug.Log("Currently Selected Difficulty: " + currentSongDifficulty);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                currentGameState = GAME_STATE.SongPlaying;
+            }
+        }
+
+
+        else if(!startPlaying)
         {
             // super jank fix later
             if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) 
@@ -211,6 +266,6 @@ public class GameManager : MonoBehaviour
 
     private void initializeSong(Song song)
     {
-
+        currentSelectedSong = song;
     }
 }
