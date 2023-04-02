@@ -211,12 +211,28 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
+
+        HubManager hm = HubManager.GetInstance();
+        Character c = hm.GetLastCharacter();
+        
+        // if the last character is set to null, -> only load the minigame, do not save score
+        if (!(c is null))
+        {
+            //Debug.Log("no bug ");
+            c.SetLastPlayerScore(this.currentScore); // setting the score also determines which dialouge to load 
+        }
+ 
+        hm.LoadDialogueFromLastCharacter();
+
+
+
+
         // set the score the player achieved.
-        RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
-        rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
+        //RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();
+        //rhythmGirlInstance.SetLastPlayerScore(this.currentScore); // updating the score now determines the dialogue outcome
         //iArrayList assets = RhythmGirlData.GetInstance().GetAssets();
         //DialogueManager.GetInstance().EnterDialogueMode((TextAsset) assets[0], (Sprite) assets[1], (Sprite)assets[2]);
-        HubManager.GetInstance().RoomOneButton();
+        //HubManager.GetInstance().RoomOneButton();
         //Debug.Log(RhythmGirlData.GetInstance().GetState());
         //Debug.Log(RhythmGirlData.GetInstance().GetLastDifficulty());
         //SceneManager.LoadScene("DialogueScene");
