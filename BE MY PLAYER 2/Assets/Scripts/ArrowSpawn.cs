@@ -99,7 +99,7 @@ public class ArrowSpawn : MonoBehaviour
                 musicSheet = MusicCharts.epicSongHard;
                 hasStartedSpawn = true;
                 RhythmGirlData.GetInstance().SetDifficulty(musicSheet);
-                Debug.Log("hasStartedSpawn - nomral");
+                Debug.Log("hasStartedSpawn - hard");
             }
         }
         else

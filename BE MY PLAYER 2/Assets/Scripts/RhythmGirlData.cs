@@ -12,7 +12,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
 
     private static RhythmGirlData instance;
-    
+
     // these variable names kinda break convention but its easier to read...
     [Header("First Time")]
     [SerializeField] public TextAsset inkJSON_1;
@@ -59,6 +59,9 @@ public class RhythmGirlData : MonoBehaviour, Character
     private int numTimesPlayed = 0;
 
     // states
+    //public const string FIRST_TIME = "first";
+    public const string FIRST_RESULT_BAD = "firstResultBad";
+    public const string FIRST_RESULT_GOOD = "firstResultGood";
 
     // new result states
     public const string RESULT_GOOD = "RESULT_GOOD";
@@ -72,7 +75,7 @@ public class RhythmGirlData : MonoBehaviour, Character
     private const int POSITIVE_RELATIONSHIP = 7;
     private const int NEGATIVE_RELATIONSHIP = 3;
 
-    private int relationToPlayer; 
+    private int relationToPlayer;
 
     private string currentState; // determines which starting dialogue to load
     private string playerResultState; // determines which result dialogue to play
@@ -110,11 +113,11 @@ public class RhythmGirlData : MonoBehaviour, Character
         currentState = STARTING_FIRST_TIME;
 
         // init the starting map values
-        resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good});
+        resultAssetMap.Add(RESULT_GOOD, new ArrayList() { inkJSON_1_good, portrait_1_good, backgroundImage_1_good });
         resultAssetMap.Add(RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1_bad });
         resultAssetMap.Add(RESULT_OKAY, new ArrayList() { inkJSON_1_okay, portrait_1_okay, backgroundImage_1_okay });
 
-        startingSceneAssetMap.Add(STARTING_FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1});
+        startingSceneAssetMap.Add(STARTING_FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
 
         //assetMap.Add(FIRST_TIME, new ArrayList() { inkJSON_1, portrait_1, backgroundImage_1 });
         //assetMap.Add(FIRST_RESULT_BAD, new ArrayList() { inkJSON_1_bad, portrait_1_bad, backgroundImage_1 });
@@ -140,7 +143,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         return this.playerResultState;
     }
 
-    public void SetRelationToPlayer(int newValue) 
+    public void SetRelationToPlayer(int newValue)
     {
         this.relationToPlayer = newValue;
     }
@@ -163,7 +166,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.chosenMusicSheet = musicSheet;
     }
 
- 
+
 
 
     private void DetermineResultState()
@@ -178,7 +181,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         if (chosenMusicSheet.Equals(hard))
         {
             // 164 notes for hard, 3000 should be good
-          
+
             if (lastPlayerScore >= MIN_SCORE_HARD)
             {
                 playerResultState = RhythmGirlData.RESULT_GOOD;
@@ -189,16 +192,16 @@ public class RhythmGirlData : MonoBehaviour, Character
         else if (chosenMusicSheet.Equals(normal))
         {
             // 86 notes total, 2000 is a nice threshold.
-            if(lastPlayerScore >= MIN_SCORE_NORMAL)
+            if (lastPlayerScore >= MIN_SCORE_NORMAL)
             {
                 playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
         }
-        else if(chosenMusicSheet.Equals(easy))
+        else if (chosenMusicSheet.Equals(easy))
         {
             // 53 notes for easy, 800
-            if(lastPlayerScore >= MIN_SCORE_EASY)
+            if (lastPlayerScore >= MIN_SCORE_EASY)
             {
                 playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
@@ -216,7 +219,7 @@ public class RhythmGirlData : MonoBehaviour, Character
     //}
 
     public ArrayList GetStartingAssets()
-    { 
+    {
         return this.startingSceneAssetMap[currentState];
     }
 
@@ -232,12 +235,12 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

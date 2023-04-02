@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class HubManager : MonoBehaviour
 {
 
+
     [Header("FOR DEBUG AND TESTING DIALOGUE")]
     [SerializeField] public TextAsset inkJSON_DEBUG;
     [SerializeField] public Sprite portrait_DEBUG;
     [SerializeField] public Sprite backgroundImage_DEBUG;
-
     private static HubManager instance;
 
     private bool minigameStarted;
@@ -114,7 +114,7 @@ public class HubManager : MonoBehaviour
     public void RoomTwoButton() {
     
     }
-
+    
     public void StartDialogueDebug() {
         SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);
         SceneManager.LoadScene("DialogueScene");
