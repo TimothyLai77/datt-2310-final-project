@@ -1262,6 +1262,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2550280adabc04fa9ae278e47baa566e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inkJSON_DEBUG: {fileID: 0}
+  portrait_DEBUG: {fileID: 0}
+  backgroundImage_DEBUG: {fileID: 0}
 --- !u!4 &1316742915
 Transform:
   m_ObjectHideFlags: 0
@@ -2176,7 +2179,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1756416070}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1316742914}
+        m_TargetAssemblyTypeName: HubManager, Assembly-CSharp
+        m_MethodName: RoomTwoButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1756416070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,6 +2240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1842422423}
   - component: {fileID: 1842422425}
+  - component: {fileID: 1842422426}
   m_Layer: 0
   m_Name: Characters
   m_TagString: Untagged
@@ -2261,16 +2277,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inkJSON_1: {fileID: 4900000, guid: 212f35ee566324e4f8e7082cb052a0df, type: 3}
   portrait_1: {fileID: 21300000, guid: 802bd50c9df49304ba934fb7d13e8f22, type: 3}
-  backgroundImage_1: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  backgroundImage_1: {fileID: 21300000, guid: eaf9cf0a55f7b594097ea5d36f0e6c4c, type: 3}
   inkJSON_1_good: {fileID: 4900000, guid: 96e20a8cff1d68e4caf8f63ff2915ac7, type: 3}
   portrait_1_good: {fileID: 21300000, guid: 6e05e946fe932484e9695c8590fb0b6c, type: 3}
-  backgroundImage_1_good: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
-  inkJSON_1_okay: {fileID: 0}
-  portrait_1_okay: {fileID: 0}
-  backgroundImage_1_okay: {fileID: 0}
+  backgroundImage_1_good: {fileID: 21300000, guid: eaf9cf0a55f7b594097ea5d36f0e6c4c, type: 3}
+  inkJSON_1_okay: {fileID: 4900000, guid: 795989d067a654d6aa1686ab4eea55d9, type: 3}
+  portrait_1_okay: {fileID: 21300000, guid: 802bd50c9df49304ba934fb7d13e8f22, type: 3}
+  backgroundImage_1_okay: {fileID: 21300000, guid: eaf9cf0a55f7b594097ea5d36f0e6c4c, type: 3}
   inkJSON_1_bad: {fileID: 4900000, guid: 8dcf46ad3aaec43b397de7c759159737, type: 3}
   portrait_1_bad: {fileID: 21300000, guid: f4bfc7c14a083024ea9bdb01170aa29e, type: 3}
-  backgroundImage_1_bad: {fileID: 21300000, guid: ffcdee049cbff814a8827bacb8547a86, type: 3}
+  backgroundImage_1_bad: {fileID: 21300000, guid: eaf9cf0a55f7b594097ea5d36f0e6c4c, type: 3}
+  inkJSON_2: {fileID: 0}
+  portrait_2: {fileID: 0}
+  backgroundImage_2: {fileID: 0}
+  inkJSON_2_good: {fileID: 0}
+  portrait21_good: {fileID: 0}
+  backgroundImage_2_good: {fileID: 0}
+  inkJSON_2_bad: {fileID: 0}
+  portrait_2_bad: {fileID: 0}
+  backgroundImage_2_bad: {fileID: 0}
+--- !u!114 &1842422426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842422422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5716c4b3c1a4ecaa1475e453725d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkJSON_1: {fileID: 4900000, guid: 528b1d73590ca4ff881e55736fb51e58, type: 3}
+  portrait_1: {fileID: 21300000, guid: 913af6ff8c05345fd8cd4231ae80921e, type: 3}
+  backgroundImage_1: {fileID: 21300000, guid: 736a5dc3fe36430498d6224fe7624eb8, type: 3}
+  inkJSON_1_good: {fileID: 4900000, guid: 285405651d369455ea5e81d39e4efa5e, type: 3}
+  portrait_1_good: {fileID: 21300000, guid: 389019361178e4d00b80a1eeb3beadf2, type: 3}
+  backgroundImage_1_good: {fileID: 21300000, guid: 736a5dc3fe36430498d6224fe7624eb8, type: 3}
+  inkJSON_1_okay: {fileID: 4900000, guid: 03ae79d0f81e24f80918ffbb2be0c616, type: 3}
+  portrait_1_okay: {fileID: 21300000, guid: 913af6ff8c05345fd8cd4231ae80921e, type: 3}
+  backgroundImage_1_okay: {fileID: 21300000, guid: 736a5dc3fe36430498d6224fe7624eb8, type: 3}
+  inkJSON_1_bad: {fileID: 4900000, guid: 5b271050043234dbdb9624a8ddf792a2, type: 3}
+  portrait_1_bad: {fileID: 21300000, guid: b3c1f11e02ca74a05ab1b18fb4472371, type: 3}
+  backgroundImage_1_bad: {fileID: 21300000, guid: 736a5dc3fe36430498d6224fe7624eb8, type: 3}
   inkJSON_2: {fileID: 0}
   portrait_2: {fileID: 0}
   backgroundImage_2: {fileID: 0}

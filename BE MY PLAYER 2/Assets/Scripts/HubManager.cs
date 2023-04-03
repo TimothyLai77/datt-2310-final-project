@@ -69,6 +69,14 @@ public class HubManager : MonoBehaviour
         SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
     }
 
+    public void RoomTwoButton()
+    {
+        this.lastCharacter = PlatformerGuyData.GetInstance();
+        ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets();
+        SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
+        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+    }
+
     /*
      * This method should be called when the game is finished
      * If the the minigame was started standalone, then it should bring it back to the hub.
@@ -111,9 +119,7 @@ public class HubManager : MonoBehaviour
         return this.minigameStarted;
     }
 
-    public void RoomTwoButton() {
-    
-    }
+
     
     public void StartDialogueDebug() {
         SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);

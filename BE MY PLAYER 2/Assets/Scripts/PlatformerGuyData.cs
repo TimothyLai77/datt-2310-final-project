@@ -44,7 +44,15 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     private static PlatformerGuyData instance;
 
+    private const double GOOD_TIME = 20;
+    private const double OKAY_TIME = 30;
+    // any time higher is bad
 
+    private const int MAX_APPLE_SCORE = 6;
+    private const int MID_APPLE_SCORE = 3;
+
+
+    private int playerAppleScore;
     private double lastPlayerTime;
 
     // states
@@ -134,13 +142,13 @@ public class PlatformerGuyData : MonoBehaviour, Character
     }
 
     // uhhh fix this
-    public void SetLastPlayerScore(int time)
+    public void SetLastPlayerScore(int appleScore)
     {
-        return;
+        this.playerAppleScore = appleScore;
     }
 
     // overloaded method, to accept the score as the time taken to complete the game
-    public void SetLastPlayerScore(double time)
+    public void SetLastPlayerTime(double time)
     {
         this.numTimePlayed++;
         this.lastPlayerTime = time;
@@ -150,6 +158,21 @@ public class PlatformerGuyData : MonoBehaviour, Character
     private void DetermineResultState()
     {
         // todo: compare player time against expected times, and upate the states
+        Debug.Log(lastPlayerTime);
+        Debug.Log(playerAppleScore);
+        if (lastPlayerTime <= GOOD_TIME && playerAppleScore==MAX_APPLE_SCORE)
+        {
+            // good dialouge only if all apples + good time
+            playerResultState = PlatformerGuyData.RESULT_GOOD;
+        } else if (lastPlayerTime <= OKAY_TIME && playerAppleScore>=MID_APPLE_SCORE)
+        {
+            // mid dialogue if aobut half
+            playerResultState = PlatformerGuyData.RESULT_OKAY;
+        } else 
+        {
+            // bad dialgoue otherwise
+            playerResultState = PlatformerGuyData.RESULT_BAD;
+        }
     }
 
     public ArrayList GetStartingAssets()
