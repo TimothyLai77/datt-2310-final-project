@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public Text scoreText;
     public Text multiplierText;
+    public Text songText, difficultyText;
 
     public float notesHit;
     public float notesMissed;
@@ -77,6 +78,9 @@ public class GameManager : MonoBehaviour
         currentGameState = GAME_STATE.SongSelection;
         currentSongDifficulty = songDifficulties[currentDifficultyIndex];
 
+        songText.text = "Song: " + currentSelectedSong.title;
+        difficultyText.text = "Difficulty: " + currentSongDifficulty;
+
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
 
@@ -105,6 +109,7 @@ public class GameManager : MonoBehaviour
             {            
                 currentSongIndex = (currentSongIndex == 0) ? songs.Count - 1 : currentSongIndex - 1;
                 currentSelectedSong = songs[currentSongIndex];
+                songText.text = "Song: " + currentSelectedSong.title;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
@@ -114,6 +119,7 @@ public class GameManager : MonoBehaviour
             {
                 currentSongIndex = (currentSongIndex == songs.Count - 1) ? 0 : currentSongIndex + 1;
                 currentSelectedSong = songs[currentSongIndex];
+                songText.text = "Song: " + currentSelectedSong.title;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
@@ -124,12 +130,14 @@ public class GameManager : MonoBehaviour
             {
                 currentDifficultyIndex = (currentDifficultyIndex == 0) ? songDifficulties.Length - 1 : currentDifficultyIndex - 1;
                 currentSongDifficulty = songDifficulties[currentDifficultyIndex];
+                difficultyText.text = "Difficulty: " + currentSongDifficulty;
                 Debug.Log("Currently Selected Difficulty: " + currentSongDifficulty);
             }
             else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.A))
             {
                 currentDifficultyIndex = (currentDifficultyIndex == songDifficulties.Length - 1) ? 0 : currentDifficultyIndex + 1;
                 currentSongDifficulty = songDifficulties[currentDifficultyIndex];
+                difficultyText.text = "Difficulty: " + currentSongDifficulty;
                 Debug.Log("Currently Selected Difficulty: " + currentSongDifficulty);
             }
 
@@ -137,6 +145,9 @@ public class GameManager : MonoBehaviour
             {
                 currentGameState = GAME_STATE.SongPlaying;
                 beatScroller.hasStarted = true;
+
+                songText.gameObject.SetActive(false);
+                difficultyText.gameObject.SetActive(false);
 
                 if (invokeMusic)
                 {
