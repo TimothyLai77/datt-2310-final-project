@@ -36,6 +36,12 @@ public class Timer : MonoBehaviour
         {
             currentTime = countDown ? currentTime -= Time.deltaTime : currentTime += Time.deltaTime;
             timerText.text = currentTime.ToString("0.000");
+
+            finishCheck.setScores(0, 999999999);
+        }
+        else
+        {
+            finishCheck.setScores(appleNum, currentTime);
         }
     }
 
