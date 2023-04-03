@@ -7,9 +7,8 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioSource theMusic;
     public bool startPlaying;
-    public BeatScroller theBS;
+    public BeatScroller beatScroller;
     public static GameManager instance;
 
     public enum GAME_STATE
@@ -25,6 +24,8 @@ public class GameManager : MonoBehaviour
     public int currentSongIndex = 0;
     public Song currentSelectedSong;
 
+    public AudioSource currentSongAudio; 
+
     public string[] songDifficulties = { "Easy", "Normal", "Hard" };
     public int currentDifficultyIndex = 0;
     public string currentSongDifficulty;
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour
     public int[] multiplierThresholds;
 
     public bool invokeMusic = true;
-    private bool afterMusic = false;
     public float delayMusicBeforeStart;
 
     public Text scoreText;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject MissHit;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
 
@@ -85,11 +85,15 @@ public class GameManager : MonoBehaviour
         goodHits = 0;
     }
 
+    void Start()
+    {
+        loadSongAudioSource();
+    }
+
     void playingMusic()
     {
         Debug.Log("musicStart");
-        theMusic.Play();
-        afterMusic = true;
+        currentSongAudio.Play();
     }
 
     // Update is called once per frame
@@ -101,15 +105,19 @@ public class GameManager : MonoBehaviour
             {            
                 currentSongIndex = (currentSongIndex == 0) ? songs.Count - 1 : currentSongIndex - 1;
                 currentSelectedSong = songs[currentSongIndex];
+                loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
+                Debug.Log("Current Selected Audio Source: " + currentSongAudio.clip.name);
             }
             else if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
             {
                 currentSongIndex = (currentSongIndex == songs.Count - 1) ? 0 : currentSongIndex + 1;
                 currentSelectedSong = songs[currentSongIndex];
+                loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
+                Debug.Log("Current Selected Audio Source: " + currentSongAudio.clip.name);
             }
             
             if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.D))
@@ -128,47 +136,33 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 currentGameState = GAME_STATE.SongPlaying;
-            }
-        }
+                beatScroller.hasStarted = true;
 
-
-        else if(!startPlaying)
-        {
-            // super jank fix later
-            if (Input.GetKeyDown("1") || Input.GetKeyDown("2") || Input.GetKeyDown("3")) 
-            {
-                startPlaying = true;
-                theBS.hasStarted = true;
                 if (invokeMusic)
                 {
                     Debug.Log("musicInvoked");
                     Invoke("playingMusic", delayMusicBeforeStart);
                     invokeMusic = false;
                 }
-                //theMusic.Play();
-                this.difficultySelectorPanel.SetActive(false); // hide difficult select prompt
             }
-            
         }
-        else 
+
+        if(currentGameState == GAME_STATE.SongFinished && !currentSongAudio.isPlaying && !resultsScreen.activeInHierarchy || Input.GetKeyDown("escape"))
         {
-            if(afterMusic && !theMusic.isPlaying && !resultsScreen.activeInHierarchy || Input.GetKeyDown("escape"))
-            {
-                resultsScreen.SetActive(true);
+            resultsScreen.SetActive(true);
 
-                notesHitText.text = notesHit.ToString();
-                notesMissedText.text = notesMissed.ToString();
+            notesHitText.text = notesHit.ToString();
+            notesMissedText.text = notesMissed.ToString();
 
-                float totalNotes = notesHit + notesMissed;
-                float percentHit = (notesHit / totalNotes) * 100f;
+            float totalNotes = notesHit + notesMissed;
+            float percentHit = (notesHit / totalNotes) * 100f;
                 
-                percentHitText.text = percentHit.ToString("F1") + "%";
-                finalScoreText.text = currentScore.ToString();
+            percentHitText.text = percentHit.ToString("F1") + "%";
+            finalScoreText.text = currentScore.ToString();
 
-                perfectHitsText.text = perfectHits.ToString();
-                greatHitsText.text = greatHits.ToString();
-                goodHitsText.text = goodHits.ToString();
-            }
+            perfectHitsText.text = perfectHits.ToString();
+            greatHitsText.text = greatHits.ToString();
+            goodHitsText.text = goodHits.ToString();
         }
     }
 
@@ -252,9 +246,6 @@ public class GameManager : MonoBehaviour
         FileInfo[] files = dir.GetFiles("*.json");
 
         foreach (FileInfo file in files) {
-
-            //Debug.Log(songsDirectory + file.Name);
-
             string songJSON = File.ReadAllText(songsDirectory + "/" + file.Name);
 
             //Debug.Log(songJSON);
@@ -267,5 +258,13 @@ public class GameManager : MonoBehaviour
     private void initializeSong(Song song)
     {
         currentSelectedSong = song;
+    }
+
+    private void loadSongAudioSource()
+    {
+        string songAudioSource = currentSelectedSong.audioClip;
+
+        // https://answers.unity.com/questions/668721/how-do-i-assign-audio-files-to-an-audioclip-array.html
+        currentSongAudio.clip = (AudioClip) Resources.Load("RhythmGame/" + songAudioSource);
     }
 }

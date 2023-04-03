@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class ArrowSpawn : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public GameObject arrowPreFeb; //right arrow prefeb
     public GameObject leftArrowPrefeb;
     public GameObject upArrowPrefeb;
@@ -22,6 +24,7 @@ public class ArrowSpawn : MonoBehaviour
     private bool spawnArrow = false;
     private int timeCounter;
     public float delaySheetBeforeStart = 0;
+
     int noteCurs = 0;
     int kindOfNotes = 1;
 
@@ -35,6 +38,7 @@ public class ArrowSpawn : MonoBehaviour
     {
         timeCounter = 0;
         beatTempo = beatTempo / 60f;
+        gameManager = GameManager.instance;
         //InvokeRepeating("SpawnMethod", 2, 1);
        
     }
@@ -50,18 +54,7 @@ public class ArrowSpawn : MonoBehaviour
         Debug.Log(timeCounter);
         timeCounter++;
         spawnArrow = true;
-        
     }
-
-   
-
-    private void invoke()
-    {
-        Debug.Log("invoke");
-        Invoke("SpawnMethod", delaySheetBeforeStart);
-    }
-
-
 
     void Update()
     {
@@ -75,107 +68,99 @@ public class ArrowSpawn : MonoBehaviour
         musicChart[1] = 12;
         print(musicChart[1]);*/
 
-
-
-        if (!hasStartedSpawn)
+        if (gameManager.currentGameState == GameManager.GAME_STATE.SongPlaying)
         {
-            if (Input.GetKeyDown("1"))
-            {
-                musicChart = MusicCharts.epicSongEasy;
-                hasStartedSpawn = true;
-                RhythmGirlData.GetInstance().SetDifficulty(musicChart);
-                Debug.Log("hasStartedSpawn - easy ");
-            }else if (Input.GetKeyDown("2"))
-            {
-                musicChart = MusicCharts.epicSongNormal;
-                hasStartedSpawn = true;
-                RhythmGirlData.GetInstance().SetDifficulty(musicChart);
-                Debug.Log("hasStartedSpawn - nomral");
-            }else if (Input.GetKeyDown("3"))
-            {
-                musicChart = MusicCharts.epicSongHard;
-                hasStartedSpawn = true;
-                RhythmGirlData.GetInstance().SetDifficulty(musicChart);
-                Debug.Log("hasStartedSpawn - nomral");
+            if (gameManager.currentSongDifficulty == "Easy") {
+                musicChart = gameManager.currentSelectedSong.easyChart;
+                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
             }
-        }
-        else
-        {
+            else if (gameManager.currentSongDifficulty == "Normal")
+            {
+                musicChart = gameManager.currentSelectedSong.normalChart;
+                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+            }
+            else if (gameManager.currentSongDifficulty == "Hard")
+            {
+                musicChart = gameManager.currentSelectedSong.hardChart;
+                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+            }
+
             if (invokemusicChart)
             {
-                invoke();
-                Debug.Log("firstinvoke");
+                SpawnMethod();
                 invokemusicChart = false;
+                Debug.Log(gameManager.currentSongDifficulty + " Chart Now Playing");
+                Debug.Log("Delay: " + delaySheetBeforeStart);
             }
 
-        }
-        if (spawnArrow)
-        {
-            beatCount += beatTempo * Time.deltaTime;
-
-            if ((int)beatCount > previousBeat)
+            if (spawnArrow)
             {
-                //Debug.Log((int)beatCount); // if you want to display the beat counter
-                previousBeat = (int)beatCount;
+                beatCount += beatTempo * Time.deltaTime;
 
-                if (musicChart.Count % 4 == 0) //check if last row is complete.
+                if ((int)beatCount > previousBeat)
                 {
-                    if (noteCurs < musicChart.Count) // check if sheet ends
+                    //Debug.Log((int)beatCount); // if you want to display the beat counter
+                    previousBeat = (int) beatCount;
+
+                    if (musicChart.Count % 4 == 0) //check if last row is complete.
                     {
-                        //check this row first block(from left)
-                        for (int i = 1; i <= kindOfNotes; i++)
+                        if (noteCurs < musicChart.Count) // check if sheet ends
                         {
-                            if (musicChart[noteCurs] == i)
+                            //check this row first block(from left)
+                            for (int i = 1; i <= kindOfNotes; i++)
                             {
-                                GameObject LeftArrow = Instantiate(leftArrowPrefeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                                if (musicChart[noteCurs] == i)
+                                {
+                                    GameObject LeftArrow = Instantiate(leftArrowPrefeb, leftArrowSpawnPos, Quaternion.Euler(0, 180, 0), transform);
+                                }
                             }
-                        }
-                        noteCurs++;
+                            noteCurs++;
 
-                        //check this row second block
-                        for (int i = 1; i <= kindOfNotes; i++)
-                        {
-                            if (musicChart[noteCurs] == i)
+                            //check this row second block
+                            for (int i = 1; i <= kindOfNotes; i++)
                             {
-                                GameObject UpArrow = Instantiate(upArrowPrefeb, upArrowSpawnPos, Quaternion.Euler(0, 0, 90), transform);
+                                if (musicChart[noteCurs] == i)
+                                {
+                                    GameObject UpArrow = Instantiate(upArrowPrefeb, upArrowSpawnPos, Quaternion.Euler(0, 0, 90), transform);
+                                }
                             }
-                        }
-                        noteCurs++;
+                            noteCurs++;
 
-                        //check this row third block
-                        for (int i = 1; i <= kindOfNotes; i++)
-                        {
-                            if (musicChart[noteCurs] == i)
+                            //check this row third block
+                            for (int i = 1; i <= kindOfNotes; i++)
                             {
-                                GameObject DownArrow = Instantiate(downArrowPrefeb, downArrowSpawnPos, Quaternion.Euler(0, 0, 270), transform);
+                                if (musicChart[noteCurs] == i)
+                                {
+                                    GameObject DownArrow = Instantiate(downArrowPrefeb, downArrowSpawnPos, Quaternion.Euler(0, 0, 270), transform);
+                                }
                             }
-                        }
-                        noteCurs++;
+                            noteCurs++;
 
-                        //check this row forth block
-                        for (int i = 1; i <= kindOfNotes; i++)
-                        {
-                            if (musicChart[noteCurs] == i)
+                            //check this row forth block
+                            for (int i = 1; i <= kindOfNotes; i++)
                             {
-                                GameObject RightArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                                if (musicChart[noteCurs] == i)
+                                {
+                                    GameObject RightArrow = Instantiate(arrowPreFeb, rightArrowSpawnPos, Quaternion.Euler(0, 0, 0), transform);
+                                }
+                            }
+                            noteCurs++;
+                        }
+                        else
+                        {
+                            if (musicChartEndDebug == true)
+                            {
+                                Debug.Log("Music sheet end.");
+                                musicChartEndDebug = false;
                             }
                         }
-                        noteCurs++;
                     }
                     else
                     {
-                        if (musicChartEndDebug == true)
-                        {
-                            Debug.Log("Music sheet end.");
-                            musicChartEndDebug = false;
-                        }
+
+                        Debug.Log("Sheet's last row not complete.");
+
                     }
-                }
-                else
-                {
-
-                    Debug.Log("Sheet's last row not complete.");
-
                 }
             }
         }
