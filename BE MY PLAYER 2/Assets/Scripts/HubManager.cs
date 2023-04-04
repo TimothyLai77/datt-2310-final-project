@@ -6,25 +6,14 @@ using UnityEngine.SceneManagement;
 public class HubManager : MonoBehaviour
 {
 
-    // for now just hard load the assets but ideally it should be kinad dynamic based
-    // on the state of the game like relationships -> differnet texts
 
-    // static types should help with loading across scenes
-    // https://stackoverflow.com/questions/32306704/how-to-pass-data-and-references-between-scenes-in-unity
-                
-    [Header("Person 1")]
-    [SerializeField] public TextAsset inkJSON1_1; // this is just pain...
-    [SerializeField] public Sprite portrait1;
-    [SerializeField] public Sprite backgroundImage1;
-
-    [Header("Person 2")]
-    [SerializeField] public TextAsset inkJSON1_2; // this is just pain...
-    [SerializeField] public Sprite portrait2;
-    [SerializeField] public Sprite backgroundImage2;
-
+    [Header("FOR DEBUG AND TESTING DIALOGUE")]
+    [SerializeField] public TextAsset inkJSON_DEBUG;
+    [SerializeField] public Sprite portrait_DEBUG;
+    [SerializeField] public Sprite backgroundImage_DEBUG;
     private static HubManager instance;
-    private RhythmGirlData rhythmGDataInstance;
-   
+
+    private bool minigameStarted;
 
     // Getter method to access the instance of this manager
     public static HubManager GetInstance()
@@ -36,6 +25,7 @@ public class HubManager : MonoBehaviour
     private TextAsset inkToLoad; // this is just pain...
     private Sprite portraitToLoad;
     private Sprite backgroundImageToLoad;
+    private Character lastCharacter;
 
     private void Awake()
     {
@@ -53,12 +43,13 @@ public class HubManager : MonoBehaviour
             // if instance is null set the instance to this object
             instance = this;
         }
+        this.lastCharacter = null;
     }
 
 
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -69,24 +60,70 @@ public class HubManager : MonoBehaviour
 
     public void RoomOneButton()
     {
-        // set what to laod then load the scene
-        //this.inkToLoad = this.inkJSON1_1;
-        //this.portraitToLoad = this.portrait1;
-        //this.backgroundImageToLoad = this.backgroundImage1;
-
-
-        
-        //SetToLoads(rhythmGDataInstance.inkJSON_1, rhythmGDataInstance.portrait_1, rhythmGDataInstance.backgroundImage_1);
-
-        ArrayList assetsToLoad = RhythmGirlData.GetInstance().GetAssets();
+        // room one = rhythmGirl.
+        // set that as the last cahracter talked to 
+        this.lastCharacter = RhythmGirlData.GetInstance();
+        ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets(); // get the assets
+        // load the references so the dialogueManger can grab the asset references
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        SceneManager.LoadScene("DialogueScene");
+        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+    }
+
+    public void RoomTwoButton()
+    {
+        this.lastCharacter = PlatformerGuyData.GetInstance();
+        ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets();
+        SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
+        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+    }
+
+    /*
+     * This method should be called when the game is finished
+     * If the the minigame was started standalone, then it should bring it back to the hub.
+     */
+    public void LoadDialogueFromLastCharacter()
+    {
+        if (!(this.lastCharacter is null))
+        {
+            // if need to load dialgoue after the minigame
+            ArrayList assetsToLoad = this.lastCharacter.GetResultAssets();
+            SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
+            SceneManager.LoadScene("DialogueScene");
+        }
+        else
+        {
+            // don't load result dialogue, just go back to hub. 
+            Debug.Log(lastCharacter.ToString());
+            SceneManager.LoadScene("MainHub");
+        }
+    }
+
+    public Character GetLastCharacter() 
+    {
+        return this.lastCharacter;
     }
 
 
+    /**
+     * Call this method when you only want to load the minigame, with no dialogue
+     */
+    public void StartRhythmMinigame()
+    {
+        // only load the minigame no dialogue needed.
+        //this.minigameStarted = true;
+        SceneManager.LoadScene("RhythmGame"); // change scene
+    }
 
-    public void RoomTwoButton() {
+    public bool MinigameStarted() 
+    {
+        return this.minigameStarted;
+    }
+
+
     
+    public void StartDialogueDebug() {
+        SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);
+        SceneManager.LoadScene("DialogueScene");
     }
 
     private void SetToLoads(TextAsset ink, Sprite portrait, Sprite background)

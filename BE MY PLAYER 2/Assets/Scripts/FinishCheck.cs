@@ -9,6 +9,10 @@ public class FinishCheck : MonoBehaviour
     public GameObject player;
     public bool levelFinished;
     // Start is called before the first frame update
+
+    private int appleScore;
+    private double playerTime;
+
     void Start()
     {
         levelFinished = false;
@@ -19,8 +23,28 @@ public class FinishCheck : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("MainHub");
+            //SceneManager.LoadScene("MainHub");
+
+            HubManager hm = HubManager.GetInstance();
+            PlatformerGuyData c = (PlatformerGuyData) hm.GetLastCharacter();
+
+            // if the last character is set to null, -> only load the minigame, do not save score
+            if (!(c is null))
+            {
+                
+                c.SetLastPlayerScore(appleScore);
+                c.SetLastPlayerTime(playerTime);
+            }
+
+            hm.LoadDialogueFromLastCharacter();
+
+
         }
+    }
+
+    public void setScores(int appleScore, double time) {
+        this.appleScore = appleScore;
+        this.playerTime = time;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
