@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-//beatTempo in this script based on 150
-
 public class ArrowSpawn : MonoBehaviour
 {
     private GameManager gameManager;
@@ -23,21 +21,19 @@ public class ArrowSpawn : MonoBehaviour
     public bool invokemusicChart = true;
     private bool spawnArrow = false;
     private int timeCounter;
-    public float delaySheetBeforeStart = 0;
 
     int noteCurs = 0;
     int kindOfNotes = 1;
 
     //private static List<int> musicChart = MusicCharts.epicSongNormal;
     List<int> musicChart;
-    public float beatTempo;
+    public float bpm;
     private float beatCount = 0f;
     private int previousBeat = 0;
 
     private void Start()
     {
         timeCounter = 0;
-        beatTempo = beatTempo / 60f;
         gameManager = GameManager.instance;
         //InvokeRepeating("SpawnMethod", 2, 1);
        
@@ -72,19 +68,19 @@ public class ArrowSpawn : MonoBehaviour
         {
             if (gameManager.currentSongDifficulty == "Easy") {
                 musicChart = gameManager.currentSelectedSong.easyChart;
-                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+                gameManager.delayMusicBeforeStart = gameManager.currentSelectedSong.startDelay;
             
             }
             else if (gameManager.currentSongDifficulty == "Normal")
             {
                 musicChart = gameManager.currentSelectedSong.normalChart;
-                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+                gameManager.delayMusicBeforeStart = gameManager.currentSelectedSong.startDelay;
               
             }
             else if (gameManager.currentSongDifficulty == "Hard")
             {
                 musicChart = gameManager.currentSelectedSong.hardChart;
-                delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+                gameManager.delayMusicBeforeStart = gameManager.currentSelectedSong.startDelay;
                 
             }
 
@@ -93,13 +89,13 @@ public class ArrowSpawn : MonoBehaviour
                 SpawnMethod();
                 invokemusicChart = false;
                 Debug.Log(gameManager.currentSongDifficulty + " Chart Now Playing");
-                Debug.Log("Delay: " + delaySheetBeforeStart);
+                Debug.Log("Delay: " + gameManager.delayMusicBeforeStart);
                 RhythmGirlData.GetInstance().SetDifficulty(gameManager.currentSongDifficulty);
             }
 
             if (spawnArrow)
             {
-                beatCount += beatTempo * Time.deltaTime;
+                beatCount += gameManager.currentSelectedSong.bpm / 60f * gameManager.currentSelectedSong.subdivisions * Time.deltaTime;
 
                 if ((int)beatCount > previousBeat)
                 {
