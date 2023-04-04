@@ -21,6 +21,8 @@ public class TitleScreenManager : MonoBehaviour
     private Vector3 bottomAnchorPosition = new Vector3();
     private Vector3 leftAnchorPosition = new Vector3();
 
+    public static bool introShown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,11 @@ public class TitleScreenManager : MonoBehaviour
         leftAnchorPosition = leftAnchor.transform.localPosition;
 
         LeanTween.rotateAround(logo, Vector3.forward, -360, 15f).setDelay(2f).setLoopClamp();
+        introShown = false;
+
+
+
+
     }
 
     // Update is called once per frame
