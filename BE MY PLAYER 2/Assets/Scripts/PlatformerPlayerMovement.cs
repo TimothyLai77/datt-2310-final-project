@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformerPlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public SoundFX sound;
 
     [Range(1, 10)]
     public float speed;
@@ -60,7 +61,9 @@ public class PlatformerPlayerMovement : MonoBehaviour
         //jump part
         if (Input.GetButton("Jump") && !isJumping)
         {
+            isJumping = true;
             rb.velocity = Vector2.up * jumpVelocity;
+            sound.JumpSound();
         }
 
         if (rb.velocity.y < 0)
