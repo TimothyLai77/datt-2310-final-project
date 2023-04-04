@@ -553,6 +553,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!1 &147230257
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +937,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!1 &176948553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1571,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!82 &335185286
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1949,6 +1952,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!82 &450328921
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3166,6 +3170,9 @@ MonoBehaviour:
   beatScroller: {fileID: 1012892474}
   currentGameState: 0
   songs: []
+  songTracks:
+  - {fileID: 8300000, guid: 6229c98d7dd091e4ea53db8439b28c22, type: 3}
+  - {fileID: 8300000, guid: 0173be1793176fc4e8ea950e797118e7, type: 3}
   currentSongIndex: 0
   currentSelectedSong:
     title: 
@@ -9166,6 +9173,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!82 &1622124337
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9923,6 +9931,7 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
 --- !u!82 &1954822632
 AudioSource:
   m_ObjectHideFlags: 0
