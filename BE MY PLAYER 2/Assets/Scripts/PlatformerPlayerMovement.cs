@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformerPlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float customG;
 
     [Range(1, 10)]
     public float speed;
@@ -65,12 +66,12 @@ public class PlatformerPlayerMovement : MonoBehaviour
 
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * customG * (fallMultiplier - 1) * Time.deltaTime;
             isFalling = false;//debug
             //Debug.Log("fall");
         } else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * customG * (lowJumpMultiplier - 1) * Time.deltaTime;
             isFalling = true;//debug
             //Debug.Log("low");
         } 
