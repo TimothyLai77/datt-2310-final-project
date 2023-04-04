@@ -53,9 +53,9 @@ public class RhythmGirlData : MonoBehaviour, Character
 
 
     private int lastPlayerScore; // apparently c# has no null ints
-    public const int MIN_SCORE_EASY = 1200;
-    public const int MIN_SCORE_NORMAL = 2000;
-    public const int MIN_SCORE_HARD = 3000;
+    public const int MIN_SCORE_EASY = 1000;
+    public const int MIN_SCORE_NORMAL = 2500;
+    public const int MIN_SCORE_HARD = 3500;
     private int numTimesPlayed = 0;
 
     // states
@@ -81,7 +81,8 @@ public class RhythmGirlData : MonoBehaviour, Character
     private string playerResultState; // determines which result dialogue to play
 
 
-    private List<int> chosenMusicSheet;
+    //private List<int> chosenMusicSheet;
+    private string chosenDifficulty;
 
     //private Dictionary<string, ArrayList> assetMap = new Dictionary<string, ArrayList>();
 
@@ -161,9 +162,9 @@ public class RhythmGirlData : MonoBehaviour, Character
         DetermineResultState();
     }
 
-    public void SetDifficulty(List<int> musicSheet)
+    public void SetDifficulty(string difficulty)
     {
-        this.chosenMusicSheet = musicSheet;
+        this.chosenDifficulty = difficulty;
     }
 
 
@@ -173,12 +174,10 @@ public class RhythmGirlData : MonoBehaviour, Character
     {
         // C# does reference checking on List.Equals (I think)
         // should be pretty fast to compare the sheets. 
-        List<int> easy = MusicCharts.epicSongEasy;
-        List<int> normal = MusicCharts.epicSongNormal;
-        List<int> hard = MusicCharts.epicSongHard;
+
 
         // these will be swapped out for pass/fail values later
-        if (chosenMusicSheet.Equals(hard))
+        if (chosenDifficulty.Equals("Hard"))
         {
             // 164 notes for hard, 3000 should be good
 
@@ -187,9 +186,15 @@ public class RhythmGirlData : MonoBehaviour, Character
                 playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
+            else if (lastPlayerScore >= MIN_SCORE_HARD / 2)
+            {
+                playerResultState = RhythmGirlData.RESULT_OKAY;
+                return;
+            }
+
 
         }
-        else if (chosenMusicSheet.Equals(normal))
+        else if (chosenDifficulty.Equals("Normal"))
         {
             // 86 notes total, 2000 is a nice threshold.
             if (lastPlayerScore >= MIN_SCORE_NORMAL)
@@ -197,8 +202,15 @@ public class RhythmGirlData : MonoBehaviour, Character
                 playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
+            else if (lastPlayerScore >= MIN_SCORE_NORMAL / 2)
+            {
+                playerResultState = RhythmGirlData.RESULT_OKAY;
+                return;
+            }
+
+
         }
-        else if (chosenMusicSheet.Equals(easy))
+        else if (chosenDifficulty.Equals("Easy"))
         {
             // 53 notes for easy, 800
             if (lastPlayerScore >= MIN_SCORE_EASY)
@@ -206,6 +218,12 @@ public class RhythmGirlData : MonoBehaviour, Character
                 playerResultState = RhythmGirlData.RESULT_GOOD;
                 return;
             }
+            else if (lastPlayerScore >= MIN_SCORE_EASY / 2)
+            {
+                playerResultState = RhythmGirlData.RESULT_OKAY;
+                return;
+            }
+
         }
         playerResultState = RhythmGirlData.RESULT_BAD;
     }
