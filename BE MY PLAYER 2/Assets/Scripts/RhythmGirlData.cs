@@ -159,7 +159,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.numTimesPlayed++;
         this.lastPlayerScore = score;
 
-        DetermineResultState();
+        //DetermineResultState();
     }
 
     public void SetDifficulty(string difficulty)
@@ -167,10 +167,23 @@ public class RhythmGirlData : MonoBehaviour, Character
         this.chosenDifficulty = difficulty;
     }
 
+    public void SetResultState(string result)
+    {
+        if (result == "GOOD")
+        {
+            playerResultState = RhythmGirlData.RESULT_GOOD;
+        }
+        else if (result == "OKAY")
+        {
+            playerResultState = RhythmGirlData.RESULT_OKAY;
+        }
+        else if (result == "BAD")
+        {
+            playerResultState = RhythmGirlData.RESULT_BAD;
+        }
+    }
 
-
-
-    private void DetermineResultState()
+    /*private void DetermineResultState()
     {
         // C# does reference checking on List.Equals (I think)
         // should be pretty fast to compare the sheets. 
@@ -226,7 +239,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
         }
         playerResultState = RhythmGirlData.RESULT_BAD;
-    }
+    }*/
 
 
 
