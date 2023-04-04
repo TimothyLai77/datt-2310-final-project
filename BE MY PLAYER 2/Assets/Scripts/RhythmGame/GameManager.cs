@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GAME_STATE currentGameState;
 
     public List<Song> songs = new List<Song>();
+    public List<AudioClip> songTracks = new List<AudioClip>();
     public int currentSongIndex = 0;
     public Song currentSelectedSong;
 
@@ -279,7 +280,7 @@ public class GameManager : MonoBehaviour
 
     private void loadSongs()
     {
-        string songsDirectory = Application.dataPath + "/Music/RhythmGame";
+        string songsDirectory = Application.dataPath + "/StreamingAssets";
         //Debug.Log(songsDirectory);
 
         DirectoryInfo dir = new DirectoryInfo(songsDirectory);
@@ -302,9 +303,6 @@ public class GameManager : MonoBehaviour
 
     private void loadSongAudioSource()
     {
-        string songAudioSource = currentSelectedSong.audioClip;
-
-        // https://answers.unity.com/questions/668721/how-do-i-assign-audio-files-to-an-audioclip-array.html
-        currentSongAudio.clip = (AudioClip) Resources.Load("RhythmGame/" + songAudioSource);
+        currentSongAudio.clip = songTracks[currentSongIndex];
     }
 }
