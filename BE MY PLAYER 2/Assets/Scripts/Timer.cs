@@ -14,6 +14,9 @@ public class Timer : MonoBehaviour
 
     public bool countDown;
     public bool levelFinished;
+    public GameObject player;
+    public int totalNumColl;
+    private float playerSpeed;
 
     public GameObject finish;
     public static Timer instance;
@@ -25,6 +28,7 @@ public class Timer : MonoBehaviour
     {
         instance = this;
         appleNum = 0;
+        playerSpeed = player.GetComponent<PlatformerPlayerMovement>().speed;
     }
 
     // Update is called once per frame
@@ -48,6 +52,9 @@ public class Timer : MonoBehaviour
     public void AppleCollect()
     {
         appleNum++;
+        playerSpeed += 5f / totalNumColl;
+        player.GetComponent<PlatformerPlayerMovement>().speed = playerSpeed;
         Debug.Log("Apple you got:" + appleNum); //test
+        Debug.Log("CurrentSpeed:" +  playerSpeed); //test
     }
 }

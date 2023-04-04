@@ -37,11 +37,15 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             Move = 0;
         }*/
+        if (collision.gameObject.CompareTag("VerticalPlatform"))
+        {
+            Invoke("VPJumping", 0.1f);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("VerticalPlatform") )
         {
             isJumping = true;
         }
@@ -77,5 +81,10 @@ public class PlatformerPlayerMovement : MonoBehaviour
         } 
     }
 
-    
+    private void VPJumping()
+    {
+        isJumping = false;
+    }
+
+
 }
