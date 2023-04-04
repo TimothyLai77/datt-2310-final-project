@@ -148,6 +148,8 @@ public class ArrowSpawn : MonoBehaviour
                         }
                         else
                         {
+                            gameManager.currentGameState = GameManager.GAME_STATE.SongFinished;
+
                             if (musicChartEndDebug == true)
                             {
                                 Debug.Log("Music sheet end.");

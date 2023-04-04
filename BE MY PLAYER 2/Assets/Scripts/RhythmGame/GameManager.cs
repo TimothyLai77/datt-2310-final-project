@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public BeatScroller beatScroller;
     public static GameManager instance;
-
+    private RhythmGirlData rhythmGirlData;
     public enum GAME_STATE
     {
         SongSelection,
@@ -87,6 +87,8 @@ public class GameManager : MonoBehaviour
         perfectHits = 0;
         greatHits = 0;
         goodHits = 0;
+
+        rhythmGirlData = RhythmGirlData.GetInstance();
     }
 
     void Start()
@@ -174,6 +176,19 @@ public class GameManager : MonoBehaviour
             perfectHitsText.text = perfectHits.ToString();
             greatHitsText.text = greatHits.ToString();
             goodHitsText.text = goodHits.ToString();
+
+            if (percentHit >= 80)
+            {
+                rhythmGirlData.SetResultState("GOOD");
+            }
+            else if (percentHit >= 50)
+            {
+                rhythmGirlData.SetResultState("OKAY");
+            }
+            else
+            {
+                rhythmGirlData.SetResultState("BAD");
+            }
         }
     }
 
