@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public float delayMusicBeforeStart;
 
     public Text scoreText;
-    public Text multiplierText;
+    public Text multiplierText, comboText;
     public Text songText, difficultyText;
 
     public float notesHit;
@@ -216,9 +216,8 @@ public class GameManager : MonoBehaviour
         if(currentMultiplier - 1 < multiplierThresholds.Length)
         {
             currentCombo++;
-            if(multiplierThresholds[currentMultiplier-1] <= currentCombo)
+            if(currentCombo >= multiplierThresholds[currentMultiplier-1])
             {
-                currentCombo = 0;
                 currentMultiplier++;
             }
         }
@@ -226,6 +225,7 @@ public class GameManager : MonoBehaviour
         notesHit++;
     
         multiplierText.text = "Multiplier: x" + currentMultiplier;
+        comboText.text = "Combo: " + currentCombo;
 
         currentScore += scorePerNote * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
@@ -241,6 +241,7 @@ public class GameManager : MonoBehaviour
         currentMultiplier = 1;
         currentCombo = 0;
         multiplierText.text = "Multiplier: x" + currentMultiplier;
+        comboText.text = "Combo: " + currentCombo;
 
         notesMissed++;
     }
