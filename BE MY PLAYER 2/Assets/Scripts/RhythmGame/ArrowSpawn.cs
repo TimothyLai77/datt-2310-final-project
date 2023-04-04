@@ -73,16 +73,19 @@ public class ArrowSpawn : MonoBehaviour
             if (gameManager.currentSongDifficulty == "Easy") {
                 musicChart = gameManager.currentSelectedSong.easyChart;
                 delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+            
             }
             else if (gameManager.currentSongDifficulty == "Normal")
             {
                 musicChart = gameManager.currentSelectedSong.normalChart;
                 delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+              
             }
             else if (gameManager.currentSongDifficulty == "Hard")
             {
                 musicChart = gameManager.currentSelectedSong.hardChart;
                 delaySheetBeforeStart = gameManager.currentSelectedSong.startDelay;
+                
             }
 
             if (invokemusicChart)
@@ -91,6 +94,7 @@ public class ArrowSpawn : MonoBehaviour
                 invokemusicChart = false;
                 Debug.Log(gameManager.currentSongDifficulty + " Chart Now Playing");
                 Debug.Log("Delay: " + delaySheetBeforeStart);
+                RhythmGirlData.GetInstance().SetDifficulty(gameManager.currentSongDifficulty);
             }
 
             if (spawnArrow)
