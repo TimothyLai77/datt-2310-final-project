@@ -11,6 +11,11 @@ public class HubManager : MonoBehaviour
     [SerializeField] public TextAsset inkJSON_DEBUG;
     [SerializeField] public Sprite portrait_DEBUG;
     [SerializeField] public Sprite backgroundImage_DEBUG;
+
+    [Header("INTRO DIALOGUE")]
+    [SerializeField] public TextAsset inkJSON_hubIntro;
+    [SerializeField] public Sprite portrait_hubIntro;
+    [SerializeField] public Sprite backgroundImage_hubIntro;
     private static HubManager instance;
 
     private bool minigameStarted;
@@ -44,12 +49,22 @@ public class HubManager : MonoBehaviour
             instance = this;
         }
         this.lastCharacter = null;
+        ShowIntro();
     }
 
 
     void Start()
     {
-       
+        
+    }
+
+    private void ShowIntro() { 
+        if(TitleScreenManager.introShown == false)
+        {
+            TitleScreenManager.introShown = true;
+            SetToLoads(inkJSON_hubIntro, portrait_hubIntro, backgroundImage_hubIntro);
+            SceneManager.LoadScene("DialogueScene");
+        }
     }
 
     // Update is called once per frame
