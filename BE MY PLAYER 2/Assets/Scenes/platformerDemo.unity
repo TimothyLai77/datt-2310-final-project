@@ -2058,7 +2058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpVelocity: 15
+  jumpVelocity: 12
   fallMultiplier: 2.5
   lowJumpMultiplier: 3.5
   jump: 500
