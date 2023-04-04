@@ -6,6 +6,7 @@ public class DeathScript : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject player;
+    public SoundFX sound;
     // Start is called before the first frame update
    
 
@@ -14,6 +15,7 @@ public class DeathScript : MonoBehaviour
         // if player collides with death object they respawn at start
         if (collision.gameObject.CompareTag("Player"))
         {
+            sound.DeathSound();
             player.transform.position = startPoint.transform.position;
         }
     }

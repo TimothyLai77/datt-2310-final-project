@@ -19,6 +19,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
     public KeyCode jump;
     public bool isJumping;
     public bool isFalling; //debug
+    public SoundFX sound;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +62,8 @@ public class PlatformerPlayerMovement : MonoBehaviour
         if (Input.GetButton("Jump") && !isJumping)
         {
             rb.velocity = Vector2.up * jumpVelocity;
+            isJumping = true;
+            sound.JumpSound();
         }
 
         if (rb.velocity.y < 0)

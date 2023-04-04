@@ -8,6 +8,7 @@ public class Checkpoint : MonoBehaviour
     public bool pointChecked = false;
     public Sprite checkedSprite;
     private SpriteRenderer spriteRenderer;
+    public SoundFX sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class Checkpoint : MonoBehaviour
             spriteRenderer.sprite = checkedSprite;
             if (pointChecked == false)
             {
+                sound.CheckpointFinishSound();
                 pointChecked = true;
                 startPos.transform.position = transform.position;
             }

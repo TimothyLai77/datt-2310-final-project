@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     private bool dialogueIsPlaying;
 
     private static DialogueManager instance;
+    public SoundFX sound;
 
     private void Awake()
     {
@@ -101,18 +102,20 @@ public class DialogueManager : MonoBehaviour
         currentStory.BindExternalFunction("returnToHub", () =>
         {
             SceneManager.LoadScene("MainHub");
+            sound.ClickSound();
         });
 
         currentStory.BindExternalFunction("startRhythmGame", () =>
         {
             SceneManager.LoadScene("RhythmGame");
+            sound.ClickSound();
         });
 
         currentStory.BindExternalFunction("startPlatformerGame", () =>
         {
             SceneManager.LoadScene("platformerDemo");
+            sound.ClickSound();
         });
-
         ContinueStory(); // start the story
     }
 

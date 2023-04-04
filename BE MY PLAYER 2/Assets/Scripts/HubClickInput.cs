@@ -30,7 +30,6 @@ public class HubClickInput : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                
                 SceneManager.UnloadSceneAsync("platformerDemo");
                 SceneManager.UnloadSceneAsync("RhythmGame");
                 SceneManager.LoadScene("MainHub", LoadSceneMode.Single);
