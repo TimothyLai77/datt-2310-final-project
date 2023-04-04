@@ -21,6 +21,11 @@ public class PlatformerPlayerMovement : MonoBehaviour
     public bool isJumping;
     public bool isFalling; //debug
 
+    [Range (-1f, 1f)]
+    private float waitTimeVP;
+
+    private bool firstEnterVP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +42,17 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             Move = 0;
         }*/
-        if (collision.gameObject.CompareTag("VerticalPlatform"))
+        if (collision.gameObject.CompareTag("VerticalPlatform") && firstEnterVP)
         {
-            Invoke("VPJumping", 0.1f);
+            isJumping = true;
+            firstEnterVP = false;
+            waitTimeVP = 0.5f;
+            //Invoke("VPJumping", 0.5f);
+            Debug.Log("locked");//test
+        } else if (collision.gameObject.CompareTag("VerticalPlatform") && !firstEnterVP)
+        {
+            isJumping=false;
+            
         }
     }
 
@@ -48,6 +61,10 @@ public class PlatformerPlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("VerticalPlatform") )
         {
             isJumping = true;
+            //if (waitTimeVP <= 0f) { 
+
+            //}
+            Invoke("VPJumping", 0.5f);
         }
     }
 
@@ -79,11 +96,18 @@ public class PlatformerPlayerMovement : MonoBehaviour
             isFalling = true;//debug
             //Debug.Log("low");
         } 
+
+        waitTimeVP -= Time.deltaTime;
     }
 
     private void VPJumping()
     {
-        isJumping = false;
+        if(waitTimeVP <= 0)
+        {
+            firstEnterVP = true;
+        }
+        
+        Debug.Log("unlocked");//test
     }
 
 

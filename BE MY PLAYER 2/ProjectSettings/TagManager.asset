@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - Ground
+  - VerticalPlatform
   layers:
   - Default
   - TransparentFX

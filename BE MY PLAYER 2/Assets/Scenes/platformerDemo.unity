@@ -235,7 +235,7 @@ Transform:
   m_Children:
   - {fileID: 1758381719}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &9404111
 PlatformEffector2D:
@@ -744,7 +744,7 @@ Transform:
   m_Children:
   - {fileID: 1698200493}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 31
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &27771243
 PlatformEffector2D:
@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 28478236}
   m_Layer: 0
   m_Name: VerticalGround (15)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1828,7 +1828,7 @@ GameObject:
   - component: {fileID: 56543369}
   m_Layer: 0
   m_Name: VerticalGround (6)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2151,7 +2151,7 @@ GameObject:
   - component: {fileID: 69754036}
   m_Layer: 0
   m_Name: VerticalGround (43)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2378,7 +2378,7 @@ Transform:
   m_Children:
   - {fileID: 409117036}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &93077058
 BoxCollider2D:
@@ -2722,7 +2722,7 @@ GameObject:
   - component: {fileID: 108979487}
   m_Layer: 0
   m_Name: VerticalGround (39)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2987,7 +2987,7 @@ GameObject:
   - component: {fileID: 137071469}
   m_Layer: 0
   m_Name: VerticalGround (36)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30035,7 +30035,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 43
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170169509
 GameObject:
@@ -30419,150 +30419,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4541564, y: 0.057865478}
   m_EdgeRadius: 0
---- !u!1 &187920192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 187920195}
-  - component: {fileID: 187920194}
-  - component: {fileID: 187920193}
-  - component: {fileID: 187920196}
-  - component: {fileID: 187920197}
-  m_Layer: 0
-  m_Name: VerticalGround
-  m_TagString: Ground
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!61 &187920193
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187920192}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!212 &187920194
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187920192}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.62352943, g: 0.40867147, b: 0.054901958, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &187920195
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187920192}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 32.81, y: -9.5, z: 0}
-  m_LocalScale: {x: 6, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1293979658}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &187920196
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187920192}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
---- !u!114 &187920197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187920192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42633dac764d44a1cbdff9e37cf73a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &188027290
 GameObject:
   m_ObjectHideFlags: 0
@@ -31225,7 +31081,7 @@ GameObject:
   - component: {fileID: 243415980}
   m_Layer: 0
   m_Name: VerticalGround (28)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31316,7 +31172,7 @@ GameObject:
   - component: {fileID: 243610177}
   m_Layer: 0
   m_Name: VerticalGround (20)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31620,7 +31476,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &250807075
 BoxCollider2D:
@@ -31961,7 +31817,7 @@ GameObject:
   - component: {fileID: 267979332}
   m_Layer: 0
   m_Name: VerticalGround (3)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31979,7 +31835,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &267979332
 BoxCollider2D:
@@ -32239,7 +32095,7 @@ Transform:
   m_Children:
   - {fileID: 48676386}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &273163432
 PlatformEffector2D:
@@ -32409,7 +32265,7 @@ GameObject:
   - component: {fileID: 277503484}
   m_Layer: 0
   m_Name: VerticalGround (22)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32823,7 +32679,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &282636904
 MonoBehaviour:
@@ -33222,7 +33078,7 @@ GameObject:
   - component: {fileID: 303626431}
   m_Layer: 0
   m_Name: VerticalGround (9)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33671,7 +33527,7 @@ GameObject:
   - component: {fileID: 322356974}
   m_Layer: 0
   m_Name: VerticalGround (38)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34287,7 +34143,7 @@ Transform:
   m_Children:
   - {fileID: 1483927714}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &340417923
 BoxCollider2D:
@@ -35098,7 +34954,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 40
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &386898011
 GameObject:
@@ -35441,7 +35297,7 @@ GameObject:
   - component: {fileID: 408815276}
   m_Layer: 0
   m_Name: VerticalGround (16)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35767,7 +35623,7 @@ Transform:
   m_Children:
   - {fileID: 348553313}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &420802945
 PlatformEffector2D:
@@ -36285,7 +36141,7 @@ GameObject:
   - component: {fileID: 480296707}
   m_Layer: 0
   m_Name: VerticalGround (27)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36678,7 +36534,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &491995182
 BoxCollider2D:
@@ -37322,7 +37178,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &508068457
 BoxCollider2D:
@@ -37732,7 +37588,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &526631069
 BoxCollider2D:
@@ -38205,7 +38061,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &559484837
 BoxCollider2D:
@@ -38356,7 +38212,7 @@ GameObject:
   - component: {fileID: 560969686}
   m_Layer: 0
   m_Name: VerticalGround (54)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39148,7 +39004,7 @@ GameObject:
   - component: {fileID: 610484712}
   m_Layer: 0
   m_Name: VerticalGround (48)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39239,7 +39095,7 @@ GameObject:
   - component: {fileID: 612896740}
   m_Layer: 0
   m_Name: VerticalGround (18)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39562,7 +39418,7 @@ GameObject:
   - component: {fileID: 667774126}
   m_Layer: 0
   m_Name: VerticalGround (10)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39962,7 +39818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &711616612
 BoxCollider2D:
@@ -40129,7 +39985,7 @@ GameObject:
   - component: {fileID: 711709217}
   m_Layer: 0
   m_Name: VerticalGround (4)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40147,7 +40003,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &711709217
 BoxCollider2D:
@@ -40331,7 +40187,7 @@ GameObject:
   - component: {fileID: 718361478}
   m_Layer: 0
   m_Name: VerticalGround
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40349,7 +40205,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &718361478
 MonoBehaviour:
@@ -40531,7 +40387,7 @@ GameObject:
   - component: {fileID: 723704511}
   m_Layer: 0
   m_Name: VerticalGround (33)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40804,7 +40660,7 @@ GameObject:
   - component: {fileID: 753441142}
   m_Layer: 0
   m_Name: VerticalGround (51)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41754,7 +41610,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 39
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &851737264
 GameObject:
@@ -42002,7 +41858,7 @@ GameObject:
   - component: {fileID: 881558170}
   m_Layer: 0
   m_Name: VerticalGround (7)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42151,7 +42007,7 @@ GameObject:
   - component: {fileID: 887107610}
   m_Layer: 0
   m_Name: VerticalGround (13)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42607,7 +42463,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &911652538
 BoxCollider2D:
@@ -44308,7 +44164,7 @@ GameObject:
   - component: {fileID: 1029846189}
   m_Layer: 0
   m_Name: VerticalGround (1)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44326,7 +44182,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1029846189
 BoxCollider2D:
@@ -44650,7 +44506,7 @@ GameObject:
   - component: {fileID: 1054427429}
   m_Layer: 0
   m_Name: VerticalGround (41)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44935,7 +44791,7 @@ GameObject:
   - component: {fileID: 1072549796}
   m_Layer: 0
   m_Name: VerticalGround (17)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45046,7 +44902,7 @@ Transform:
   m_Children:
   - {fileID: 1485065906}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1074151065
 PlatformEffector2D:
@@ -45332,7 +45188,7 @@ GameObject:
   - component: {fileID: 1089858687}
   m_Layer: 0
   m_Name: VerticalGround (40)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45580,7 +45436,7 @@ Transform:
   m_Children:
   - {fileID: 1262873125}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 30
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1100419766
 BoxCollider2D:
@@ -45828,7 +45684,7 @@ GameObject:
   - component: {fileID: 1110160124}
   m_Layer: 0
   m_Name: VerticalGround (29)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46821,7 +46677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1195912627
 BoxCollider2D:
@@ -47552,7 +47408,7 @@ GameObject:
   - component: {fileID: 1235001783}
   m_Layer: 0
   m_Name: VerticalGround (11)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47779,7 +47635,7 @@ GameObject:
   - component: {fileID: 1245924524}
   m_Layer: 0
   m_Name: VerticalGround (45)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48208,7 +48064,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1256236079
 BoxCollider2D:
@@ -49066,7 +48922,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 187920195}
   - {fileID: 1510362975}
   - {fileID: 93077057}
   - {fileID: 1422333192}
@@ -49206,7 +49061,7 @@ Transform:
   m_Children:
   - {fileID: 301595441}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1304456578
 PlatformEffector2D:
@@ -49786,7 +49641,7 @@ Transform:
   m_Children:
   - {fileID: 1572428247}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1356489131
 BoxCollider2D:
@@ -50209,7 +50064,7 @@ GameObject:
   - component: {fileID: 1387084334}
   m_Layer: 0
   m_Name: VerticalGround (8)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50986,7 +50841,7 @@ Transform:
   m_Children:
   - {fileID: 1891933344}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1422333193
 PlatformEffector2D:
@@ -51292,7 +51147,7 @@ Transform:
   m_Children:
   - {fileID: 337451433}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1431709121
 PlatformEffector2D:
@@ -51580,7 +51435,7 @@ GameObject:
   - component: {fileID: 1434950457}
   m_Layer: 0
   m_Name: VerticalGround (2)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51598,7 +51453,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1434950457
 BoxCollider2D:
@@ -52618,7 +52473,7 @@ Transform:
   m_Children:
   - {fileID: 1410105967}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &1475953368
 PlatformEffector2D:
@@ -52945,7 +52800,7 @@ Transform:
   m_Children:
   - {fileID: 1422176421}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1479024953
 Rigidbody2D:
@@ -53700,7 +53555,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1510362977
 MonoBehaviour:
@@ -54332,7 +54187,7 @@ GameObject:
   - component: {fileID: 1546152199}
   m_Layer: 0
   m_Name: VerticalGround (34)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54481,7 +54336,7 @@ GameObject:
   - component: {fileID: 1549998970}
   m_Layer: 0
   m_Name: VerticalGround (12)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54656,7 +54511,7 @@ GameObject:
   - component: {fileID: 1556566868}
   m_Layer: 0
   m_Name: VerticalGround (52)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55203,7 +55058,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 44
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586329765
 GameObject:
@@ -55799,7 +55654,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 42
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1620989406
 GameObject:
@@ -55815,7 +55670,7 @@ GameObject:
   - component: {fileID: 1620989408}
   m_Layer: 0
   m_Name: VerticalGround (31)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56265,7 +56120,7 @@ GameObject:
   - component: {fileID: 1649952111}
   m_Layer: 0
   m_Name: VerticalGround (49)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78220,7 +78075,7 @@ GameObject:
   - component: {fileID: 1705079763}
   m_Layer: 0
   m_Name: VerticalGround (14)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78511,7 +78366,7 @@ GameObject:
   - component: {fileID: 1722809154}
   m_Layer: 0
   m_Name: VerticalGround (19)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78834,7 +78689,7 @@ GameObject:
   - component: {fileID: 1733428730}
   m_Layer: 0
   m_Name: VerticalGround (37)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79167,7 +79022,7 @@ GameObject:
   - component: {fileID: 1746063491}
   m_Layer: 0
   m_Name: VerticalGround (24)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79661,7 +79516,7 @@ GameObject:
   - component: {fileID: 1760635198}
   m_Layer: 0
   m_Name: VerticalGround (26)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79752,7 +79607,7 @@ GameObject:
   - component: {fileID: 1762593769}
   m_Layer: 0
   m_Name: VerticalGround (50)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80190,7 +80045,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 29
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1773633427
 BoxCollider2D:
@@ -80413,7 +80268,7 @@ GameObject:
   - component: {fileID: 1787826106}
   m_Layer: 0
   m_Name: VerticalGround (46)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81278,7 +81133,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 41
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836289373
 GameObject:
@@ -81371,7 +81226,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1838732292
 BoxCollider2D:
@@ -81678,7 +81533,7 @@ GameObject:
   - component: {fileID: 1856994882}
   m_Layer: 0
   m_Name: VerticalGround (42)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82205,7 +82060,7 @@ GameObject:
   - component: {fileID: 1894609533}
   m_Layer: 0
   m_Name: VerticalGround (21)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82298,7 +82153,7 @@ GameObject:
   - component: {fileID: 1898830116}
   m_Layer: 0
   m_Name: VerticalGround (5)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82316,7 +82171,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1898830116
 BoxCollider2D:
@@ -82498,7 +82353,7 @@ GameObject:
   - component: {fileID: 1909666359}
   m_Layer: 0
   m_Name: VerticalGround (23)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82775,7 +82630,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 38
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1918592249
 BoxCollider2D:
@@ -82829,7 +82684,7 @@ GameObject:
   - component: {fileID: 1919256794}
   m_Layer: 0
   m_Name: VerticalGround (53)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83360,7 +83215,7 @@ GameObject:
   - component: {fileID: 1955682423}
   m_Layer: 0
   m_Name: VerticalGround (44)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84275,7 +84130,7 @@ GameObject:
   - component: {fileID: 2010315452}
   m_Layer: 0
   m_Name: VerticalGround (25)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84849,7 +84704,7 @@ Transform:
   m_Children:
   - {fileID: 1242765494}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &2035229562
 PlatformEffector2D:
@@ -85019,7 +84874,7 @@ GameObject:
   - component: {fileID: 2039271808}
   m_Layer: 0
   m_Name: VerticalGround (35)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85488,7 +85343,7 @@ Transform:
   m_Children:
   - {fileID: 1222714892}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2055140397
 MonoBehaviour:
@@ -85793,7 +85648,7 @@ GameObject:
   - component: {fileID: 2068931336}
   m_Layer: 0
   m_Name: VerticalGround (47)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85962,7 +85817,7 @@ Transform:
   m_Children:
   - {fileID: 245934060}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!251 &2089509425
 PlatformEffector2D:
@@ -86326,7 +86181,7 @@ Transform:
   m_Children:
   - {fileID: 1600200862}
   m_Father: {fileID: 1293979658}
-  m_RootOrder: 37
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2106347929
 BoxCollider2D:
@@ -86863,7 +86718,7 @@ GameObject:
   - component: {fileID: 2131131491}
   m_Layer: 0
   m_Name: VerticalGround (32)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87012,7 +86867,7 @@ GameObject:
   - component: {fileID: 2145478795}
   m_Layer: 0
   m_Name: VerticalGround (30)
-  m_TagString: Ground
+  m_TagString: VerticalPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
