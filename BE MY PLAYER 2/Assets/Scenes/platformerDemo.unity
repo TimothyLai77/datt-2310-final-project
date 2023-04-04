@@ -43502,7 +43502,7 @@ GameObject:
   - component: {fileID: 978219455}
   - component: {fileID: 978219458}
   m_Layer: 0
-  m_Name: Bridge
+  m_Name: BridgeCollider
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84108,65 +84108,13 @@ GameObject:
   - component: {fileID: 2011139866}
   - component: {fileID: 2011139865}
   - component: {fileID: 2011139864}
-  - component: {fileID: 2011139863}
   m_Layer: 0
-  m_Name: Bridge (1)
+  m_Name: Bridge
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!68 &2011139863
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011139862}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -10.999307, y: -0.0007207147}
-  - {x: -10.775357, y: 0.19476774}
-  - {x: -10.453805, y: 0.4416476}
-  - {x: -10.0402355, y: 0.7305339}
-  - {x: -9.540464, y: 1.0518358}
-  - {x: -8.96025, y: 1.3960179}
-  - {x: -8.305352, y: 1.7535472}
-  - {x: -7.4888544, y: 2.1567628}
-  - {x: -6.794516, y: 2.4705136}
-  - {x: -5.9500904, y: 2.8108845}
-  - {x: -5.053999, y: 3.1264715}
-  - {x: -4.1119976, y: 3.4077399}
-  - {x: -3.1298416, y: 3.6451597}
-  - {x: -2.113285, y: 3.8291974}
-  - {x: -1.068084, y: 3.9503212}
-  - {x: 0.0000032879284, y: 3.9989998}
-  - {x: 0.89763457, y: 3.9640036}
-  - {x: 1.8213807, y: 3.8507864}
-  - {x: 2.7598028, y: 3.6697617}
-  - {x: 3.701454, y: 3.4313412}
-  - {x: 4.6348877, y: 3.145939}
-  - {x: 5.5486608, y: 2.823971}
-  - {x: 6.4723315, y: 2.4580894}
-  - {x: 7.271438, y: 2.1119912}
-  - {x: 8.057552, y: 1.7428102}
-  - {x: 8.778225, y: 1.3787217}
-  - {x: 9.422011, y: 1.0301412}
-  - {x: 9.977464, y: 0.7074847}
-  - {x: 10.433135, y: 0.42117023}
-  - {x: 10.777571, y: 0.18162185}
-  - {x: 10.999304, y: -0.00071872}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &2011139864
 MonoBehaviour:
   m_ObjectHideFlags: 0
