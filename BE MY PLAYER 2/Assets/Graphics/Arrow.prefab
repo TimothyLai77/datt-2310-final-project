@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePressed: 0
   activationKey: 275
+  perfectThreshold: 0.2
+  greatThreshold: 0.4
 --- !u!61 &1433331387760868731
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,5 +126,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
