@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    public SoundFX sound;
 
     [SerializeField] private Sprite defaultImage;
     [SerializeField] private Sprite pressedImage;
@@ -23,6 +24,7 @@ public class ButtonController : MonoBehaviour
         if (Input.GetKeyDown(activationKey))
         {
             spriteRenderer.sprite = pressedImage;
+            sound.ArrowSound();
         }
         
         if (Input.GetKeyUp(activationKey)) {

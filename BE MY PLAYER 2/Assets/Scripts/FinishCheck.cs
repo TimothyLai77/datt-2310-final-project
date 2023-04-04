@@ -8,6 +8,7 @@ public class FinishCheck : MonoBehaviour
 
     public GameObject player;
     public bool levelFinished;
+    public SoundFX sound;
     // Start is called before the first frame update
 
     private int appleScore;
@@ -52,8 +53,12 @@ public class FinishCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // tell timer to stop
+            if(levelFinished == false)
+            {
+                sound.CheckpointFinishSound();
+            }
             levelFinished = true;
-
+            
             // this is super jank, todO: refactor into a event manager i think?
             //SceneManager.LoadScene("MainHub");
         }
