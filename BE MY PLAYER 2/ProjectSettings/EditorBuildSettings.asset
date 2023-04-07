@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/platformerDemo.unity
     guid: 952a38931bb213344af2d61a9f1118d3
+  - enabled: 1
+    path: Assets/Scenes/MinigameSelection.unity
+    guid: a487afc1e699def47a383fa252295034
   m_configObjects: {}

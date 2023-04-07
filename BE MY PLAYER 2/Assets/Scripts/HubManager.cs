@@ -92,6 +92,12 @@ public class HubManager : MonoBehaviour
         SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
     }
 
+    public void MyRoomButton() 
+    {
+        this.lastCharacter = null; // so it returns to hub w/o dialogue scene after game
+        SceneManager.LoadScene("MinigameSelection");
+    }
+
     /*
      * This method should be called when the game is finished
      * If the the minigame was started standalone, then it should bring it back to the hub.
@@ -108,7 +114,7 @@ public class HubManager : MonoBehaviour
         else
         {
             // don't load result dialogue, just go back to hub. 
-            Debug.Log(lastCharacter.ToString());
+            //Debug.Log(lastCharacter.ToString());
             SceneManager.LoadScene("MainHub");
         }
     }
