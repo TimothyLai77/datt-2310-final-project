@@ -166,11 +166,12 @@ public class Timer : MonoBehaviour
     {
         float elapsedTime = 0f;
         float currentCollValue = 0;
+        
 
         while (elapsedTime < animationDuration)
         {
             elapsedTime += Time.deltaTime;
-            currentCollValue = Mathf.Lerp(0, currentTime, elapsedTime / animationDuration);
+            currentCollValue = Mathf.Lerp(0, appleNum, elapsedTime / animationDuration);
             scoreText2.text = "Collection: " + currentCollValue.ToString();
             yield return null;
         }
