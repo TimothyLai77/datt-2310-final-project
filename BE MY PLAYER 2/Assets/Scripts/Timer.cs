@@ -107,12 +107,12 @@ public class Timer : MonoBehaviour
         {
             speedLevelT = speedLevel.ToString();
         }
-        timerText.text = "Time: " + currentTime.ToString("0.000") + "\nSpeed: " + speedLevelT;
+        timerText.text = "Time: " + currentTime.ToString("0.000") + "\nSpeed: " + speedLevelT + "\nCollection: " + appleNum;
 
         if (scorePanelB)
         {
             scorePanel.SetActive(true);
-            scoreText.enabled=true;
+            scoreText.enabled = true;
             StartCoroutine(AnimateNumber());
         }
     }
@@ -139,7 +139,7 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             currentValue = Mathf.Lerp(0, currentTime, elapsedTime / animationDuration);
-            scoreText.text = currentValue.ToString();
+            scoreText.text = "Time: " + currentValue.ToString();
             yield return null;
         }
 
