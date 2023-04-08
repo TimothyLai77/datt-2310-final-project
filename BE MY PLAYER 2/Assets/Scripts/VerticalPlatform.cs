@@ -5,6 +5,8 @@ using UnityEngine;
 public class VerticalPlatform : MonoBehaviour
 {
     private PlatformEffector2D effect;
+    
+    [Range(-1f, 1f)]
     private float waitTime;
 
     // Start is called before the first frame update
@@ -18,21 +20,35 @@ public class VerticalPlatform : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            this.waitTime = 0.5f;
+            if(waitTime <= 0f) { 
+                this.waitTime = 0.5f;
+            }
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow)&& waitTime <= 0f)
         {
-            effect.rotationalOffset = 180f;
-            this.waitTime = 0.5f;
+            //effect.rotationalOffset = 180f; //both method achieve same thing
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            Invoke("VPReset", 0.2f);
+            if (waitTime <= 0f)
+            {
+                this.waitTime = 0.5f;
+            }
         }
         else
         {
-            this.waitTime -= Time.deltaTime;
+            //this.waitTime -= Time.deltaTime;
         }
         if (Input.GetButton("Jump"))
         {
             effect.rotationalOffset = 0f;
         }
+        this.waitTime -= Time.deltaTime;
 
+    }
+
+    private void VPReset()
+    {
+//effect.rotationalOffset = 0f;
+        this.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
