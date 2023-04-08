@@ -54,6 +54,7 @@ public class Timer : MonoBehaviour
         //scorepanel default hide
         scorePanel.SetActive(false);
         scoreText.enabled = false;
+        scoreText2.enabled = false;
         SPcloseButton.gameObject.SetActive(false);
     }
 
@@ -118,6 +119,7 @@ public class Timer : MonoBehaviour
         {
             scorePanel.SetActive(true);
             scoreText.enabled = true;
+            scoreText2.enabled = true;
             SPcloseButton.gameObject.SetActive(true);
             StartCoroutine(AnimateNumber());
             StartCoroutine(AnimateCollection());
@@ -125,6 +127,7 @@ public class Timer : MonoBehaviour
         {
             scorePanel.SetActive(false);
             scoreText.enabled = false;
+            scoreText2.enabled = false;
             SPcloseButton.gameObject.SetActive(false);
         }
     }
