@@ -107,7 +107,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
             firstEnterVP = true;
         }
         
-        Debug.Log("unlocked");//test
+        //Debug.Log("unlocked");//test
     }
 
 

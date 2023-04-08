@@ -6,6 +6,7 @@ public class DeathScript : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject player;
+    public GameObject manager;
     // Start is called before the first frame update
    
 
