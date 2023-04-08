@@ -30,6 +30,7 @@ public class LevelEnter : MonoBehaviour
             manager.GetComponent<Timer>().countingTime = true;
             manager.GetComponent<Timer>().currentTime = 0;
             manager.GetComponent<Timer>().scorePanelB = false;
+            manager.GetComponent<Timer>().finished = false;
 
             //reset all collections
             for (int i = 0; i < collections.transform.childCount; i++)

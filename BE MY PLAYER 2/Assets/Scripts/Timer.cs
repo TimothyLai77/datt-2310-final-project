@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Timer : MonoBehaviour
     public bool scorePanelB;
     public GameObject scorePanel;
     public Button SPcloseButton;
+    public GameObject start;
+    public bool finished;
 
 
     public GameObject finish;
@@ -56,6 +59,7 @@ public class Timer : MonoBehaviour
         scoreText.enabled = false;
         scoreText2.enabled = false;
         SPcloseButton.gameObject.SetActive(false);
+        finished = false;
     }
 
     // Update is called once per frame
@@ -121,14 +125,30 @@ public class Timer : MonoBehaviour
             scoreText.enabled = true;
             scoreText2.enabled = true;
             SPcloseButton.gameObject.SetActive(true);
-            StartCoroutine(AnimateNumber());
-            StartCoroutine(AnimateCollection());
+            if (finished)
+            {
+                StartCoroutine(AnimateNumber());
+                StartCoroutine(AnimateCollection());
+            } else
+            {
+                scoreText.text = "Level: " + levelNum + "\n\nNot Complete";
+            }
+            
         } else
         {
             scorePanel.SetActive(false);
             scoreText.enabled = false;
             scoreText2.enabled = false;
             SPcloseButton.gameObject.SetActive(false);
+        }
+
+        //exit
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            player.transform.position = new Vector3(-56.75f, -13.37f, 0f);
+            start.transform.position = new Vector3(-56.75f, -13.37f, 0f);
+            countingTime = false;
+            scorePanelB = true;
         }
     }
 
