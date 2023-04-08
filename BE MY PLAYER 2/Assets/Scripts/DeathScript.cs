@@ -6,9 +6,6 @@ public class DeathScript : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject player;
-    public GameObject manager;
-    // Start is called before the first frame update
-   
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -16,6 +13,7 @@ public class DeathScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             player.transform.position = startPoint.transform.position;
+            player.GetComponent<PlatformerPlayerMovement>().speedReset();
         }
     }
 }

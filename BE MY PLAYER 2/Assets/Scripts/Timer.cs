@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.ComponentModel.Design;
 
 public class Timer : MonoBehaviour
 {
     [Header("Component")]
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText2;
 
     [Header("Timer Settings")]
     public float currentTime;
@@ -18,10 +21,10 @@ public class Timer : MonoBehaviour
     public GameObject player;
     public int totalNumColl;
     private float playerSpeed;
-    private int speedLevel;
+    public int speedLevel;
     public bool scorePanelB;
     public GameObject scorePanel;
-    public int levelNum;
+    public Button SPcloseButton;
 
 
     public GameObject finish;
@@ -32,8 +35,9 @@ public class Timer : MonoBehaviour
 
     //score up animation
     public float animationDuration = 3f;
-    public TMP_Text textMeshPro;
 
+    //highest Score
+    public int levelNum;
 
 
 
@@ -50,6 +54,7 @@ public class Timer : MonoBehaviour
         //scorepanel default hide
         scorePanel.SetActive(false);
         scoreText.enabled = false;
+        SPcloseButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -113,7 +118,14 @@ public class Timer : MonoBehaviour
         {
             scorePanel.SetActive(true);
             scoreText.enabled = true;
+            SPcloseButton.gameObject.SetActive(true);
             StartCoroutine(AnimateNumber());
+            StartCoroutine(AnimateCollection());
+        } else
+        {
+            scorePanel.SetActive(false);
+            scoreText.enabled = false;
+            SPcloseButton.gameObject.SetActive(false);
         }
     }
 
@@ -139,12 +151,41 @@ public class Timer : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             currentValue = Mathf.Lerp(0, currentTime, elapsedTime / animationDuration);
-            scoreText.text = "Time: " + currentValue.ToString();
+            scoreText.text = "Level: " + levelNum + "\n\nTime: " + currentValue.ToString();
             yield return null;
         }
 
         // Ensure the final value is the target value
-        scoreText.text = "Time: " + currentTime.ToString();
+        scoreText.text = "Level: " + levelNum + "\n\nTime: " + currentTime.ToString();
     }
 
+    private IEnumerator AnimateCollection()
+    {
+        float elapsedTime = 0f;
+        float currentCollValue = 0;
+
+        while (elapsedTime < animationDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            currentCollValue = Mathf.Lerp(0, currentTime, elapsedTime / animationDuration);
+            scoreText2.text = "Collection: " + currentCollValue.ToString();
+            yield return null;
+        }
+
+        // Ensure the final value is the target value
+        scoreText2.text = "Collection: " + appleNum.ToString();
+    }
+
+
+    public void closeScorePanel()
+    {
+        scorePanelB = false;
+        //Debug.Log("closepannel");
+    }
+
+    public void openScorePanel()
+    {
+        scorePanelB = true;
+        //Debug.Log("closepannel");
+    }
 }

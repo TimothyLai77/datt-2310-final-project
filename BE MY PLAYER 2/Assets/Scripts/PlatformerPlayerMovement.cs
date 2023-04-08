@@ -24,7 +24,9 @@ public class PlatformerPlayerMovement : MonoBehaviour
     [Range (-1f, 1f)]
     private float waitTimeVP;
 
-    private bool firstEnterVP;
+    //private bool firstEnterVP;
+
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("VerticalPlatform"))
         {
             isJumping = false;
         }
@@ -42,7 +44,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             Move = 0;
         }*/
-        if (collision.gameObject.CompareTag("VerticalPlatform") && firstEnterVP)
+        /*if (collision.gameObject.CompareTag("VerticalPlatform") && firstEnterVP)
         {
             isJumping = true;
             firstEnterVP = false;
@@ -53,7 +55,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             isJumping=false;
             
-        }
+        }*/
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -64,7 +66,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
             //if (waitTimeVP <= 0f) { 
 
             //}
-            Invoke("VPJumping", 0.5f);
+            //Invoke("VPJumping", 0.5f);
         }
     }
 
@@ -100,7 +102,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
         waitTimeVP -= Time.deltaTime;
     }
 
-    private void VPJumping()
+    /*private void VPJumping()
     {
         if(waitTimeVP <= 0)
         {
@@ -108,6 +110,12 @@ public class PlatformerPlayerMovement : MonoBehaviour
         }
         
         //Debug.Log("unlocked");//test
+    }*/
+
+    public void speedReset()
+    {
+        speed = 7;
+        manager.GetComponent<Timer>().speedLevel = 0;
     }
 
 
