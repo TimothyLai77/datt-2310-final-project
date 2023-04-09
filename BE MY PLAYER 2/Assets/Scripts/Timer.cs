@@ -129,6 +129,11 @@ public class Timer : MonoBehaviour
             {
                 StartCoroutine(AnimateNumber());
                 StartCoroutine(AnimateCollection());
+                Debug.Log("level one finished");
+                Debug.Log(currentTime);
+                Debug.Log(appleNum);
+                FinishCheck finishCheck = finish.GetComponent<FinishCheck>();
+                finishCheck.setScoresLevelOne(appleNum, currentTime);
             } else
             {
                 scoreText.text = "Level: " + levelNum + "\n\nNot Complete";

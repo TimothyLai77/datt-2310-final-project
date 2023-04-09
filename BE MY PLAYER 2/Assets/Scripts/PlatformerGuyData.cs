@@ -52,7 +52,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
     private const int MID_APPLE_SCORE = 3;
 
 
-    private int playerAppleScore;
+    private int totalCollectableScore;
     private double lastPlayerTime;
 
     // states
@@ -142,16 +142,16 @@ public class PlatformerGuyData : MonoBehaviour, Character
     }
 
     // uhhh fix this
-    public void SetLastPlayerScore(int appleScore)
+    public void SetLastPlayerScore(int totalCollectableScore)
     {
-        this.playerAppleScore = appleScore;
+        this.totalCollectableScore = totalCollectableScore;
     }
 
     // overloaded method, to accept the score as the time taken to complete the game
-    public void SetLastPlayerTime(double time)
+    public void SetLastPlayerTime(double totalTime)
     {
         this.numTimePlayed++;
-        this.lastPlayerTime = time;
+        this.lastPlayerTime = totalTime;
         DetermineResultState();
     }
 
@@ -159,12 +159,12 @@ public class PlatformerGuyData : MonoBehaviour, Character
     {
         // todo: compare player time against expected times, and upate the states
         Debug.Log(lastPlayerTime);
-        Debug.Log(playerAppleScore);
-        if (lastPlayerTime <= GOOD_TIME && playerAppleScore==MAX_APPLE_SCORE)
+        Debug.Log(totalCollectableScore);
+        if (lastPlayerTime <= GOOD_TIME && totalCollectableScore==MAX_APPLE_SCORE)
         {
             // good dialouge only if all apples + good time
             playerResultState = PlatformerGuyData.RESULT_GOOD;
-        } else if (lastPlayerTime <= OKAY_TIME && playerAppleScore>=MID_APPLE_SCORE)
+        } else if (lastPlayerTime <= OKAY_TIME && totalCollectableScore>=MID_APPLE_SCORE)
         {
             // mid dialogue if aobut half
             playerResultState = PlatformerGuyData.RESULT_OKAY;

@@ -9,11 +9,17 @@ public class FinishCheck : MonoBehaviour
     public GameObject player;
     public bool levelFinished;
     public SoundFX sound;
+
+    public bool levelOneFinished;
+    public bool levelTwoFinished;
+
     // Start is called before the first frame update
 
-    private int appleScore;
-    private double playerTime;
-
+    private int collectableScoreOne;
+    private int collectableScoreTwo;
+    private double playerTimeOne;
+    private double playerTimeTwo;
+    private double totalTime;
     void Start()
     {
         levelFinished = false;
@@ -32,9 +38,10 @@ public class FinishCheck : MonoBehaviour
             // if the last character is set to null, -> only load the minigame, do not save score
             if (!(c is null))
             {
-                
-                c.SetLastPlayerScore(appleScore);
-                c.SetLastPlayerTime(playerTime);
+                int totalScore = this.collectableScoreOne + this.collectableScoreTwo;
+                totalTime = this.playerTimeOne + this.playerTimeTwo;
+                c.SetLastPlayerScore(totalScore); // total score will be the sum of the two levels
+                c.SetLastPlayerTime(totalTime); //
             }
 
             hm.LoadDialogueFromLastCharacter();
@@ -43,10 +50,17 @@ public class FinishCheck : MonoBehaviour
         }
     }
 
-    public void setScores(int appleScore, double time) {
-        this.appleScore = appleScore;
-        this.playerTime = time;
+    public void setScoresLevelOne(int collectableScoreOne, double time) {
+        this.collectableScoreOne = collectableScoreOne;
+        this.playerTimeOne = time;
     }
+
+    public void setScoresLevelTwo(int collectableScoreTwo, double time)
+    {
+        this.collectableScoreOne = collectableScoreTwo;
+        this.playerTimeTwo = time;
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
