@@ -38,10 +38,13 @@ public class FinishCheck : MonoBehaviour
             // if the last character is set to null, -> only load the minigame, do not save score
             if (!(c is null))
             {
+                // original plan was to have if both levels were finished, but there doesn't seem to
+                // be a way to check if the second level was finshed. I also really need to study
+                // right now it's only based on level one times, like before the 2nd level was added.
                 int totalScore = this.collectableScoreOne + this.collectableScoreTwo;
                 totalTime = this.playerTimeOne + this.playerTimeTwo;
-                c.SetLastPlayerScore(totalScore); // total score will be the sum of the two levels
-                c.SetLastPlayerTime(totalTime); //
+                c.SetLastPlayerScore(totalScore);
+                c.SetLastPlayerTime(totalTime); 
             }
 
             hm.LoadDialogueFromLastCharacter();
