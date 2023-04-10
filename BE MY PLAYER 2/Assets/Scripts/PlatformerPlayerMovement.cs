@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformerPlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public float customG;
 
     [Range(1, 10)]
     public float speed;
@@ -19,7 +20,13 @@ public class PlatformerPlayerMovement : MonoBehaviour
     public KeyCode jump;
     public bool isJumping;
     public bool isFalling; //debug
-    public SoundFX sound;
+
+    [Range (-1f, 1f)]
+    private float waitTimeVP;
+
+    //private bool firstEnterVP;
+
+    public GameObject manager;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +36,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("VerticalPlatform"))
         {
             isJumping = false;
         }
@@ -37,13 +44,29 @@ public class PlatformerPlayerMovement : MonoBehaviour
         {
             Move = 0;
         }*/
+        /*if (collision.gameObject.CompareTag("VerticalPlatform") && firstEnterVP)
+        {
+            isJumping = true;
+            firstEnterVP = false;
+            waitTimeVP = 0.5f;
+            //Invoke("VPJumping", 0.5f);
+            Debug.Log("locked");//test
+        } else if (collision.gameObject.CompareTag("VerticalPlatform") && !firstEnterVP)
+        {
+            isJumping=false;
+            
+        }*/
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("VerticalPlatform") )
         {
             isJumping = true;
+            //if (waitTimeVP <= 0f) { 
+
+            //}
+            //Invoke("VPJumping", 0.5f);
         }
     }
 
@@ -62,22 +85,38 @@ public class PlatformerPlayerMovement : MonoBehaviour
         if (Input.GetButton("Jump") && !isJumping)
         {
             rb.velocity = Vector2.up * jumpVelocity;
-            isJumping = true;
-            sound.JumpSound();
         }
 
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * customG * (fallMultiplier - 1) * Time.deltaTime;
             isFalling = false;//debug
             //Debug.Log("fall");
         } else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
         {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector2.up * customG * (lowJumpMultiplier - 1) * Time.deltaTime;
             isFalling = true;//debug
             //Debug.Log("low");
         } 
+
+        waitTimeVP -= Time.deltaTime;
     }
 
-    
+    /*private void VPJumping()
+    {
+        if(waitTimeVP <= 0)
+        {
+            firstEnterVP = true;
+        }
+        
+        //Debug.Log("unlocked");//test
+    }*/
+
+    public void speedReset()
+    {
+        speed = 7;
+        manager.GetComponent<Timer>().speedLevel = 0;
+    }
+
+
 }

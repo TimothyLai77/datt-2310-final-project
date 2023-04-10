@@ -22,7 +22,7 @@ public class AppleCollect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            sound.AppleSound();
+            //sound.AppleSound();
             gameObject.SetActive(false);
             Timer.instance.AppleCollect();
         }

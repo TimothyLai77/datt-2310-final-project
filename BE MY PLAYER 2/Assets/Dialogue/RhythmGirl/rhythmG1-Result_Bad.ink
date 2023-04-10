@@ -2,7 +2,7 @@ EXTERNAL returnToHub()
 
 -> entry
 === entry ===
-[Alex] Really? You're sense of rhythm needs some improvement. Try practicing next time you play with me.
+[Alex] Really? Your sense of rhythm needs some improvement. Try practicing next time you play with me.
     + [Don't need be so harsh!]
         -> one
     + [I know, right?]
