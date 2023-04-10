@@ -20,6 +20,8 @@ public class HubManager : MonoBehaviour
 
     private bool minigameStarted;
 
+    public SceneChanger sceneChanger;
+
     // Getter method to access the instance of this manager
     public static HubManager GetInstance()
     {
@@ -81,7 +83,7 @@ public class HubManager : MonoBehaviour
         ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets(); // get the assets
         // load the references so the dialogueManger can grab the asset references
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+        sceneChanger.FadeToScene(4); // switch to dialogue
     }
 
     public void RoomTwoButton()
@@ -89,13 +91,13 @@ public class HubManager : MonoBehaviour
         this.lastCharacter = PlatformerGuyData.GetInstance();
         ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets();
         SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+        sceneChanger.FadeToScene(4); // swithc to dialogue
     }
 
     public void MyRoomButton() 
     {
         this.lastCharacter = null; // so it returns to hub w/o dialogue scene after game
-        SceneManager.LoadScene("MinigameSelection");
+        sceneChanger.FadeToScene(5);
     }
 
     /*
@@ -109,13 +111,13 @@ public class HubManager : MonoBehaviour
             // if need to load dialgoue after the minigame
             ArrayList assetsToLoad = this.lastCharacter.GetResultAssets();
             SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
-            SceneManager.LoadScene("DialogueScene");
+            sceneChanger.FadeToScene(4);
         }
         else
         {
             // don't load result dialogue, just go back to hub. 
             //Debug.Log(lastCharacter.ToString());
-            SceneManager.LoadScene("MainHub");
+            sceneChanger.FadeToScene(1);
         }
     }
 
@@ -132,7 +134,7 @@ public class HubManager : MonoBehaviour
     {
         // only load the minigame no dialogue needed.
         //this.minigameStarted = true;
-        SceneManager.LoadScene("RhythmGame"); // change scene
+       sceneChanger.FadeToScene(2); // change scene
     }
 
     public bool MinigameStarted() 
@@ -144,7 +146,7 @@ public class HubManager : MonoBehaviour
     
     public void StartDialogueDebug() {
         SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);
-        SceneManager.LoadScene("DialogueScene");
+        sceneChanger.FadeToScene(4);
     }
 
     private void SetToLoads(TextAsset ink, Sprite portrait, Sprite background)
@@ -171,12 +173,12 @@ public class HubManager : MonoBehaviour
 
     public void ToTitleScreenScene()
     {
-        SceneManager.LoadScene("TitleScreen");
+        sceneChanger.FadeToScene(0);
     }
 
     public void ToMainHubScene()
     {
-        SceneManager.LoadScene("MainHub");
+        sceneChanger.FadeToScene(1);
     }
 }
 

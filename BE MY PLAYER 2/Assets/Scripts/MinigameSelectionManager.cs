@@ -6,6 +6,8 @@ public class MinigameSelectionManager : MonoBehaviour
 {
     private static MinigameSelectionManager instance;
 
+    public SceneChanger sceneChanger;
+
     private void Awake()
     {
         /*
@@ -26,17 +28,17 @@ public class MinigameSelectionManager : MonoBehaviour
 
     public void StartRhythmGame() 
     {
-        SceneManager.LoadScene("RhythmGame");
+        sceneChanger.FadeToScene(2);
     }
 
     public void StartPlatformerGame()
     {
-        SceneManager.LoadScene("platformerDemo");
+        sceneChanger.FadeToScene(3);
     }
 
     public void ReturnToHub()
     {
-        SceneManager.LoadScene("MainHub");
+        sceneChanger.FadeToScene(1);
     }
 
 
