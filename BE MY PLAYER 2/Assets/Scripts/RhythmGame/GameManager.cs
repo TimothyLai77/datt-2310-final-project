@@ -34,14 +34,14 @@ public class GameManager : MonoBehaviour
     public string currentSongDifficulty;
 
     public int currentScore;
-    public int scorePerNote = 10;
+    public int[] scorePerAccuracy = { 10, 25, 50 };
 
     public int currentMultiplier;
     public int currentCombo;
-    public int[] multiplierThresholds;
+    public int[] multiplierThresholds = { 12, 24, 48 };
 
     public bool invokeMusic = true;
-    public float delayMusicBeforeStart;
+    public float delayMusicBeforeStart = 0;
 
     public Text scoreText;
     public Text multiplierText, comboText;
@@ -83,8 +83,9 @@ public class GameManager : MonoBehaviour
 
         songText.text = "Song: " + currentSelectedSong.title;
         difficultyText.text = "Difficulty: " + currentSongDifficulty;
+        delayMusicBeforeStart = currentSelectedSong.startDelay;
 
-        scoreText.text = "Score: 0";
+        scoreText.text = "0";
         currentMultiplier = 1;
 
         perfectHits = 0;
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
                 currentSongIndex = (currentSongIndex == 0) ? songs.Count - 1 : currentSongIndex - 1;
                 currentSelectedSong = songs[currentSongIndex];
                 songText.text = "Song: " + currentSelectedSong.title;
+                delayMusicBeforeStart = currentSelectedSong.startDelay;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
                 currentSongIndex = (currentSongIndex == songs.Count - 1) ? 0 : currentSongIndex + 1;
                 currentSelectedSong = songs[currentSongIndex];
                 songText.text = "Song: " + currentSelectedSong.title;
+                delayMusicBeforeStart = currentSelectedSong.startDelay;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
@@ -218,28 +221,34 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit(string accuracy)
     {
+        int hitScore = 0;
+
         if(accuracy == "Perfect")
         {
             GameObject perfectHitInstance = Instantiate(PerfectHit, new Vector3(0, 0, 0), Quaternion.identity);
             perfectHitInstance.transform.position = AccuracySpawner.transform.position;
             perfectHits++;
+            hitScore = scorePerAccuracy[2];
         }
         else if (accuracy == "Great")
         {
             GameObject greatHitInstance = Instantiate(GreatHit, new Vector3(0, 0, 0), Quaternion.identity);
             greatHitInstance.transform.position = AccuracySpawner.transform.position;
             greatHits++;
+            hitScore = scorePerAccuracy[1];
         }
         else if (accuracy == "Good")
         {
             GameObject goodHitInstance = Instantiate(GoodHit, new Vector3(0, 0, 0), Quaternion.identity);
             goodHitInstance.transform.position = AccuracySpawner.transform.position;
             goodHits++;
+            hitScore = scorePerAccuracy[0];
         }
 
-        if(currentMultiplier - 1 < multiplierThresholds.Length)
+        currentCombo++;
+
+        if (currentMultiplier - 1 < multiplierThresholds.Length)
         {
-            currentCombo++;
             if(currentCombo >= multiplierThresholds[currentMultiplier-1])
             {
                 currentMultiplier++;
@@ -248,11 +257,11 @@ public class GameManager : MonoBehaviour
 
         notesHit++;
     
-        multiplierText.text = "Multiplier: x" + currentMultiplier;
-        comboText.text = "Combo: " + currentCombo;
+        multiplierText.text = "x" + currentMultiplier;
+        comboText.text = "" + currentCombo;
 
-        currentScore += scorePerNote * currentMultiplier;
-        scoreText.text = "Score: " + currentScore;
+        currentScore += hitScore * currentMultiplier;
+        scoreText.text = "" + currentScore;
     }
 
     public void NoteMissed()
@@ -264,8 +273,8 @@ public class GameManager : MonoBehaviour
 
         currentMultiplier = 1;
         currentCombo = 0;
-        multiplierText.text = "Multiplier: x" + currentMultiplier;
-        comboText.text = "Combo: " + currentCombo;
+        multiplierText.text = "x" + currentMultiplier;
+        comboText.text = "" + currentCombo;
 
         notesMissed++;
     }
