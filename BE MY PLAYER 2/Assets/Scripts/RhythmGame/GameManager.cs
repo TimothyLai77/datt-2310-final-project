@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public int currentMultiplier;
     public int currentCombo;
-    public int[] multiplierThresholds;
+    public int[] multiplierThresholds = { 12, 24, 48 };
 
     public bool invokeMusic = true;
     public float delayMusicBeforeStart;
@@ -214,9 +214,10 @@ public class GameManager : MonoBehaviour
             goodHits++;
         }
 
-        if(currentMultiplier - 1 < multiplierThresholds.Length)
+        currentCombo++;
+
+        if (currentMultiplier - 1 < multiplierThresholds.Length)
         {
-            currentCombo++;
             if(currentCombo >= multiplierThresholds[currentMultiplier-1])
             {
                 currentMultiplier++;

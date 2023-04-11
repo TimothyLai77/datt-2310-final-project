@@ -3195,7 +3195,7 @@ MonoBehaviour:
   scorePerNote: 10
   currentMultiplier: 1
   currentCombo: 0
-  multiplierThresholds: 040000000800000010000000
+  multiplierThresholds: 0c0000001800000030000000
   invokeMusic: 1
   delayMusicBeforeStart: 2.4
   scoreText: {fileID: 1791990394}
