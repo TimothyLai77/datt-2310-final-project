@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public string currentSongDifficulty;
 
     public int currentScore;
-    public int scorePerNote = 10;
+    public int[] scorePerAccuracy = { 10, 25, 50 };
 
     public int currentMultiplier;
     public int currentCombo;
@@ -195,23 +195,28 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit(string accuracy)
     {
+        int hitScore = 0;
+
         if(accuracy == "Perfect")
         {
             GameObject perfectHitInstance = Instantiate(PerfectHit, new Vector3(0, 0, 0), Quaternion.identity);
             perfectHitInstance.transform.position = AccuracySpawner.transform.position;
             perfectHits++;
+            hitScore = scorePerAccuracy[2];
         }
         else if (accuracy == "Great")
         {
             GameObject greatHitInstance = Instantiate(GreatHit, new Vector3(0, 0, 0), Quaternion.identity);
             greatHitInstance.transform.position = AccuracySpawner.transform.position;
             greatHits++;
+            hitScore = scorePerAccuracy[1];
         }
         else if (accuracy == "Good")
         {
             GameObject goodHitInstance = Instantiate(GoodHit, new Vector3(0, 0, 0), Quaternion.identity);
             goodHitInstance.transform.position = AccuracySpawner.transform.position;
             goodHits++;
+            hitScore = scorePerAccuracy[0];
         }
 
         currentCombo++;
@@ -229,7 +234,7 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "Multiplier: x" + currentMultiplier;
         comboText.text = "Combo: " + currentCombo;
 
-        currentScore += scorePerNote * currentMultiplier;
+        currentScore += hitScore * currentMultiplier;
         scoreText.text = "Score: " + currentScore;
     }
 
