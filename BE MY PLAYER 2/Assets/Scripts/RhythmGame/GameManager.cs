@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         difficultyText.text = "Difficulty: " + currentSongDifficulty;
         delayMusicBeforeStart = currentSelectedSong.startDelay;
 
-        scoreText.text = "Score: 0";
+        scoreText.text = "0";
         currentMultiplier = 1;
 
         perfectHits = 0;
@@ -234,11 +234,11 @@ public class GameManager : MonoBehaviour
 
         notesHit++;
     
-        multiplierText.text = "Multiplier: x" + currentMultiplier;
-        comboText.text = "Combo: " + currentCombo;
+        multiplierText.text = "x" + currentMultiplier;
+        comboText.text = "" + currentCombo;
 
         currentScore += hitScore * currentMultiplier;
-        scoreText.text = "Score: " + currentScore;
+        scoreText.text = "" + currentScore;
     }
 
     public void NoteMissed()
@@ -250,8 +250,8 @@ public class GameManager : MonoBehaviour
 
         currentMultiplier = 1;
         currentCombo = 0;
-        multiplierText.text = "Multiplier: x" + currentMultiplier;
-        comboText.text = "Combo: " + currentCombo;
+        multiplierText.text = "x" + currentMultiplier;
+        comboText.text = "" + currentCombo;
 
         notesMissed++;
     }
