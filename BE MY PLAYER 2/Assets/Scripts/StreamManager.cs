@@ -8,11 +8,12 @@ public class StreamManager : MonoBehaviour
     private static StreamManager instance;
     public GameObject streamScreen, chatPanel, textObject;
     public SceneChanger sceneChanger;
+    public SoundFX soundfx;
 
     public int maxMessages = 25;
     public int textOption;
     public int viewers, viewerAverage, viewerIncrease, randNum, randViewer;
-    public bool rhythmStreamed = false;
+    public static bool streamed = false;
     public Text viewerText, dialogueText;
 
     [SerializeField]
@@ -20,11 +21,44 @@ public class StreamManager : MonoBehaviour
 
     void Start() 
     {
+
+    }
+
+    void Update()
+    {
         viewerAverage = PlayerData.GetInstance().GetViewers();
-        if(viewerAverage <= 10)
+        if(viewerAverage <= 5)
         {
-            PlayerData.GetInstance().SetViewers(15);
+            PlayerData.GetInstance().SetViewers(5);
             viewerAverage = PlayerData.GetInstance().GetViewers();
+        }
+        if(streamed == true)
+        {
+            streamed = false;
+            sceneChanger.FadeOut();
+            if(RhythmGirlData.instance.GetStreamResult() == "RESULT_GOOD" || PlatformerGuyData.GetInstance().GetStreamResult() == "RESULT_GOOD")
+            {
+                RhythmGirlData.instance.SetStreamResult("");
+                textOption = 1;
+                PlayerData.GetInstance().SetIncrease(25);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(RhythmGirlData.instance.GetStreamResult() == "RESULT_OKAY" || PlatformerGuyData.GetInstance().GetStreamResult() == "RESULT_OKAY")
+            {
+                RhythmGirlData.instance.SetStreamResult("");
+                textOption = 2;
+                PlayerData.GetInstance().SetIncrease(10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(RhythmGirlData.instance.GetStreamResult() == "RESULT_BAD" || PlatformerGuyData.GetInstance().GetStreamResult() == "RESULT_BAD")
+            {
+                RhythmGirlData.instance.SetStreamResult("");
+                textOption = 3;
+                PlayerData.GetInstance().SetIncrease(-10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            InvokeRepeating("Stream", 1.0f, 0.8f);
+            Invoke("EndStream", 10f);
         }
     }
     
@@ -48,76 +82,14 @@ public class StreamManager : MonoBehaviour
 
     public void StartRhythmGame() 
     {
-        if(RhythmGirlData.instance.GetResultState() != "" && RhythmGirlData.instance.GetResultState() != null && rhythmStreamed == false && RhythmGirlData.instance.GetPlayed() == false)
-        {
-            RhythmGirlData.instance.SetPlayed(true);
-            sceneChanger.FadeOut();
-            if(RhythmGirlData.instance.GetResultState() == "RESULT_GOOD")
-            {
-                textOption = 1;
-                PlayerData.GetInstance().SetIncrease(25);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            else if(RhythmGirlData.instance.GetResultState() == "RESULT_OKAY")
-            {
-                textOption = 2;
-                PlayerData.GetInstance().SetIncrease(10);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            else if(RhythmGirlData.instance.GetResultState() == "RESULT_BAD")
-            {
-                textOption = 3;
-                PlayerData.GetInstance().SetIncrease(-10);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            InvokeRepeating("Stream", 1.0f, 0.8f);
-            Invoke("EndStream", 10f);
-        }
-        else if(RhythmGirlData.instance.GetPlayed() == true)
-        {
-            dialogueText.text = "I already streamed this game! I should play with Alex again if I want to stream it once more.";
-        }
-        else
-        {
-            dialogueText.text = "I should probably play with Alex first, before streaming the rhythm game!";
-        }
+        GameManager.streamOrRelation = true;
+        sceneChanger.FadeToScene(2);
     }
 
     public void StartPlatformerGame()
     {
-       if(PlatformerGuyData.GetInstance().GetResultState() != "" && PlatformerGuyData.GetInstance().GetResultState() != null && PlatformerGuyData.instance.GetPlayed() == false)
-        {
-            PlatformerGuyData.instance.SetPlayed(true);
-            sceneChanger.FadeOut();
-            if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_GOOD")
-            {
-                textOption = 1;
-                PlayerData.GetInstance().SetIncrease(25);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            else if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_OKAY")
-            {
-                textOption = 2;
-                PlayerData.GetInstance().SetIncrease(10);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            else if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_BAD")
-            {
-                textOption = 3;
-                PlayerData.GetInstance().SetIncrease(-10);
-                viewerIncrease = PlayerData.GetInstance().GetViewers();
-            }
-            InvokeRepeating("Stream", 1.0f, 0.8f);
-            Invoke("EndStream", 10f);
-        }
-        else if(PlatformerGuyData.instance.GetPlayed() == true)
-        {
-            dialogueText.text = "I already streamed this game! I should play with Matt again if I want to stream it once more.";
-        }
-        else
-        {
-            dialogueText.text = "I should probably play with Matt first, before streaming the rhythm game!";
-        }
+       FinishCheck.streamOrRelation = true;
+       sceneChanger.FadeToScene(3);
     }
 
     void Stream()
@@ -146,6 +118,10 @@ public class StreamManager : MonoBehaviour
         if(viewerAverage < 50)
         {
             viewers = Random.Range(viewerAverage - 4, viewerAverage + 4);
+            if(viewers <= 0)
+            {
+                viewers += 4;
+            }
         }
         else
         {
@@ -194,6 +170,7 @@ public class StreamManager : MonoBehaviour
         {
             SendMessageToChat("Viewer_" + randViewer + ": ♡ ♥ ♡ ♥ ♡ ♥ ♡ ♥");
         }
+        soundfx.ChatSound();
     }
 
     void EndStream()

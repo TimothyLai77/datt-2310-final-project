@@ -77,7 +77,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     private string currentState; // determines which starting dialogue to load
     public static string playerResultState; // determines which result dialogue to play
-    public static bool played;
+    public static string streamResultState;
 
 
     //private List<int> chosenMusicSheet;
@@ -140,14 +140,9 @@ public class RhythmGirlData : MonoBehaviour, Character
         return playerResultState;
     }
 
-    public bool GetPlayed()
+    public string GetStreamResult()
     {
-        return played;
-    }
-
-    public void SetPlayed(bool boolean)
-    {
-        played = boolean;
+        return streamResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
@@ -175,7 +170,6 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     public void SetResultState(string result)
     {
-        played = false;
         if (result == "GOOD")
         {
             playerResultState = RhythmGirlData.RESULT_GOOD;
@@ -189,6 +183,27 @@ public class RhythmGirlData : MonoBehaviour, Character
             playerResultState = RhythmGirlData.RESULT_BAD;
         }
         Debug.Log(playerResultState);
+    }
+
+    public void SetStreamResult(string result)
+    {
+        if (result == "GOOD")
+        {
+            streamResultState = RhythmGirlData.RESULT_GOOD;
+        }
+        else if (result == "OKAY")
+        {
+            streamResultState = RhythmGirlData.RESULT_OKAY;
+        }
+        else if (result == "BAD")
+        {
+            streamResultState = RhythmGirlData.RESULT_BAD;
+        }
+        else
+        {
+            streamResultState = "";
+        }
+        Debug.Log(streamResultState);
     }
 
     /*private void DetermineResultState()

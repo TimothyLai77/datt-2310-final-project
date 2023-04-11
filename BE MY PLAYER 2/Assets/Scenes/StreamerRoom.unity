@@ -1137,6 +1137,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1316742915}
   - component: {fileID: 1316742916}
+  - component: {fileID: 1316742917}
+  - component: {fileID: 1316742918}
   m_Layer: 0
   m_Name: HubManager
   m_TagString: Untagged
@@ -1175,6 +1177,7 @@ MonoBehaviour:
   chatPanel: {fileID: 1708138392}
   textObject: {fileID: 5429281122112827345, guid: 11b5dace3b3cb9345b20d53f91aea44b, type: 3}
   sceneChanger: {fileID: 6037283730670479325}
+  soundfx: {fileID: 1316742917}
   maxMessages: 25
   textOption: 0
   viewers: 0
@@ -1182,9 +1185,127 @@ MonoBehaviour:
   viewerIncrease: 0
   randNum: 0
   randViewer: 0
-  rhythmStreamed: 0
   viewerText: {fileID: 677948404}
   dialogueText: {fileID: 212422232}
+--- !u!114 &1316742917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316742913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34334d662beab30429f42e32cca41331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySounds: {fileID: 1316742918}
+  hoverSound: {fileID: 0}
+  clickSound: {fileID: 0}
+  arrowSound: {fileID: 8300000, guid: 6441b636f01e6f548b173b0cfa8bcb6a, type: 3}
+  jumpSound: {fileID: 0}
+  fallingSpikeSound: {fileID: 0}
+  spikeBoomSound: {fileID: 0}
+  appleSound: {fileID: 0}
+  checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  chatSound: {fileID: 8300000, guid: 593b1adcc231fd346a9f54cdb80aea8f, type: 3}
+--- !u!82 &1316742918
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316742913}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1605389962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,6 +1679,7 @@ MonoBehaviour:
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
   deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!1 &1656782822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1839,7 @@ MonoBehaviour:
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
   deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!114 &1656782828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2317,6 +2440,7 @@ MonoBehaviour:
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
   deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!82 &1756416073
 AudioSource:
   m_ObjectHideFlags: 0

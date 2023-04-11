@@ -12,6 +12,7 @@ public class FinishCheck : MonoBehaviour
 
     public bool levelOneFinished;
     public bool levelTwoFinished;
+    public static bool streamOrRelation;
 
     // Start is called before the first frame update
 
@@ -30,8 +31,6 @@ public class FinishCheck : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //SceneManager.LoadScene("MainHub");
-
             HubManager hm = HubManager.GetInstance();
             PlatformerGuyData c = (PlatformerGuyData) hm.GetLastCharacter();
 
@@ -46,9 +45,18 @@ public class FinishCheck : MonoBehaviour
                 c.SetLastPlayerScore(totalScore);
                 c.SetLastPlayerTime(totalTime); 
             }
-
-            hm.LoadDialogueFromLastCharacter();
-
+            //SceneManager.LoadScene("MainHub");
+            if(streamOrRelation == false)
+            {
+                hm.LoadDialogueFromLastCharacter();
+            }
+            else
+            {
+                PlatformerGuyData.instance.DetermineResultState();
+                streamOrRelation = false;
+                StreamManager.streamed = true;
+                SceneManager.LoadScene("StreamerRoom");
+            }
 
         }
     }

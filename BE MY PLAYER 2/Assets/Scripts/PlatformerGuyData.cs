@@ -54,7 +54,6 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     private int totalCollectableScore;
     private double lastPlayerTime;
-    public static bool played;
 
     // states
 
@@ -70,6 +69,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
     // current states
     private string currentState;
     public static string playerResultState;
+    public static string streamResultState;
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
@@ -84,16 +84,6 @@ public class PlatformerGuyData : MonoBehaviour, Character
     public static PlatformerGuyData GetInstance()
     {
         return instance;
-    }
-
-    public bool GetPlayed()
-    {
-        return played;
-    }
-
-    public void SetPlayed(bool boolean)
-    {
-        played = boolean;
     }
 
     private void Awake()
@@ -141,6 +131,11 @@ public class PlatformerGuyData : MonoBehaviour, Character
         return playerResultState;
     }
 
+    public string GetStreamResult()
+    {
+        return streamResultState;
+    }
+
     public void SetRelationToPlayer(int newValue)
     {
         relationToPlayer = newValue;
@@ -165,26 +160,63 @@ public class PlatformerGuyData : MonoBehaviour, Character
         DetermineResultState();
     }
 
-    private void DetermineResultState()
+    public void DetermineResultState()
     {
         // todo: compare player time against expected times, and upate the states
         Debug.Log(lastPlayerTime);
         Debug.Log(totalCollectableScore);
-        played = false;
         if (lastPlayerTime <= GOOD_TIME && totalCollectableScore==MAX_APPLE_SCORE)
         {
             // good dialouge only if all apples + good time
-            playerResultState = PlatformerGuyData.RESULT_GOOD;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_GOOD;
+            }
+            else
+            {
+                SetStreamResult("GOOD");
+            }
         } else if (lastPlayerTime <= OKAY_TIME && totalCollectableScore>=MID_APPLE_SCORE)
         {
             // mid dialogue if aobut half
-            playerResultState = PlatformerGuyData.RESULT_OKAY;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_OKAY;
+            }
+            else
+            {
+                SetStreamResult("OKAY");
+            }
         } else 
         {
             // bad dialgoue otherwise
-            playerResultState = PlatformerGuyData.RESULT_BAD;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_BAD;
+            }
+            else
+            {
+                SetStreamResult("BAD");
+            }
         }
         Debug.Log(playerResultState);
+    }
+
+    public void SetStreamResult(string result)
+    {
+        if (result == "GOOD")
+        {
+            streamResultState = PlatformerGuyData.RESULT_GOOD;
+        }
+        else if (result == "OKAY")
+        {
+            streamResultState = PlatformerGuyData.RESULT_OKAY;
+        }
+        else if (result == "BAD")
+        {
+            streamResultState = PlatformerGuyData.RESULT_BAD;
+        }
+        Debug.Log(streamResultState);
     }
 
     public ArrayList GetStartingAssets()
