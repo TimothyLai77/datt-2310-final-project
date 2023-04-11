@@ -9,9 +9,7 @@ using UnityEngine;
  */
 public class RhythmGirlData : MonoBehaviour, Character
 {
-
-
-    private static RhythmGirlData instance;
+    public static RhythmGirlData instance;
 
     // these variable names kinda break convention but its easier to read...
     [Header("First Time")]
@@ -78,7 +76,8 @@ public class RhythmGirlData : MonoBehaviour, Character
     private int relationToPlayer;
 
     private string currentState; // determines which starting dialogue to load
-    static public string playerResultState; // determines which result dialogue to play
+    public static string playerResultState; // determines which result dialogue to play
+    public static bool played;
 
 
     //private List<int> chosenMusicSheet;
@@ -88,9 +87,6 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
-
-
-
 
     //private Dictionary<int, ArrayList> assetMap = new Dictionary<int, ArrayList>();
     public static RhythmGirlData GetInstance()
@@ -141,7 +137,17 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     public string GetResultState()
     {
-        return RhythmGirlData.playerResultState;
+        return playerResultState;
+    }
+
+    public bool GetPlayed()
+    {
+        return played;
+    }
+
+    public void SetPlayed(bool boolean)
+    {
+        played = boolean;
     }
 
     public void SetRelationToPlayer(int newValue)
@@ -169,6 +175,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     public void SetResultState(string result)
     {
+        played = false;
         if (result == "GOOD")
         {
             playerResultState = RhythmGirlData.RESULT_GOOD;

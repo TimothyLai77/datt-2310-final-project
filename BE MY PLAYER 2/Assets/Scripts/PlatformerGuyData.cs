@@ -42,7 +42,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
 
 
-    private static PlatformerGuyData instance;
+    public static PlatformerGuyData instance;
 
     private const double GOOD_TIME = 20;
     private const double OKAY_TIME = 30;
@@ -54,6 +54,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     private int totalCollectableScore;
     private double lastPlayerTime;
+    public static bool played;
 
     // states
 
@@ -68,7 +69,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     // current states
     private string currentState;
-    static public string playerResultState;
+    public static string playerResultState;
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
@@ -85,6 +86,15 @@ public class PlatformerGuyData : MonoBehaviour, Character
         return instance;
     }
 
+    public bool GetPlayed()
+    {
+        return played;
+    }
+
+    public void SetPlayed(bool boolean)
+    {
+        played = boolean;
+    }
 
     private void Awake()
     {
@@ -128,17 +138,17 @@ public class PlatformerGuyData : MonoBehaviour, Character
      */
     public string GetResultState()
     {
-        return PlatformerGuyData.playerResultState;
+        return playerResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
     {
-        this.relationToPlayer = newValue;
+        relationToPlayer = newValue;
     }
 
     public int GetRelationToPlayer()
     {
-        return this.relationToPlayer;
+        return relationToPlayer;
     }
 
     // uhhh fix this
@@ -160,6 +170,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
         // todo: compare player time against expected times, and upate the states
         Debug.Log(lastPlayerTime);
         Debug.Log(totalCollectableScore);
+        played = false;
         if (lastPlayerTime <= GOOD_TIME && totalCollectableScore==MAX_APPLE_SCORE)
         {
             // good dialouge only if all apples + good time

@@ -1,56 +1,147 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class StreamManager : MonoBehaviour
 {
+    private static StreamManager instance;
+    public GameObject streamScreen, chatPanel, textObject;
+    public SceneChanger sceneChanger;
+
     public int maxMessages = 25;
-
-    public int viewerAverage;
-    public int viewers;
-    public int viewerIncrease;
-    public int randNum;
-    public int randViewer;
-
-    public Text viewerText;
-    //public Text viewerMood;
-    //public Text viewerEngagement;
-
-    public Button rhythmGameButton, speedParkourButton;
-    //public GameManager rhythmGame;
-    //public FinishCheck platformGame;
-    public GameObject chatPanel, textObject, prompt, prompt2;
-
-    public Text prompt2Text;
-    public Text S;
-    public Text A;
-    public Text B;
-    public Text C;
-    public Text F;
+    public int textOption;
+    public int viewers, viewerAverage, viewerIncrease, randNum, randViewer;
+    public bool rhythmStreamed = false;
+    public Text viewerText, dialogueText;
 
     [SerializeField]
     List<Message> messageList = new List<Message>();
-    
 
-    // Start is called before the first frame update
-    void Start()
+    void Start() 
     {
-        S.text = "S";
-        A.text = "A";
-        B.text = "B";
-        C.text = "C";
-        F.text = "F";
-        rhythmGameButton.enabled = false;
-        speedParkourButton.enabled = false;
+        viewerAverage = PlayerData.GetInstance().GetViewers();
+        if(viewerAverage <= 10)
+        {
+            PlayerData.GetInstance().SetViewers(15);
+            viewerAverage = PlayerData.GetInstance().GetViewers();
+        }
+    }
+    
+    private void Awake()
+    {
+        /*
+         * only add the instance to Unity's DontDestroyOnLoad Scene
+         * if it doesn't exist, otherwise don't do anything. 
+         */
+        if (instance != null && instance != this)
+        {
+            // if instance is null and there is another instance
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            // if instance is null set the instance to this object
+            instance = this;
+        }
     }
 
-    void ViewerCount() 
+    public void StartRhythmGame() 
     {
+        if(RhythmGirlData.instance.GetResultState() != "" && RhythmGirlData.instance.GetResultState() != null && rhythmStreamed == false && RhythmGirlData.instance.GetPlayed() == false)
+        {
+            RhythmGirlData.instance.SetPlayed(true);
+            sceneChanger.FadeOut();
+            if(RhythmGirlData.instance.GetResultState() == "RESULT_GOOD")
+            {
+                textOption = 1;
+                PlayerData.GetInstance().SetIncrease(25);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(RhythmGirlData.instance.GetResultState() == "RESULT_OKAY")
+            {
+                textOption = 2;
+                PlayerData.GetInstance().SetIncrease(10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(RhythmGirlData.instance.GetResultState() == "RESULT_BAD")
+            {
+                textOption = 3;
+                PlayerData.GetInstance().SetIncrease(-10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            InvokeRepeating("Stream", 1.0f, 0.8f);
+            Invoke("EndStream", 10f);
+        }
+        else if(RhythmGirlData.instance.GetPlayed() == true)
+        {
+            dialogueText.text = "I already streamed this game! I should play with Alex again if I want to stream it once more.";
+        }
+        else
+        {
+            dialogueText.text = "I should probably play with Alex first, before streaming the rhythm game!";
+        }
+    }
+
+    public void StartPlatformerGame()
+    {
+       if(PlatformerGuyData.GetInstance().GetResultState() != "" && PlatformerGuyData.GetInstance().GetResultState() != null && PlatformerGuyData.instance.GetPlayed() == false)
+        {
+            PlatformerGuyData.instance.SetPlayed(true);
+            sceneChanger.FadeOut();
+            if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_GOOD")
+            {
+                textOption = 1;
+                PlayerData.GetInstance().SetIncrease(25);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_OKAY")
+            {
+                textOption = 2;
+                PlayerData.GetInstance().SetIncrease(10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            else if(PlatformerGuyData.GetInstance().GetResultState() == "RESULT_BAD")
+            {
+                textOption = 3;
+                PlayerData.GetInstance().SetIncrease(-10);
+                viewerIncrease = PlayerData.GetInstance().GetViewers();
+            }
+            InvokeRepeating("Stream", 1.0f, 0.8f);
+            Invoke("EndStream", 10f);
+        }
+        else if(PlatformerGuyData.instance.GetPlayed() == true)
+        {
+            dialogueText.text = "I already streamed this game! I should play with Matt again if I want to stream it once more.";
+        }
+        else
+        {
+            dialogueText.text = "I should probably play with Matt first, before streaming the rhythm game!";
+        }
+    }
+
+    void Stream()
+    {
+        if(textOption == 1)
+        {
+            dialogueText.text = "You played amazingly and the stream really loved it! You see a great improvement in viewers.";
+        }
+        else if(textOption == 2)
+        {
+            dialogueText.text = "You played fine and the stream had fun! You see a slight improvement in viewers.";
+        }
+        else if(textOption == 3)
+        {
+            dialogueText.text = "You played poorly and the stream did not enjoy that! You see a small decline in viewers.";
+        }
+        streamScreen.SetActive(true);
         if(viewerAverage < viewerIncrease)
         {
             viewerAverage += 5;
+        }
+        if(viewerAverage > viewerIncrease)
+        {
+            viewerAverage -= 5;
         }
         if(viewerAverage < 50)
         {
@@ -105,20 +196,11 @@ public class StreamManager : MonoBehaviour
         }
     }
 
-    /*public void Intro()
+    void EndStream()
     {
-        intro.gameObject.SetActive(false);
-        viewerIncrease = viewerAverage + 50;
-        viewerMood.text = "Viewer Mood: Excited!";
-        viewerMood.color = Color.green;
-        viewerEngagement.text = "Viewer Engangement: 8/10";
-        viewerEngagement.color = Color.green;
-    }
-    *//*
-    // Update is called once per frame
-    void Update()
-    {
-        
+        streamScreen.SetActive(false);
+        CancelInvoke("Stream");
+        sceneChanger.FadeIn();
     }
 
     public void SendMessageToChat(string text)
@@ -139,95 +221,20 @@ public class StreamManager : MonoBehaviour
         messageList.Add(newMessage);
     }
 
-    public void StartStream()
+    public class Message 
     {
-        prompt.SetActive(false);
-        rhythmGameButton.enabled = true;
-        speedParkourButton.enabled = true;
-        InvokeRepeating("ViewerCount", 2.0f, 0.8f);
-        viewerAverage = 8;
-    }
-    
-    public void PlayRhythm()
-    {
-        rhythmGameButton.enabled = false;
-        if(GameManager.finalGradeText == S)
-        {
-            viewerIncrease = viewerAverage + 50;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played amazingly and the stream really loved it! You see a great improvement in viewers.";
-        }
-        if(GameManager.finalGradeText == A)
-        {
-            viewerIncrease = viewerAverage + 25;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played great and the stream was thrilled! You see a good improvement in viewers.";
-        }
-        if(GameManager.finalGradeText == B)
-        {
-            viewerIncrease = viewerAverage + 10;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played decently and the stream enjoyed it! You see an improvement in viewers.";
-        }
-        if(GameManager.finalGradeText == C)
-        {
-            viewerIncrease = viewerAverage + 5;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played fine and the stream was had fun! You see a slight improvement in viewers.";
-        }
-        if(GameManager.finalGradeText == F)
-        {
-            viewerIncrease = viewerAverage/2;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played poorly and the stream did not enjoy that! You see a small decline in viewers.";
-        }
+        public string text;
+        public Text textObject;
     }
 
-    public void PlayPlatformer()
+    public void ReturnToHub()
     {
-        speedParkourButton.enabled = false;
-
-        if(FinishCheck.gradeText == S)
-        {
-            viewerIncrease = viewerAverage + 50;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played amazingly and the stream really loved it! You see a great improvement in viewers.";
-        }
-        if(FinishCheck.gradeText == A)
-        {
-            viewerIncrease = viewerAverage + 25;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played great and the stream was thrilled! You see a good improvement in viewers.";
-        }
-        if(FinishCheck.gradeText == B)
-        {
-            viewerIncrease = viewerAverage + 10;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played decently and the stream enjoyed it! You see an improvement in viewers.";
-        }
-        if(FinishCheck.gradeText == C)
-        {
-            viewerIncrease = viewerAverage + 5;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played fine and the stream was had fun! You see a slight improvement in viewers.";
-        }
-        if(FinishCheck.gradeText == F)
-        {
-            viewerIncrease = viewerAverage/2;
-            prompt2.SetActive(true);
-            prompt2Text.text = "You played poorly and the stream did not enjoy that! You see a small decline in viewers.";
-        }
+        sceneChanger.FadeToScene(1);
     }
 
-    public void prompt2Ok()
+
+    public static StreamManager GetInstance()
     {
-        prompt2.SetActive(false);
+        return instance;
     }
 }
-
-public class Message 
-{
-    public string text;
-    public Text textObject;
-}
-*/
