@@ -277,7 +277,7 @@ RectTransform:
   m_Children:
   - {fileID: 176948554}
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -448,7 +448,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 149115378}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -1189,7 +1189,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1584,7 +1584,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1965,7 +1965,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2950,7 +2950,7 @@ RectTransform:
   - {fileID: 1622124332}
   - {fileID: 149115373}
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2995,6 +2995,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766832845}
   m_CullTransparentMesh: 0
+--- !u!114 &855664645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6037283729780096421, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+  m_PrefabInstance: {fileID: 1080167800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122ef3f59fdc7745815ed733e7bd132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &875399374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,6 +3133,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatTempo: 280
   hasStarted: 0
+--- !u!1001 &1080167800
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6037283729780096426, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_Name
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 496.11823
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 201.55742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.829312
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
 --- !u!1 &1087816175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3168,6 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPlaying: 0
   beatScroller: {fileID: 1012892474}
+  sceneChanger: {fileID: 855664645}
   currentGameState: 0
   songs: []
   songTracks:
@@ -9008,10 +9077,10 @@ RectTransform:
   - {fileID: 628332989}
   - {fileID: 1490575124}
   - {fileID: 1894841109}
-  - {fileID: 766832846}
   - {fileID: 24311856}
   - {fileID: 2023450578}
   - {fileID: 220299491}
+  - {fileID: 766832846}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9250,7 +9319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 1622124337}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -10029,7 +10098,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10384,7 +10453,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1605572182}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

@@ -5,9 +5,10 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     // Start is called before the first frame update
-    private static PlayerData instance;
+    public static PlayerData instance;
 
-    private int viewers;
+    public static int viewers;
+    private int increase;
     private int mattRelationship;
     private int alexRelationship;
 
@@ -19,11 +20,6 @@ public class PlayerData : MonoBehaviour
 
     // max player skill for both games is 10, player starts at 0 for both games.
     public const int MAX_SKILL = 10;
-
-
-
-
-
 
     void Awake()
     {
@@ -39,7 +35,6 @@ public class PlayerData : MonoBehaviour
         }
 
         // it'll reset everytimer on load but i guess that's fine?
-        this.viewers = 0;
         this.mattRelationship = 5;
         this.alexRelationship = 5;
         this.rhythmGameSkill = 0;
@@ -47,23 +42,24 @@ public class PlayerData : MonoBehaviour
     }
 
     // Use this when trying to use this class. Example: PlayerData.GetInstance().SetViewers(1000); sets the viewer count to 1000. 
-    public PlayerData GetInstance()
+    public static PlayerData GetInstance()
     {
         return instance;
     }
 
-
-
-
-
     public int GetViewers() 
     {
-        return this.viewers;
+        return viewers;
     }
 
     public void SetViewers(int newViewers)
     {
-        this.viewers = newViewers;
+        viewers = newViewers;
+    }
+
+    public void SetIncrease(int newViewers)
+    {
+        viewers += newViewers;
     }
 
     public int GetMattRelationship() 
@@ -105,8 +101,4 @@ public class PlayerData : MonoBehaviour
     {
         this.platformerGameSkill = newSkill;
     }
-
-
-
-
 }

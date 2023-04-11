@@ -9,9 +9,7 @@ using UnityEngine;
  */
 public class RhythmGirlData : MonoBehaviour, Character
 {
-
-
-    private static RhythmGirlData instance;
+    public static RhythmGirlData instance;
 
     // these variable names kinda break convention but its easier to read...
     [Header("First Time")]
@@ -78,7 +76,8 @@ public class RhythmGirlData : MonoBehaviour, Character
     private int relationToPlayer;
 
     private string currentState; // determines which starting dialogue to load
-    private string playerResultState; // determines which result dialogue to play
+    public static string playerResultState; // determines which result dialogue to play
+    public static string streamResultState;
 
 
     //private List<int> chosenMusicSheet;
@@ -88,9 +87,6 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
-
-
-
 
     //private Dictionary<int, ArrayList> assetMap = new Dictionary<int, ArrayList>();
     public static RhythmGirlData GetInstance()
@@ -141,7 +137,12 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     public string GetResultState()
     {
-        return this.playerResultState;
+        return playerResultState;
+    }
+
+    public string GetStreamResult()
+    {
+        return streamResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
@@ -181,6 +182,28 @@ public class RhythmGirlData : MonoBehaviour, Character
         {
             playerResultState = RhythmGirlData.RESULT_BAD;
         }
+        Debug.Log(playerResultState);
+    }
+
+    public void SetStreamResult(string result)
+    {
+        if (result == "GOOD")
+        {
+            streamResultState = RhythmGirlData.RESULT_GOOD;
+        }
+        else if (result == "OKAY")
+        {
+            streamResultState = RhythmGirlData.RESULT_OKAY;
+        }
+        else if (result == "BAD")
+        {
+            streamResultState = RhythmGirlData.RESULT_BAD;
+        }
+        else
+        {
+            streamResultState = "";
+        }
+        Debug.Log(streamResultState);
     }
 
     /*private void DetermineResultState()
