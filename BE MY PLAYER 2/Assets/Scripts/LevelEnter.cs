@@ -25,7 +25,7 @@ public class LevelEnter : MonoBehaviour
     {
         spriteRenderer.color = new Color(253 / 255f, 183 / 255f, 183 / 255f, 255 / 255f);//slightly red
 
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.W))
         {
             manager.GetComponent<Timer>().countingTime = true;
             manager.GetComponent<Timer>().currentTime = 0;

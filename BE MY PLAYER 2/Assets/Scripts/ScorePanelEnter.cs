@@ -16,7 +16,7 @@ public class ScorePanelEnter : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         spriteRenderer.color = new Color(253 / 255f, 183 / 255f, 183 / 255f, 255 / 255f);//slightly red
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
             manager.GetComponent<Timer>().openScorePanel();
         }
