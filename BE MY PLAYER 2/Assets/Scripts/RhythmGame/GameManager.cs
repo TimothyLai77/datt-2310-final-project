@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public int[] multiplierThresholds = { 12, 24, 48 };
 
     public bool invokeMusic = true;
-    public float delayMusicBeforeStart;
+    public float delayMusicBeforeStart = 0;
 
     public Text scoreText;
     public Text multiplierText, comboText;
@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
 
         songText.text = "Song: " + currentSelectedSong.title;
         difficultyText.text = "Difficulty: " + currentSongDifficulty;
+        delayMusicBeforeStart = currentSelectedSong.startDelay;
 
         scoreText.text = "Score: 0";
         currentMultiplier = 1;
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
                 currentSongIndex = (currentSongIndex == 0) ? songs.Count - 1 : currentSongIndex - 1;
                 currentSelectedSong = songs[currentSongIndex];
                 songText.text = "Song: " + currentSelectedSong.title;
+                delayMusicBeforeStart = currentSelectedSong.startDelay;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);
@@ -123,6 +125,7 @@ public class GameManager : MonoBehaviour
                 currentSongIndex = (currentSongIndex == songs.Count - 1) ? 0 : currentSongIndex + 1;
                 currentSelectedSong = songs[currentSongIndex];
                 songText.text = "Song: " + currentSelectedSong.title;
+                delayMusicBeforeStart = currentSelectedSong.startDelay;
                 loadSongAudioSource();
                 Debug.Log("currentSongIndex: " + currentSongIndex);
                 Debug.Log("Currently Selected Song: " + currentSelectedSong.title);

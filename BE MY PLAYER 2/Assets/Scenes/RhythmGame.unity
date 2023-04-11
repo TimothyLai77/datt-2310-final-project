@@ -413,7 +413,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.4}
   m_EdgeRadius: 0
 --- !u!50 &42740293
 Rigidbody2D:
@@ -1527,7 +1527,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.4}
   m_EdgeRadius: 0
 --- !u!50 &335185284
 Rigidbody2D:
@@ -1908,7 +1908,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.4}
   m_EdgeRadius: 0
 --- !u!50 &450328919
 Rigidbody2D:
@@ -3192,12 +3192,12 @@ MonoBehaviour:
   currentDifficultyIndex: 0
   currentSongDifficulty: 
   currentScore: 0
-  scorePerNote: 10
+  scorePerAccuracy: 0a0000001900000032000000
   currentMultiplier: 1
   currentCombo: 0
   multiplierThresholds: 0c0000001800000030000000
   invokeMusic: 1
-  delayMusicBeforeStart: 2.4
+  delayMusicBeforeStart: 0
   scoreText: {fileID: 1791990394}
   multiplierText: {fileID: 2046179001}
   comboText: {fileID: 628332990}
@@ -3493,11 +3493,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1433331387760868731, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1433331387760868731, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1433331387760868731, guid: 0fe7b6e4a23093f4ea15ad494b075fe7, type: 3}
       propertyPath: m_IsTrigger
@@ -9887,7 +9887,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 0.4}
   m_EdgeRadius: 0
 --- !u!50 &1954822630
 Rigidbody2D:
@@ -10760,11 +10760,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6475139779916656365, guid: 19433302e151649edbfa13c883553076, type: 3}
       propertyPath: m_IsTrigger
@@ -10841,11 +10841,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f3e80f84bc952aa45a306755e82d5e3b, type: 3}
     - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 5429543197146879749, guid: c38f8e88676a341b1810ba3753d7610f, type: 3}
       propertyPath: m_IsTrigger
@@ -10922,11 +10922,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
       propertyPath: m_Size.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 411904856150173077, guid: e10d157d81fc447a5992c8d4f54a751b, type: 3}
       propertyPath: m_IsTrigger
