@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public BeatScroller beatScroller;
     public static GameManager instance;
     private RhythmGirlData rhythmGirlData;
+    public SceneChanger sceneChanger;
     public enum GAME_STATE
     {
         SongSelection,

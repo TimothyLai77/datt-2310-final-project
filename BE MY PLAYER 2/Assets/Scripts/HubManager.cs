@@ -111,13 +111,15 @@ public class HubManager : MonoBehaviour
             // if need to load dialgoue after the minigame
             ArrayList assetsToLoad = this.lastCharacter.GetResultAssets();
             SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
-            sceneChanger.FadeToScene(4);
+            //sceneChanger.FadeToScene(4);
+            SceneManager.LoadScene("DialogueScene");
         }
         else
         {
             // don't load result dialogue, just go back to hub. 
             //Debug.Log(lastCharacter.ToString());
-            sceneChanger.FadeToScene(1);
+            //sceneChanger.FadeToScene(1);
+            SceneManager.LoadScene("MainHub");
         }
     }
 

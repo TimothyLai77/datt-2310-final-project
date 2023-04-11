@@ -929,7 +929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 149115378}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -2995,6 +2995,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766832845}
   m_CullTransparentMesh: 0
+--- !u!114 &855664645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6037283729780096421, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+  m_PrefabInstance: {fileID: 1080167800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122ef3f59fdc7745815ed733e7bd132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &875399374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPlaying: 0
   beatScroller: {fileID: 1012892474}
+  sceneChanger: {fileID: 855664645}
   currentGameState: 0
   songs: []
   songTracks:
@@ -9222,7 +9234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 1622124337}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}

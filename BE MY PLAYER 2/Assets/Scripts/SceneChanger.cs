@@ -21,13 +21,17 @@ public class SceneChanger : MonoBehaviour
         sceneToLoad = 99;
     }
 
+    public void FadeIn()
+    {
+        animator.SetTrigger("FadeIn");
+    }
+
     public void FadeToScene(int sceneIndex)
     {
         animator.SetTrigger("FadeOut");
         sceneToLoad = sceneIndex;
     }
 
-    
     public void OnFadeComplete()
     {
         if(sceneToLoad != 99)

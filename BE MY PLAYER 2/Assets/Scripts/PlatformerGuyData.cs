@@ -68,7 +68,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     // current states
     private string currentState;
-    private string playerResultState;
+    static public string playerResultState;
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
@@ -128,7 +128,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
      */
     public string GetResultState()
     {
-        return this.playerResultState;
+        return PlatformerGuyData.playerResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
@@ -173,6 +173,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
             // bad dialgoue otherwise
             playerResultState = PlatformerGuyData.RESULT_BAD;
         }
+        Debug.Log(playerResultState);
     }
 
     public ArrayList GetStartingAssets()
@@ -184,4 +185,5 @@ public class PlatformerGuyData : MonoBehaviour, Character
     {
         return this.resultAssetMap[playerResultState];
     }
+    
 }

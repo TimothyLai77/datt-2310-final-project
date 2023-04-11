@@ -8,6 +8,7 @@ public class PlayerData : MonoBehaviour
     private static PlayerData instance;
 
     private int viewers;
+    private int increase;
     private int mattRelationship;
     private int alexRelationship;
 
@@ -39,7 +40,7 @@ public class PlayerData : MonoBehaviour
         }
 
         // it'll reset everytimer on load but i guess that's fine?
-        this.viewers = 0;
+        this.viewers = 10;
         this.mattRelationship = 5;
         this.alexRelationship = 5;
         this.rhythmGameSkill = 0;
@@ -61,9 +62,9 @@ public class PlayerData : MonoBehaviour
         return this.viewers;
     }
 
-    public void SetViewers(int newViewers)
+    public void SetIncrease(int newViewers)
     {
-        this.viewers = newViewers;
+        this.viewers += newViewers;
     }
 
     public int GetMattRelationship() 

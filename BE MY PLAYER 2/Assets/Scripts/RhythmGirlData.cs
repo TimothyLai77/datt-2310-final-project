@@ -78,7 +78,7 @@ public class RhythmGirlData : MonoBehaviour, Character
     private int relationToPlayer;
 
     private string currentState; // determines which starting dialogue to load
-    private string playerResultState; // determines which result dialogue to play
+    static public string playerResultState; // determines which result dialogue to play
 
 
     //private List<int> chosenMusicSheet;
@@ -141,7 +141,7 @@ public class RhythmGirlData : MonoBehaviour, Character
 
     public string GetResultState()
     {
-        return this.playerResultState;
+        return RhythmGirlData.playerResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
@@ -181,6 +181,7 @@ public class RhythmGirlData : MonoBehaviour, Character
         {
             playerResultState = RhythmGirlData.RESULT_BAD;
         }
+        Debug.Log(playerResultState);
     }
 
     /*private void DetermineResultState()
