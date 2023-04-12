@@ -2218,13 +2218,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Artwork:\nLogo and Character Portraits by Maureen Navera\nPixel Art by
-    Billy Bao\nDating Sim UI Pack by LoudEyes (https://loudeyes.itch.io/dating-sim-ui-pack)\n\n\nMusic:\n\u201CMagical
-    Gateway\u201D  by Eric Matyas (www.soundimage.org)\n\u201CBetter Days Ahead\u201D
-    by Eric Matyas (www.soundimage.org)\n\u201CInnocent Years\u201D by Eric Matyas
-    (www.soundimage.org)\n\u201CEpic Song\u201D by BoxCat Games\nUsed under Creative
-    Commons Attribution 3.0 Unported License\n\n\nProgramming\nDialogue Tutorial 
-    by Trevor Mock (https://www.youtube.com/watch?v=vY0Sk93YUhA&t)\n\n"
+  m_text: "Artwork\r\n\nLogo and Character Portraits by Maureen Navera\r\nPixel Art
+    by Billy Bao\r\nVector Bedroom Interior (used for Alex\u2019s bedroom) By upklyak
+    on Freepik\r\nFree vector cartoon gamer room illustration (used for Matt\u2019s
+    bedroom) By pikisuperstar on Freepik\r\nFree vector organic flat gamer room illustration
+    (used for player\u2019s room) By freepik on Freepik\r\nDating Sim UI Pack by
+    LoudEyes: https://loudeyes.itch.io/dating-sim-ui-pack\r\nPixelWallpaper: Space
+    By BloodClients: https://bloodclients.itch.io/spacewallpaper\r\n\nMusic/Sound
+    Effects\r\n\r\nSound Effects: www.zapsplat.com\r\n\r\n\u201CMagical Gateway\u201D\r\n\u201CBetter
+    Days Ahead\u201D\r\n\u201CInnocent Years\u201D\r\nby Eric Matyas\r\nwww.soundimage.org\r\n\r\n\u201CLost
+    Spaceship\u2019s Signal\u201D\r\n\u201CValley of Spirits\u201D\r\nby DavidKBD\r\n\r\n\u201CEpic
+    Song\u201D\r\nby BoxCat Games\r\nUsed under Creative Commons Attribution 3.0
+    Unported License\r\n\nProgramming\r\n\nDialogue Tutorial by Trevor Mock: https://www.youtube.com/watch?v=vY0Sk93YUhA&t\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
