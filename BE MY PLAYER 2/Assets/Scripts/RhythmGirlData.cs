@@ -174,16 +174,19 @@ public class RhythmGirlData : MonoBehaviour, Character
         {
             playerResultState = RhythmGirlData.RESULT_GOOD;
             PlayerData.GetInstance().IncreaseAlexRelationship(2);
+            PlayerData.GetInstance().IncreaseRyhthmGameSkill(2);
         }
         else if (result == "OKAY")
         {
             playerResultState = RhythmGirlData.RESULT_OKAY;
             PlayerData.GetInstance().IncreaseAlexRelationship(1);
+            PlayerData.GetInstance().IncreaseRyhthmGameSkill(1);
         }
         else if (result == "BAD")
         {
             playerResultState = RhythmGirlData.RESULT_BAD;
             PlayerData.GetInstance().IncreaseAlexRelationship(-1);
+            PlayerData.GetInstance().IncreaseRyhthmGameSkill(0);
         }
         Debug.Log(playerResultState);
         Debug.Log(PlayerData.GetInstance().GetAlexRelationship());

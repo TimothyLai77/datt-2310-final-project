@@ -42,6 +42,7 @@ public class StreamManager : MonoBehaviour
                 textOption = 1;
                 PlayerData.GetInstance().SetIncrease(25);
                 viewerIncrease = PlayerData.GetInstance().GetViewers();
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(2);
             }
             else if(RhythmGirlData.instance.GetStreamResult() == "RESULT_OKAY" || PlatformerGuyData.GetInstance().GetStreamResult() == "RESULT_OKAY")
             {
@@ -49,6 +50,7 @@ public class StreamManager : MonoBehaviour
                 textOption = 2;
                 PlayerData.GetInstance().SetIncrease(10);
                 viewerIncrease = PlayerData.GetInstance().GetViewers();
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(1);
             }
             else if(RhythmGirlData.instance.GetStreamResult() == "RESULT_BAD" || PlatformerGuyData.GetInstance().GetStreamResult() == "RESULT_BAD")
             {
@@ -56,6 +58,7 @@ public class StreamManager : MonoBehaviour
                 textOption = 3;
                 PlayerData.GetInstance().SetIncrease(-10);
                 viewerIncrease = PlayerData.GetInstance().GetViewers();
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(0);
             }
             InvokeRepeating("Stream", 1.0f, 0.8f);
             Invoke("EndStream", 10f);

@@ -70,6 +70,11 @@ public class PlayerData : MonoBehaviour
         {
             mattRelationship = 0;
         }
+        if(mattRelationship > 20)
+        {
+            mattRelationship = 20;
+        }
+
     }
 
     public int GetAlexRelationship()
@@ -84,16 +89,24 @@ public class PlayerData : MonoBehaviour
         {
             alexRelationship = 0;
         }
+        if(alexRelationship > 20)
+        {
+            alexRelationship = 20;
+        }
     }
 
-    public int GetRyhtmGameSkill() 
+    public int GetRyhthmGameSkill() 
     {
         return rhythmGameSkill;
     }
 
-    public void SetRyhthmGameSkill(int newSkill) 
+    public void IncreaseRyhthmGameSkill(int newSkill) 
     {
-        rhythmGameSkill = newSkill;
+        rhythmGameSkill += newSkill;
+        if(rhythmGameSkill > 20)
+        {
+            rhythmGameSkill = 20;
+        }
     }
 
     public int GetPlatformerGameSkill()
@@ -101,8 +114,12 @@ public class PlayerData : MonoBehaviour
         return platformerGameSkill;
     }
 
-    public void SetPlatformerGameSkill(int newSkill)
+    public void IncreasePlatformerGameSkill(int newSkill)
     {
-        platformerGameSkill = newSkill;
+        platformerGameSkill += newSkill;
+        if(platformerGameSkill > 20)
+        {
+            platformerGameSkill = 20;
+        }
     }
 }

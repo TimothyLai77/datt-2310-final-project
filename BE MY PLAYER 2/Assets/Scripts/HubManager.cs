@@ -149,26 +149,71 @@ public class HubManager : MonoBehaviour
 
         if(PlayerData.GetInstance().GetViewers() <= 30)
         {
-            viewerLevel = "(Beginner)";
+            viewerLevel = "(Newbie)";
         }
         else if(PlayerData.GetInstance().GetViewers() <= 80)
         {
-            viewerLevel = "(Mediocre)";
+            viewerLevel = "(Average)";
         }
         else if(PlayerData.GetInstance().GetViewers() <= 150)
         {
-            viewerLevel = "(Intermediate)";
+            viewerLevel = "(Above Average)";
         }
         else if(PlayerData.GetInstance().GetViewers() <= 250)
         {
-            viewerLevel = "(Advanced)";
+            viewerLevel = "(Popular)";
         }
         else
         {
-            viewerLevel = "(Pro)";
+            viewerLevel = "(Famous)";
+        }
+
+        if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 3)
+        {
+            rhythmLevel = "(Beginner)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 8)
+        {
+            rhythmLevel = "(Mediocre)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 13)
+        {
+            rhythmLevel = "(Intermediate)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 17)
+        {
+            rhythmLevel = "(Advanced)";
+        }
+        else
+        {
+            rhythmLevel = "(Pro)";
+        }
+
+        if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 3)
+        {
+            platformerLevel = "(Beginner)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 8)
+        {
+            platformerLevel = "(Mediocre)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 13)
+        {
+            platformerLevel = "(Intermediate)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 17)
+        {
+            platformerLevel = "(Advanced)";
+        }
+        else
+        {
+            platformerLevel = "(Pro)";
         }
     
-        statsText.text = "Relationship with Matt: " + PlayerData.GetInstance().GetMattRelationship() + "/20! " + mattLevel + "\nRelationship with Alex: " + PlayerData.GetInstance().GetAlexRelationship() + "/20! " + alexLevel + "\nAverage Viewers: " + PlayerData.GetInstance().GetViewers() + " " + viewerLevel;
+        statsText.text = "Relationship with Matt: " + PlayerData.GetInstance().GetMattRelationship() + "/20 " + mattLevel 
+        + "\nRelationship with Alex: " + PlayerData.GetInstance().GetAlexRelationship() + "/20 " + alexLevel + "\nAverage Viewers: " 
+        + PlayerData.GetInstance().GetViewers() + " " + viewerLevel + "\nRhythmic Skill: " + PlayerData.GetInstance().GetRyhthmGameSkill() 
+        + "/20 " + rhythmLevel + "\nPlatforming Skill: " + PlayerData.GetInstance().GetPlatformerGameSkill() + "/20 " + platformerLevel;
         if(statsScreen.activeInHierarchy == true)
         {
             statsScreen.SetActive(false);
