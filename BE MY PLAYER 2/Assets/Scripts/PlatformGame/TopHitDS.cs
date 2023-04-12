@@ -19,7 +19,7 @@ public class TopHitDS : MonoBehaviour
         // if player collides with death object they respawn at start
         if (collision.gameObject.CompareTag("Player"))
         {
-            sound.DeathSound();
+            //sound.DeathSound();
             player.transform.position = startPoint.transform.position;
         }
         if (collision.gameObject.CompareTag("Ground"))
