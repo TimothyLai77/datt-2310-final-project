@@ -70,7 +70,6 @@ public class FinishCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // tell timer to stop
-            sound.CheckpointFinishSound();
             if(levelFinished == false)
             {
                 sound.CheckpointFinishSound();
