@@ -34,7 +34,6 @@ public class TopHitCheck : MonoBehaviour
                 soundfx.FallingSpikeSound();
             }
             fallingSound = true;
-            
         }
         if (transform.position.y > oriPos.y)
         {

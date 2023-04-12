@@ -105,8 +105,4 @@ public class PlayerData : MonoBehaviour
     {
         this.platformerGameSkill = newSkill;
     }
-
-
-
-
 }
