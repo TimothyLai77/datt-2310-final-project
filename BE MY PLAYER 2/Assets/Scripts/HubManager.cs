@@ -104,7 +104,7 @@ public class HubManager : MonoBehaviour
 
     public void StatsButton()
     {
-        string mattLevel, alexLevel, viewerLevel;
+        string mattLevel, alexLevel, viewerLevel, rhythmLevel, platformerLevel;
         if(PlayerData.GetInstance().GetMattRelationship() <= 3)
         {
             mattLevel = "(Unfriendly)";
