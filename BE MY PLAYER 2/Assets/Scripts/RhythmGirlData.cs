@@ -173,16 +173,20 @@ public class RhythmGirlData : MonoBehaviour, Character
         if (result == "GOOD")
         {
             playerResultState = RhythmGirlData.RESULT_GOOD;
+            PlayerData.GetInstance().IncreaseAlexRelationship(2);
         }
         else if (result == "OKAY")
         {
             playerResultState = RhythmGirlData.RESULT_OKAY;
+            PlayerData.GetInstance().IncreaseAlexRelationship(1);
         }
         else if (result == "BAD")
         {
             playerResultState = RhythmGirlData.RESULT_BAD;
+            PlayerData.GetInstance().IncreaseAlexRelationship(-1);
         }
         Debug.Log(playerResultState);
+        Debug.Log(PlayerData.GetInstance().GetAlexRelationship());
     }
 
     public void SetStreamResult(string result)

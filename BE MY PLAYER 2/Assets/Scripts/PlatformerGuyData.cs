@@ -171,6 +171,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
             if(FinishCheck.streamOrRelation == false)
             {
                 playerResultState = PlatformerGuyData.RESULT_GOOD;
+                PlayerData.GetInstance().IncreaseMattRelationship(2);
             }
             else
             {
@@ -182,6 +183,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
             if(FinishCheck.streamOrRelation == false)
             {
                 playerResultState = PlatformerGuyData.RESULT_OKAY;
+                PlayerData.GetInstance().IncreaseMattRelationship(1);
             }
             else
             {
@@ -193,6 +195,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
             if(FinishCheck.streamOrRelation == false)
             {
                 playerResultState = PlatformerGuyData.RESULT_BAD;
+                PlayerData.GetInstance().IncreaseMattRelationship(-1);
             }
             else
             {

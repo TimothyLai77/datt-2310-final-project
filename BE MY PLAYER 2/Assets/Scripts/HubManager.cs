@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HubManager : MonoBehaviour
@@ -19,6 +20,8 @@ public class HubManager : MonoBehaviour
     private static HubManager instance;
 
     private bool minigameStarted;
+    public Text statsText;
+    public GameObject statsScreen;
 
     public SceneChanger sceneChanger;
 
@@ -57,7 +60,6 @@ public class HubManager : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     private void ShowIntro() { 
@@ -72,7 +74,7 @@ public class HubManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void RoomOneButton()
@@ -100,6 +102,82 @@ public class HubManager : MonoBehaviour
         sceneChanger.FadeToScene(5);
     }
 
+    public void StatsButton()
+    {
+        string mattLevel, alexLevel, viewerLevel;
+        if(PlayerData.GetInstance().GetMattRelationship() <= 3)
+        {
+            mattLevel = "(Unfriendly)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 8)
+        {
+            mattLevel = "(Neutral)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 13)
+        {
+            mattLevel = "(Friendly)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 18)
+        {
+            mattLevel = "(Trusted)";
+        }
+        else
+        {
+            mattLevel = "(Best Friends)";
+        }
+
+        if(PlayerData.GetInstance().GetAlexRelationship() <= 3)
+        {
+            alexLevel = "(Unfriendly)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 8)
+        {
+            alexLevel = "(Neutral)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 13)
+        {
+            alexLevel = "(Friendly)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 18)
+        {
+            alexLevel = "(Trusted)";
+        }
+        else
+        {
+            alexLevel = "(Best Friends)";
+        }
+
+        if(PlayerData.GetInstance().GetViewers() <= 30)
+        {
+            viewerLevel = "(Beginner)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 80)
+        {
+            viewerLevel = "(Mediocre)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 150)
+        {
+            viewerLevel = "(Intermediate)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 250)
+        {
+            viewerLevel = "(Advanced)";
+        }
+        else
+        {
+            viewerLevel = "(Pro)";
+        }
+    
+        statsText.text = "Relationship with Matt: " + PlayerData.GetInstance().GetMattRelationship() + "/20! " + mattLevel + "\nRelationship with Alex: " + PlayerData.GetInstance().GetAlexRelationship() + "/20! " + alexLevel + "\nAverage Viewers: " + PlayerData.GetInstance().GetViewers() + " " + viewerLevel;
+        if(statsScreen.activeInHierarchy == true)
+        {
+            statsScreen.SetActive(false);
+        }
+        else if(statsScreen.activeInHierarchy == false)
+        {
+            statsScreen.SetActive(true);
+        }
+    }
     /*
      * This method should be called when the game is finished
      * If the the minigame was started standalone, then it should bring it back to the hub.
@@ -143,8 +221,6 @@ public class HubManager : MonoBehaviour
     {
         return this.minigameStarted;
     }
-
-
     
     public void StartDialogueDebug() {
         SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);
