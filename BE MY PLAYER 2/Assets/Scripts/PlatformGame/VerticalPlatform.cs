@@ -18,13 +18,13 @@ public class VerticalPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow)|| Input.GetKeyUp(KeyCode.S))
         {
             if(waitTime <= 0f) { 
                 this.waitTime = 0.5f;
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow)&& waitTime <= 0f)
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S) && waitTime <= 0f)
         {
             //effect.rotationalOffset = 180f; //both method achieve same thing
             this.GetComponent<BoxCollider2D>().enabled = false;

@@ -12,7 +12,7 @@ public class TopHitCheck : MonoBehaviour
     public float dropSpeed;
     public float upSpeed;
     private Vector3 oriPos;
-    public SoundFX sound;
+    public SoundFX soundfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +31,9 @@ public class TopHitCheck : MonoBehaviour
             transform.position += movingDown;
             if (fallingSound == false)
             {
-                sound.FallingSpikeSound();
+                soundfx.FallingSpikeSound();
             }
             fallingSound = true;
-            
         }
         if (transform.position.y > oriPos.y)
         {
@@ -46,8 +45,8 @@ public class TopHitCheck : MonoBehaviour
             transform.position += movingUp;
             if (fallingSound == true)
             {
-                sound.Stop();
-                sound.SpikeBoomSound();
+                soundfx.Stop();
+                soundfx.SpikeBoomSound();
             }
             fallingSound = false;
         }
