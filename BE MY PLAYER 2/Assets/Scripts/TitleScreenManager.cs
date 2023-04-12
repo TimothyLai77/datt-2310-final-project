@@ -67,6 +67,11 @@ public class TitleScreenManager : MonoBehaviour
         LeanTween.moveLocal(elementsToMove, leftAnchorPosition, .7f).setDelay(.1f).setEase(LeanTweenType.easeInOutQuad);
     }
 
+    public void quit()
+    {
+        Application.Quit();
+    }
+
     public void toMainHubScene()
     {
         SceneManager.LoadScene("MainHub");
