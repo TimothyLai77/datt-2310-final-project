@@ -25,7 +25,7 @@ public class TopHitDS : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             topHitCheck.startReset();
-            Debug.Log("start reset");
+            Debug.Log("start reset");//test
         }
     }
 }
