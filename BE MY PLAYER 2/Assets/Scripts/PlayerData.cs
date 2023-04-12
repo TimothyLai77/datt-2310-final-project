@@ -5,25 +5,21 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     // Start is called before the first frame update
-    private static PlayerData instance;
+    public static PlayerData instance;
 
-    private int viewers;
-    private int mattRelationship;
-    private int alexRelationship;
+    public static int viewers;
+    private int increase;
+    public static int mattRelationship = 5;
+    public static int alexRelationship = 5;
 
-    private int rhythmGameSkill;
-    private int platformerGameSkill;
+    public static int rhythmGameSkill = 0;
+    public static int platformerGameSkill = 0;
 
     // max relationship is 10, player starts at 5.
     public const int MAX_RELATIONSHIP = 10;
 
     // max player skill for both games is 10, player starts at 0 for both games.
     public const int MAX_SKILL = 10;
-
-
-
-
-
 
     void Awake()
     {
@@ -39,70 +35,91 @@ public class PlayerData : MonoBehaviour
         }
 
         // it'll reset everytimer on load but i guess that's fine?
-        this.viewers = 0;
-        this.mattRelationship = 5;
-        this.alexRelationship = 5;
-        this.rhythmGameSkill = 0;
-        this.platformerGameSkill = 0;
     }
 
     // Use this when trying to use this class. Example: PlayerData.GetInstance().SetViewers(1000); sets the viewer count to 1000. 
-    public PlayerData GetInstance()
+    public static PlayerData GetInstance()
     {
         return instance;
     }
 
-
-
-
-
     public int GetViewers() 
     {
-        return this.viewers;
+        return viewers;
     }
 
     public void SetViewers(int newViewers)
     {
-        this.viewers = newViewers;
+        viewers = newViewers;
+    }
+
+    public void SetIncrease(int newViewers)
+    {
+        viewers += newViewers;
     }
 
     public int GetMattRelationship() 
     {
-        return this.mattRelationship;
+        return mattRelationship;
     }
 
-    public void SetMattRelationship(int newRelationship) 
+    public void IncreaseMattRelationship(int newRelationship) 
     {
-        this.mattRelationship = newRelationship;
+        mattRelationship += newRelationship;
+        if(mattRelationship < 0) 
+        {
+            mattRelationship = 0;
+        }
+        if(mattRelationship > 20)
+        {
+            mattRelationship = 20;
+        }
+
     }
 
     public int GetAlexRelationship()
     {
-        return this.alexRelationship;
+        return alexRelationship;
     }
 
-    public void SetAlexRelationship(int newRelationship)
+    public void IncreaseAlexRelationship(int newRelationship)
     {
-        this.alexRelationship = newRelationship;
+        alexRelationship += newRelationship;
+        if(alexRelationship < 0) 
+        {
+            alexRelationship = 0;
+        }
+        if(alexRelationship > 20)
+        {
+            alexRelationship = 20;
+        }
     }
 
-    public int GetRyhtmGameSkill() 
+    public int GetRyhthmGameSkill() 
     {
-        return this.rhythmGameSkill;
+        return rhythmGameSkill;
     }
 
-    public void SetRyhthmGameSkill(int newSkill) 
+    public void IncreaseRyhthmGameSkill(int newSkill) 
     {
-        this.rhythmGameSkill = newSkill;
+        rhythmGameSkill += newSkill;
+        if(rhythmGameSkill > 20)
+        {
+            rhythmGameSkill = 20;
+        }
     }
 
     public int GetPlatformerGameSkill()
     {
-        return this.platformerGameSkill;
+        return platformerGameSkill;
     }
 
-    public void SetPlatformerGameSkill(int newSkill)
+    public void IncreasePlatformerGameSkill(int newSkill)
     {
-        this.platformerGameSkill = newSkill;
+        platformerGameSkill += newSkill;
+        if(platformerGameSkill > 20)
+        {
+            platformerGameSkill = 20;
+        }
     }
 }

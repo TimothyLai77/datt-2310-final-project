@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
 
     private static DialogueManager instance;
     public SoundFX sound;
+    public SceneChanger sceneChanger;
 
     private void Awake()
     {
@@ -101,19 +102,22 @@ public class DialogueManager : MonoBehaviour
         // bind functions for changing scnees 
         currentStory.BindExternalFunction("returnToHub", () =>
         {
-            SceneManager.LoadScene("MainHub");
+            sceneChanger.FadeToScene(1);
+            //SceneManager.LoadScene("MainHub");
             sound.ClickSound();
         });
 
         currentStory.BindExternalFunction("startRhythmGame", () =>
         {
-            SceneManager.LoadScene("RhythmGame");
+            sceneChanger.FadeToScene(2);
+           // SceneManager.LoadScene("RhythmGame");
             sound.ClickSound();
         });
 
         currentStory.BindExternalFunction("startPlatformerGame", () =>
         {
-            SceneManager.LoadScene("platformerDemo");
+            sceneChanger.FadeToScene(3);
+            //SceneManager.LoadScene("platformerDemo");
             sound.ClickSound();
         });
         ContinueStory(); // start the story
@@ -132,6 +136,7 @@ public class DialogueManager : MonoBehaviour
         this.backgroundImage.enabled = false;
         currentStory.UnbindExternalFunction("returnToHub");
         currentStory.UnbindExternalFunction("startRhythmGame");
+        
     }
 
 

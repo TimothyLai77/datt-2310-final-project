@@ -275,8 +275,8 @@ RectTransform:
   m_Children:
   - {fileID: 1747410965}
   - {fileID: 591045034}
-  - {fileID: 1586263593}
   - {fileID: 1616946521}
+  - {fileID: 1586263593}
   m_Father: {fileID: 1072495213}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -684,14 +684,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1926416522}
-        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
-        m_MethodName: toMainHubScene
-        m_Mode: 1
+      - m_Target: {fileID: 1281328010}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: FadeToScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -792,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 591045040}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -800,6 +800,8 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!82 &591045040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1099,6 +1101,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &736996315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6037283729780096426, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_Name
+      value: SceneChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 496.11823
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 201.55742
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.829312
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6037283729780096427, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
 --- !u!1 &1011507161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Exit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1778,6 +1837,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -1080}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1281328010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6037283729780096421, guid: b0868ef5806013e4d93e815f7bedde69, type: 3}
+  m_PrefabInstance: {fileID: 736996315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122ef3f59fdc7745815ed733e7bd132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1311495993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,13 +2218,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Artwork:\nLogo and Character Portraits by Maureen Navera\nPixel Art by
-    Billy Bao\nDating Sim UI Pack by LoudEyes (https://loudeyes.itch.io/dating-sim-ui-pack)\n\n\nMusic:\n\u201CMagical
-    Gateway\u201D  by Eric Matyas (www.soundimage.org)\n\u201CBetter Days Ahead\u201D
-    by Eric Matyas (www.soundimage.org)\n\u201CInnocent Years\u201D by Eric Matyas
-    (www.soundimage.org)\n\u201CEpic Song\u201D by BoxCat Games\nUsed under Creative
-    Commons Attribution 3.0 Unported License\n\n\nProgramming\nDialogue Tutorial 
-    by Trevor Mock (https://www.youtube.com/watch?v=vY0Sk93YUhA&t)\n\n"
+  m_text: "Artwork\r\n\nLogo and Character Portraits by Maureen Navera\r\nPixel Art
+    by Billy Bao\r\nVector Bedroom Interior (used for Alex\u2019s bedroom) By upklyak
+    on Freepik\r\nFree vector cartoon gamer room illustration (used for Matt\u2019s
+    bedroom) By pikisuperstar on Freepik\r\nFree vector organic flat gamer room illustration
+    (used for player\u2019s room) By freepik on Freepik\r\nDating Sim UI Pack by
+    LoudEyes: https://loudeyes.itch.io/dating-sim-ui-pack\r\nPixelWallpaper: Space
+    By BloodClients: https://bloodclients.itch.io/spacewallpaper\r\n\nMusic/Sound
+    Effects\r\n\r\nSound Effects: www.zapsplat.com\r\n\r\n\u201CMagical Gateway\u201D\r\n\u201CBetter
+    Days Ahead\u201D\r\n\u201CInnocent Years\u201D\r\nby Eric Matyas\r\nwww.soundimage.org\r\n\r\n\u201CLost
+    Spaceship\u2019s Signal\u201D\r\n\u201CValley of Spirits\u201D\r\nby DavidKBD\r\n\r\n\u201CEpic
+    Song\u201D\r\nby BoxCat Games\r\nUsed under Creative Commons Attribution 3.0
+    Unported License\r\n\nProgramming\r\n\nDialogue Tutorial by Trevor Mock: https://www.youtube.com/watch?v=vY0Sk93YUhA&t\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2267,11 +2342,11 @@ RectTransform:
   m_Children:
   - {fileID: 1011507162}
   m_Father: {fileID: 101515806}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -350}
+  m_AnchoredPosition: {x: 616, y: -350}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586263594
@@ -2317,7 +2392,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1586263595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1926416522}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1586263595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,7 +2456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 1586263598}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -2377,6 +2464,8 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!82 &1586263598
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2554,11 +2643,11 @@ RectTransform:
   m_Children:
   - {fileID: 634911029}
   m_Father: {fileID: 101515806}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 550, y: -350}
+  m_AnchoredPosition: {x: -50, y: -350}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616946522
@@ -2668,7 +2757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 1616946526}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -2676,6 +2765,8 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!82 &1616946526
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3043,7 +3134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySounds: {fileID: 1825591340}
-  hoverSound: {fileID: 8300000, guid: 9a56a0b097051d747829369e1ed8b6a8, type: 3}
+  hoverSound: {fileID: 8300000, guid: 7bcdd5533c813124ab43c5a00f4e1cc2, type: 3}
   clickSound: {fileID: 8300000, guid: ed13939dccbcf2a42bd193916ecb4db3, type: 3}
   arrowSound: {fileID: 0}
   jumpSound: {fileID: 0}
@@ -3051,6 +3142,8 @@ MonoBehaviour:
   spikeBoomSound: {fileID: 0}
   appleSound: {fileID: 0}
   checkpointFinishSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  chatSound: {fileID: 0}
 --- !u!82 &1825591340
 AudioSource:
   m_ObjectHideFlags: 0

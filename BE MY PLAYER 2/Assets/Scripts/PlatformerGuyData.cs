@@ -42,7 +42,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
 
 
-    private static PlatformerGuyData instance;
+    public static PlatformerGuyData instance;
 
     private const double GOOD_TIME = 20;
     private const double OKAY_TIME = 30;
@@ -68,7 +68,8 @@ public class PlatformerGuyData : MonoBehaviour, Character
 
     // current states
     private string currentState;
-    private string playerResultState;
+    public static string playerResultState;
+    public static string streamResultState;
 
     private Dictionary<string, ArrayList> resultAssetMap = new Dictionary<string, ArrayList>();
     private Dictionary<string, ArrayList> startingSceneAssetMap = new Dictionary<string, ArrayList>();
@@ -84,7 +85,6 @@ public class PlatformerGuyData : MonoBehaviour, Character
     {
         return instance;
     }
-
 
     private void Awake()
     {
@@ -128,17 +128,22 @@ public class PlatformerGuyData : MonoBehaviour, Character
      */
     public string GetResultState()
     {
-        return this.playerResultState;
+        return playerResultState;
+    }
+
+    public string GetStreamResult()
+    {
+        return streamResultState;
     }
 
     public void SetRelationToPlayer(int newValue)
     {
-        this.relationToPlayer = newValue;
+        relationToPlayer = newValue;
     }
 
     public int GetRelationToPlayer()
     {
-        return this.relationToPlayer;
+        return relationToPlayer;
     }
 
     // uhhh fix this
@@ -155,7 +160,7 @@ public class PlatformerGuyData : MonoBehaviour, Character
         DetermineResultState();
     }
 
-    private void DetermineResultState()
+    public void DetermineResultState()
     {
         // todo: compare player time against expected times, and upate the states
         Debug.Log(lastPlayerTime);
@@ -163,16 +168,61 @@ public class PlatformerGuyData : MonoBehaviour, Character
         if (lastPlayerTime <= GOOD_TIME && totalCollectableScore==MAX_APPLE_SCORE)
         {
             // good dialouge only if all apples + good time
-            playerResultState = PlatformerGuyData.RESULT_GOOD;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_GOOD;
+                PlayerData.GetInstance().IncreaseMattRelationship(2);
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(2);
+            }
+            else
+            {
+                SetStreamResult("GOOD");
+            }
         } else if (lastPlayerTime <= OKAY_TIME && totalCollectableScore>=MID_APPLE_SCORE)
         {
             // mid dialogue if aobut half
-            playerResultState = PlatformerGuyData.RESULT_OKAY;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_OKAY;
+                PlayerData.GetInstance().IncreaseMattRelationship(1);
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(1);
+            }
+            else
+            {
+                SetStreamResult("OKAY");
+            }
         } else 
         {
             // bad dialgoue otherwise
-            playerResultState = PlatformerGuyData.RESULT_BAD;
+            if(FinishCheck.streamOrRelation == false)
+            {
+                playerResultState = PlatformerGuyData.RESULT_BAD;
+                PlayerData.GetInstance().IncreaseMattRelationship(-1);
+                PlayerData.GetInstance().IncreasePlatformerGameSkill(0);
+            }
+            else
+            {
+                SetStreamResult("BAD");
+            }
         }
+        Debug.Log(playerResultState);
+    }
+
+    public void SetStreamResult(string result)
+    {
+        if (result == "GOOD")
+        {
+            streamResultState = PlatformerGuyData.RESULT_GOOD;
+        }
+        else if (result == "OKAY")
+        {
+            streamResultState = PlatformerGuyData.RESULT_OKAY;
+        }
+        else if (result == "BAD")
+        {
+            streamResultState = PlatformerGuyData.RESULT_BAD;
+        }
+        Debug.Log(streamResultState);
     }
 
     public ArrayList GetStartingAssets()
@@ -184,4 +234,5 @@ public class PlatformerGuyData : MonoBehaviour, Character
     {
         return this.resultAssetMap[playerResultState];
     }
+    
 }

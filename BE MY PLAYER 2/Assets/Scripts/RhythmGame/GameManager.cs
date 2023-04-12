@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public BeatScroller beatScroller;
     public static GameManager instance;
     private RhythmGirlData rhythmGirlData;
+    public SceneChanger sceneChanger;
     public enum GAME_STATE
     {
         SongSelection,
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     }
 
     public GAME_STATE currentGameState;
+    public static bool streamOrRelation;
 
     public List<Song> songs = new List<Song>();
     public List<AudioClip> songTracks = new List<AudioClip>();
@@ -183,15 +185,36 @@ public class GameManager : MonoBehaviour
 
             if (percentHit >= 80)
             {
-                rhythmGirlData.SetResultState("GOOD");
+                if(streamOrRelation == false)
+                {
+                    rhythmGirlData.SetResultState("GOOD");
+                }
+                else
+                {
+                    rhythmGirlData.SetStreamResult("GOOD");
+                }
             }
             else if (percentHit >= 50)
             {
-                rhythmGirlData.SetResultState("OKAY");
+                if(streamOrRelation == false)
+                {
+                    rhythmGirlData.SetResultState("OKAY");
+                }
+                else
+                {
+                    rhythmGirlData.SetStreamResult("OKAY");
+                }
             }
             else
             {
-                rhythmGirlData.SetResultState("BAD");
+                if(streamOrRelation == false)
+                {
+                    rhythmGirlData.SetResultState("BAD");
+                }
+                else
+                {
+                    rhythmGirlData.SetStreamResult("BAD");
+                }
             }
         }
     }
@@ -263,18 +286,26 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-
-        HubManager hm = HubManager.GetInstance();
-        Character c = hm.GetLastCharacter();
-
-        // if the last character is set to null, -> only load the minigame, do not save score
-        if (!(c is null))
+        if(streamOrRelation == false)
         {
-            //Debug.Log("no bug ");
-            c.SetLastPlayerScore(this.currentScore); // setting the score also determines which dialouge to load 
-        }
+            HubManager hm = HubManager.GetInstance();
+            Character c = hm.GetLastCharacter();
 
-        hm.LoadDialogueFromLastCharacter();
+            // if the last character is set to null, -> only load the minigame, do not save score
+            if (!(c is null))
+            {
+                //Debug.Log("no bug ");
+                c.SetLastPlayerScore(this.currentScore); // setting the score also determines which dialouge to load 
+            }
+
+            hm.LoadDialogueFromLastCharacter();
+        }
+        else
+        {
+            streamOrRelation = false;
+            StreamManager.streamed = true;
+            SceneManager.LoadScene("StreamerRoom");
+        }
 
         // set the score the player achieved.
         //RhythmGirlData rhythmGirlInstance = RhythmGirlData.GetInstance();

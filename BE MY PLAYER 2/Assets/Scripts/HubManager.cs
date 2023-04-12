@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class HubManager : MonoBehaviour
@@ -19,6 +20,10 @@ public class HubManager : MonoBehaviour
     private static HubManager instance;
 
     private bool minigameStarted;
+    public Text statsText;
+    public GameObject statsScreen;
+
+    public SceneChanger sceneChanger;
 
     // Getter method to access the instance of this manager
     public static HubManager GetInstance()
@@ -55,7 +60,6 @@ public class HubManager : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     private void ShowIntro() { 
@@ -70,7 +74,7 @@ public class HubManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void RoomOneButton()
@@ -81,7 +85,7 @@ public class HubManager : MonoBehaviour
         ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets(); // get the assets
         // load the references so the dialogueManger can grab the asset references
         SetToLoads((TextAsset)assetsToLoad[0],(Sprite) assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+        sceneChanger.FadeToScene(4); // switch to dialogue
     }
 
     public void RoomTwoButton()
@@ -89,15 +93,136 @@ public class HubManager : MonoBehaviour
         this.lastCharacter = PlatformerGuyData.GetInstance();
         ArrayList assetsToLoad = (this.lastCharacter).GetStartingAssets();
         SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
-        SceneManager.LoadScene("DialogueScene"); // swithc to dialogue
+        sceneChanger.FadeToScene(4); // swithc to dialogue
     }
 
     public void MyRoomButton() 
     {
         this.lastCharacter = null; // so it returns to hub w/o dialogue scene after game
-        SceneManager.LoadScene("MinigameSelection");
+        sceneChanger.FadeToScene(5);
     }
 
+    public void StatsButton()
+    {
+        string mattLevel, alexLevel, viewerLevel, rhythmLevel, platformerLevel;
+        if(PlayerData.GetInstance().GetMattRelationship() <= 3)
+        {
+            mattLevel = "(Unfriendly)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 8)
+        {
+            mattLevel = "(Neutral)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 13)
+        {
+            mattLevel = "(Friendly)";
+        }
+        else if(PlayerData.GetInstance().GetMattRelationship() <= 18)
+        {
+            mattLevel = "(Trusted)";
+        }
+        else
+        {
+            mattLevel = "(Best Friends)";
+        }
+
+        if(PlayerData.GetInstance().GetAlexRelationship() <= 3)
+        {
+            alexLevel = "(Unfriendly)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 8)
+        {
+            alexLevel = "(Neutral)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 13)
+        {
+            alexLevel = "(Friendly)";
+        }
+        else if(PlayerData.GetInstance().GetAlexRelationship() <= 18)
+        {
+            alexLevel = "(Trusted)";
+        }
+        else
+        {
+            alexLevel = "(Best Friends)";
+        }
+
+        if(PlayerData.GetInstance().GetViewers() <= 30)
+        {
+            viewerLevel = "(Newbie)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 80)
+        {
+            viewerLevel = "(Average)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 150)
+        {
+            viewerLevel = "(Above Average)";
+        }
+        else if(PlayerData.GetInstance().GetViewers() <= 250)
+        {
+            viewerLevel = "(Popular)";
+        }
+        else
+        {
+            viewerLevel = "(Famous)";
+        }
+
+        if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 3)
+        {
+            rhythmLevel = "(Beginner)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 8)
+        {
+            rhythmLevel = "(Mediocre)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 13)
+        {
+            rhythmLevel = "(Intermediate)";
+        }
+        else if(PlayerData.GetInstance().GetRyhthmGameSkill() <= 17)
+        {
+            rhythmLevel = "(Advanced)";
+        }
+        else
+        {
+            rhythmLevel = "(Pro)";
+        }
+
+        if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 3)
+        {
+            platformerLevel = "(Beginner)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 8)
+        {
+            platformerLevel = "(Mediocre)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 13)
+        {
+            platformerLevel = "(Intermediate)";
+        }
+        else if(PlayerData.GetInstance().GetPlatformerGameSkill() <= 17)
+        {
+            platformerLevel = "(Advanced)";
+        }
+        else
+        {
+            platformerLevel = "(Pro)";
+        }
+    
+        statsText.text = "Relationship with Matt: " + PlayerData.GetInstance().GetMattRelationship() + "/20 " + mattLevel 
+        + "\nRelationship with Alex: " + PlayerData.GetInstance().GetAlexRelationship() + "/20 " + alexLevel + "\nAverage Viewers: " 
+        + PlayerData.GetInstance().GetViewers() + " " + viewerLevel + "\nRhythmic Skill: " + PlayerData.GetInstance().GetRyhthmGameSkill() 
+        + "/20 " + rhythmLevel + "\nPlatforming Skill: " + PlayerData.GetInstance().GetPlatformerGameSkill() + "/20 " + platformerLevel;
+        if(statsScreen.activeInHierarchy == true)
+        {
+            statsScreen.SetActive(false);
+        }
+        else if(statsScreen.activeInHierarchy == false)
+        {
+            statsScreen.SetActive(true);
+        }
+    }
     /*
      * This method should be called when the game is finished
      * If the the minigame was started standalone, then it should bring it back to the hub.
@@ -109,12 +234,14 @@ public class HubManager : MonoBehaviour
             // if need to load dialgoue after the minigame
             ArrayList assetsToLoad = this.lastCharacter.GetResultAssets();
             SetToLoads((TextAsset)assetsToLoad[0], (Sprite)assetsToLoad[1], (Sprite)assetsToLoad[2]);
+            //sceneChanger.FadeToScene(4);
             SceneManager.LoadScene("DialogueScene");
         }
         else
         {
             // don't load result dialogue, just go back to hub. 
             //Debug.Log(lastCharacter.ToString());
+            //sceneChanger.FadeToScene(1);
             SceneManager.LoadScene("MainHub");
         }
     }
@@ -132,19 +259,17 @@ public class HubManager : MonoBehaviour
     {
         // only load the minigame no dialogue needed.
         //this.minigameStarted = true;
-        SceneManager.LoadScene("RhythmGame"); // change scene
+       sceneChanger.FadeToScene(2); // change scene
     }
 
     public bool MinigameStarted() 
     {
         return this.minigameStarted;
     }
-
-
     
     public void StartDialogueDebug() {
         SetToLoads(inkJSON_DEBUG, portrait_DEBUG, backgroundImage_DEBUG);
-        SceneManager.LoadScene("DialogueScene");
+        sceneChanger.FadeToScene(4);
     }
 
     private void SetToLoads(TextAsset ink, Sprite portrait, Sprite background)
@@ -171,12 +296,12 @@ public class HubManager : MonoBehaviour
 
     public void ToTitleScreenScene()
     {
-        SceneManager.LoadScene("TitleScreen");
+        sceneChanger.FadeToScene(0);
     }
 
     public void ToMainHubScene()
     {
-        SceneManager.LoadScene("MainHub");
+        sceneChanger.FadeToScene(1);
     }
 }
 

@@ -14,6 +14,7 @@ public class SoundFX : MonoBehaviour
     public AudioClip appleSound;
     public AudioClip checkpointFinishSound;
     public AudioClip deathSound;
+    public AudioClip chatSound;
 
     public void HoverSound()
     {
@@ -58,6 +59,11 @@ public class SoundFX : MonoBehaviour
     public void DeathSound()
     {
         mySounds.PlayOneShot(deathSound);
+    }
+
+    public void ChatSound()
+    {
+        mySounds.PlayOneShot(chatSound);
     }
     
     public void Stop()

@@ -33,19 +33,16 @@ public class NoteObject : MonoBehaviour
 
                     if (Mathf.Abs(activator.transform.position.y - transform.position.y) <= perfectThreshold)
                     {
-                        Debug.Log("Perfect Hit");
                         GameManager.instance.NoteHit("Perfect");
                     }
 
                     else if (Mathf.Abs(activator.transform.position.y - transform.position.y) <= greatThreshold)
                     {
-                        Debug.Log("Great Hit");
                         GameManager.instance.NoteHit("Great");
                     }
 
                     else
                     {
-                        Debug.Log("Good Hit");
                         GameManager.instance.NoteHit("Good");
                     }
                 }
