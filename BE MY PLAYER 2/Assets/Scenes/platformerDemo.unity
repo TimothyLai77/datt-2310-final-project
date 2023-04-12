@@ -34262,7 +34262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 1025618075}
   player: {fileID: 281391971}
-  sound: {fileID: 0}
+  sound: {fileID: 1479024958}
 --- !u!61 &280541821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34418,7 +34418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281391971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.72, y: -12.31, z: 0}
+  m_LocalPosition: {x: 258.4, y: 45.3, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36480,7 +36480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345869820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.72, y: -12.31, z: -10}
+  m_LocalPosition: {x: 258.4, y: 45.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43460,7 +43460,7 @@ MonoBehaviour:
   player: {fileID: 281391971}
   start: {fileID: 1025618075}
   manager: {fileID: 50956224}
-  soundfx: {fileID: 0}
+  soundfx: {fileID: 485610213}
 --- !u!61 &474152769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54373,7 +54373,7 @@ MonoBehaviour:
   fallingSound: 0
   dropSpeed: 0.5
   upSpeed: 0.1
-  soundfx: {fileID: 0}
+  soundfx: {fileID: 2055140401}
 --- !u!61 &823476647
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59471,7 +59471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 1025618075}
   player: {fileID: 281391971}
-  sound: {fileID: 0}
+  sound: {fileID: 1479024958}
 --- !u!61 &1110516373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59603,7 +59603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 1025618075}
   player: {fileID: 281391971}
-  sound: {fileID: 0}
+  sound: {fileID: 1479024958}
 --- !u!61 &1121287542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -60175,7 +60175,7 @@ MonoBehaviour:
   player: {fileID: 281391971}
   start: {fileID: 1025618075}
   manager: {fileID: 50956224}
-  soundfx: {fileID: 282636906}
+  soundfx: {fileID: 485610213}
 --- !u!61 &1159601109
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66798,7 +66798,7 @@ MonoBehaviour:
   fallingSound: 0
   dropSpeed: 0.5
   upSpeed: 0.1
-  soundfx: {fileID: 0}
+  soundfx: {fileID: 2055140401}
 --- !u!61 &1450504595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78601,7 +78601,7 @@ MonoBehaviour:
   fallingSound: 0
   dropSpeed: 0.5
   upSpeed: 0.1
-  soundfx: {fileID: 0}
+  soundfx: {fileID: 2055140401}
 --- !u!61 &1504865074
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -105086,7 +105086,7 @@ MonoBehaviour:
   fallingSound: 0
   dropSpeed: 0.5
   upSpeed: 0.1
-  soundfx: {fileID: 0}
+  soundfx: {fileID: 2055140401}
 --- !u!61 &1755641036
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -105640,7 +105640,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768576126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.72, y: -12.31, z: -10}
+  m_LocalPosition: {x: 258.4, y: 45.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109455,7 +109455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {fileID: 1025618075}
   player: {fileID: 281391971}
-  sound: {fileID: 0}
+  sound: {fileID: 1479024958}
 --- !u!61 &1962607718
 BoxCollider2D:
   m_ObjectHideFlags: 0
