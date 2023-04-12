@@ -14,7 +14,7 @@ public class DeathScript : MonoBehaviour
         // if player collides with death object they respawn at start
         if (collision.gameObject.CompareTag("Player"))
         {
-            soundfx.DeathSound();
+            //soundfx.DeathSound();
             player.transform.position = startPoint.transform.position;
             player.GetComponent<PlatformerPlayerMovement>().speedReset();
         }
