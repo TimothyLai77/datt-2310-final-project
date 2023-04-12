@@ -7,6 +7,7 @@ public class ScorePanelEnter : MonoBehaviour
 {
     public GameObject manager;
     private SpriteRenderer spriteRenderer;
+    public SoundFX soundfx;
 
     private void Start()
     {
@@ -18,6 +19,7 @@ public class ScorePanelEnter : MonoBehaviour
         spriteRenderer.color = new Color(253 / 255f, 183 / 255f, 183 / 255f, 255 / 255f);//slightly red
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
+            soundfx.ArrowSound();
             manager.GetComponent<Timer>().openScorePanel();
         }
     }

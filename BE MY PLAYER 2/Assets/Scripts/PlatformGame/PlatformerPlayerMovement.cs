@@ -27,6 +27,7 @@ public class PlatformerPlayerMovement : MonoBehaviour
     //private bool firstEnterVP;
 
     public GameObject manager;
+    public SoundFX soundfx;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +85,9 @@ public class PlatformerPlayerMovement : MonoBehaviour
         //jump part
         if (Input.GetButton("Jump") && !isJumping)
         {
+            isJumping = true;
             rb.velocity = Vector2.up * jumpVelocity;
+            soundfx.JumpSound();
         }
 
         if (rb.velocity.y < 0)

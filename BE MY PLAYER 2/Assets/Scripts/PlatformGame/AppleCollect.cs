@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AppleCollect : MonoBehaviour
 {
-    public SoundFX sound;
+    public SoundFX soundfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,7 @@ public class AppleCollect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            //sound.AppleSound();
+            soundfx.AppleSound();
             gameObject.SetActive(false);
             Timer.instance.AppleCollect();
         }

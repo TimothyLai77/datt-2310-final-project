@@ -7,9 +7,11 @@ public class LevelDone : MonoBehaviour
     public GameObject player;
     public GameObject start;
     public GameObject manager;
+    public SoundFX soundfx;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        soundfx.CheckpointFinishSound();
         player.transform.position = new Vector3(-56.75f, - 13.37f, 0f);
         start.transform.position = new Vector3(-56.75f, -13.37f, 0f);
         manager.GetComponent<Timer>().countingTime = false;

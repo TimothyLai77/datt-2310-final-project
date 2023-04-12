@@ -12,6 +12,7 @@ public class LevelEnter : MonoBehaviour
     public GameObject collections;
     public int levelNum;
     private SpriteRenderer spriteRenderer;
+    public SoundFX soundfx;
 
     private void Start()
     {
@@ -27,6 +28,7 @@ public class LevelEnter : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow)|| Input.GetKey(KeyCode.W))
         {
+            soundfx.ArrowSound();
             manager.GetComponent<Timer>().countingTime = true;
             manager.GetComponent<Timer>().currentTime = 0;
             manager.GetComponent<Timer>().scorePanelB = false;
