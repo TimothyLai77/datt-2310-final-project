@@ -8,7 +8,7 @@ public class FinishCheck : MonoBehaviour
 
     public GameObject player;
     public bool levelFinished;
-    public SoundFX soundfx;
+    public SoundFX sound;
 
     public bool levelOneFinished;
     public bool levelTwoFinished;
@@ -70,10 +70,10 @@ public class FinishCheck : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // tell timer to stop
-            soundfx.CheckpointFinishSound();
+            sound.CheckpointFinishSound();
             if(levelFinished == false)
             {
-                soundfx.CheckpointFinishSound();
+                sound.CheckpointFinishSound();
             }
             levelFinished = true;
             
